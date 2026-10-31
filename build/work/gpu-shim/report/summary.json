@@ -1,0 +1,1682 @@
+{
+ "corpora": {
+  "G52 ES3.1 (glsl)": {
+   "file": "glsl-all.jsonl",
+   "total": 684,
+   "rc0": 490,
+   "failed": 194,
+   "rc_hist": {
+    "0": 490,
+    "3": 193,
+    "4": 1
+   },
+   "with_frag_stats": 490,
+   "export_failed_msgs": 490
+  },
+  "G52 desktop GL3.1 (glsl)": {
+   "file": "glsl-all.desktop.jsonl",
+   "total": 684,
+   "rc0": 638,
+   "failed": 46,
+   "rc_hist": {
+    "0": 638,
+    "3": 46
+   },
+   "with_frag_stats": 638,
+   "export_failed_msgs": 634
+  },
+  "llvmpipe control (glsl)": {
+   "file": "glsl-all.llvmpipe.jsonl",
+   "total": 684,
+   "rc0": 489,
+   "failed": 195,
+   "rc_hist": {
+    "0": 489,
+    "3": 193,
+    "-11": 1,
+    "4": 1
+   },
+   "with_frag_stats": 0,
+   "export_failed_msgs": 0
+  },
+  "RA stock ES": {
+   "file": "ra-stock.jsonl",
+   "total": 16,
+   "rc0": 12,
+   "failed": 4,
+   "rc_hist": {
+    "0": 12,
+    "3": 4
+   },
+   "with_frag_stats": 12,
+   "export_failed_msgs": 12
+  },
+  "RA stock desktop": {
+   "file": "ra-stock.desktop.jsonl",
+   "total": 16,
+   "rc0": 16,
+   "failed": 0,
+   "rc_hist": {
+    "0": 16
+   },
+   "with_frag_stats": 16,
+   "export_failed_msgs": 16
+  },
+  "melonDS GL": {
+   "file": "melonds-gl.jsonl",
+   "total": 14,
+   "rc0": 14,
+   "failed": 0,
+   "rc_hist": {
+    "0": 14
+   },
+   "with_frag_stats": 14,
+   "export_failed_msgs": 14
+  },
+  "crt subset": {
+   "file": "glsl-crt.jsonl",
+   "total": 3,
+   "rc0": 3,
+   "failed": 0,
+   "rc_hist": {
+    "0": 3
+   },
+   "with_frag_stats": 3,
+   "export_failed_msgs": 3
+  }
+ },
+ "fail_classes": {
+  "G52 ES3.1 (glsl)": [
+   [
+    "error: initializer of global variable `X' must be a constant expression",
+    123
+   ],
+   [
+    "error: No precision specified in this scope for type `X'",
+    29
+   ],
+   [
+    "error: could not implicitly convert operands to arithmetic operator",
+    13
+   ],
+   [
+    "error: no function with name 'fwidth'",
+    7
+   ],
+   [
+    "error: no matching function for call to `X'; candidates are:",
+    3
+   ],
+   [
+    "error: array constructors forbidden in GLSL ES 1.00 (GLSL 1.20 or GLSL ES 3.00 required)",
+    3
+   ],
+   [
+    "error: syntax error, unexpected NEW_IDENTIFIER",
+    3
+   ],
+   [
+    "error: no function with name 'texelFetch'",
+    2
+   ],
+   [
+    "error: no function with name 'round'",
+    2
+   ],
+   [
+    "error: operator '%' is reserved in GLSL ES 1.00 (GLSL 1.30 or GLSL ES 3.00 required)",
+    2
+   ],
+   [
+    "preprocessor error: Token pasting (##) is illegal in GLES",
+    2
+   ],
+   [
+    "error: no function with name 'texture'",
+    1
+   ],
+   [
+    "error: uniform `X' declared as type `X' and type `X'",
+    1
+   ],
+   [
+    "error: GLSL ES 3.20 is not supported. Supported versions are: 1.00 ES, 3.00 ES, and 3.10 ES",
+    1
+   ],
+   [
+    "error: C-style initialization requires the GL_ARB_shading_language_420pack extension",
+    1
+   ],
+   [
+    "error: syntax error, unexpected NEW_IDENTIFIER, expecting ',' or ';'",
+    1
+   ]
+  ],
+  "G52 desktop GL3.1 (glsl)": [
+   [
+    "error: GLSL 3.30 is not supported. Supported versions are: 1.10, 1.20, 1.30, 1.40, 1.00 ES, and 3.00",
+    13
+   ],
+   [
+    "error: no function with name 'texture'",
+    7
+   ],
+   [
+    "error: could not implicitly convert operands to arithmetic operator",
+    5
+   ],
+   [
+    "error: GLSL 1.50 is not supported. Supported versions are: 1.10, 1.20, 1.30, 1.40, 1.00 ES, and 3.00",
+    4
+   ],
+   [
+    "error: syntax error, unexpected NEW_IDENTIFIER",
+    3
+   ],
+   [
+    "error: no function with name 'texelFetch'",
+    2
+   ],
+   [
+    "error: no function with name 'round'",
+    2
+   ],
+   [
+    "error: operator '%' is reserved in GLSL 1.10 (GLSL 1.30 or GLSL ES 3.00 required)",
+    2
+   ],
+   [
+    "error: initializer of const variable `X' must be a constant expression",
+    2
+   ],
+   [
+    "error: no matching function for call to `X'; candidates are:",
+    1
+   ],
+   [
+    "error: GLSL 4.30 is not supported. Supported versions are: 1.10, 1.20, 1.30, 1.40, 1.00 ES, and 3.00",
+    1
+   ],
+   [
+    "error: C-style initialization requires the GL_ARB_shading_language_420pack extension",
+    1
+   ],
+   [
+    "error: no function with name 'transpose'",
+    1
+   ],
+   [
+    "error: no function with name 'textureLod'",
+    1
+   ],
+   [
+    "error: syntax error, unexpected NEW_IDENTIFIER, expecting ',' or ';'",
+    1
+   ]
+  ],
+  "RA stock ES": [
+   [
+    "error: illegal use of reserved word `X'",
+    4
+   ]
+  ]
+ },
+ "es": {
+  "n": 490,
+  "p10": 1.375,
+  "p25": 2.208333,
+  "p50": 4.625,
+  "p75": 12.833333,
+  "p90": 27.0,
+  "p99": 430.0,
+  "max": 880.0,
+  "threads1": 118,
+  "threads2": 372,
+  "spills": 35,
+  "loops": 23,
+  "regs_gt32": 118,
+  "cat_counts": {
+   "error: initializer of global variable `X' must be a constant expression": 123,
+   "error: No precision specified in this scope for type `X'": 29,
+   "error: could not implicitly convert operands to arithmetic operator": 13,
+   "error: no function with name 'fwidth'": 7,
+   "error: no matching function for call to `X'; candidates are:": 3,
+   "error: array constructors forbidden in GLSL ES 1.00 (GLSL 1.20 or GLSL ES 3.00 required)": 3,
+   "error: syntax error, unexpected NEW_IDENTIFIER": 3,
+   "error: no function with name 'texelFetch'": 2,
+   "error: no function with name 'round'": 2,
+   "error: operator '%' is reserved in GLSL ES 1.00 (GLSL 1.30 or GLSL ES 3.00 required)": 2,
+   "preprocessor error: Token pasting (##) is illegal in GLES": 2,
+   "error: no function with name 'texture'": 1,
+   "error: uniform `X' declared as type `X' and type `X'": 1,
+   "error: GLSL ES 3.20 is not supported. Supported versions are: 1.00 ES, 3.00 ES, and 3.10 ES": 1,
+   "error: C-style initialization requires the GL_ARB_shading_language_420pack extension": 1,
+   "error: syntax error, unexpected NEW_IDENTIFIER, expecting ',' or ';'": 1
+  },
+  "buckets": {
+   "<=2": 111,
+   "2-5": 141,
+   "5-10": 89,
+   "10-20": 65,
+   "20-50": 50,
+   "50-100": 17,
+   ">100": 17
+  }
+ },
+ "top20_es": [
+  {
+   "name": "nnedi3/shaders/nnedi3-nns64-win8x4-pass2-rgb.glsl",
+   "cycles": 880.0,
+   "inst": 18349,
+   "tex": 16.5,
+   "arith": 612.916687,
+   "ldst": 880.0,
+   "regs": 64,
+   "threads": 1,
+   "spills": 41,
+   "fills": 836
+  },
+  {
+   "name": "nnedi3/shaders/nnedi3-nns64-win8x4-pass1-rgb.glsl",
+   "cycles": 750.0,
+   "inst": 18222,
+   "tex": 16.5,
+   "arith": 613.208313,
+   "ldst": 750.0,
+   "regs": 64,
+   "threads": 1,
+   "spills": 40,
+   "fills": 707
+  },
+  {
+   "name": "xbrz/shaders/6xbrz.glsl",
+   "cycles": 674.0,
+   "inst": 2821,
+   "tex": 10.5,
+   "arith": 70.958336,
+   "ldst": 674.0,
+   "regs": 63,
+   "threads": 1,
+   "spills": 169,
+   "fills": 385
+  },
+  {
+   "name": "nnedi3/shaders/nnedi3-nns32-win8x4-pass2-rgb.glsl",
+   "cycles": 496.0,
+   "inst": 9421,
+   "tex": 16.5,
+   "arith": 312.916656,
+   "ldst": 496.0,
+   "regs": 64,
+   "threads": 1,
+   "spills": 41,
+   "fills": 452
+  },
+  {
+   "name": "xbrz/shaders/5xbrz.glsl",
+   "cycles": 452.0,
+   "inst": 2476,
+   "tex": 10.5,
+   "arith": 66.208336,
+   "ldst": 452.0,
+   "regs": 62,
+   "threads": 1,
+   "spills": 94,
+   "fills": 294
+  },
+  {
+   "name": "nnedi3/shaders/nnedi3-nns32-win8x4-pass1-rgb.glsl",
+   "cycles": 430.0,
+   "inst": 9358,
+   "tex": 16.5,
+   "arith": 312.708344,
+   "ldst": 430.0,
+   "regs": 64,
+   "threads": 1,
+   "spills": 40,
+   "fills": 387
+  },
+  {
+   "name": "nnedi3/shaders/nnedi3-nns16-win8x4-pass2-rgb.glsl",
+   "cycles": 304.0,
+   "inst": 4957,
+   "tex": 16.5,
+   "arith": 163.041672,
+   "ldst": 304.0,
+   "regs": 64,
+   "threads": 1,
+   "spills": 41,
+   "fills": 260
+  },
+  {
+   "name": "nnedi3/shaders/nnedi3-nns16-win8x4-pass1-rgb.glsl",
+   "cycles": 270.0,
+   "inst": 4926,
+   "tex": 16.5,
+   "arith": 162.708328,
+   "ldst": 270.0,
+   "regs": 64,
+   "threads": 1,
+   "spills": 40,
+   "fills": 227
+  },
+  {
+   "name": "nnedi3/shaders/nnedi3-nns64-win8x4-pass1-luma.glsl",
+   "cycles": 199.625,
+   "inst": 5866,
+   "tex": 16.5,
+   "arith": 199.625,
+   "ldst": 0.0,
+   "regs": 43,
+   "threads": 1,
+   "spills": 0,
+   "fills": 0
+  },
+  {
+   "name": "nnedi3/shaders/nnedi3-nns64-win8x4-pass2-luma.glsl",
+   "cycles": 199.5,
+   "inst": 5863,
+   "tex": 16.5,
+   "arith": 199.5,
+   "ldst": 0.0,
+   "regs": 43,
+   "threads": 1,
+   "spills": 0,
+   "fills": 0
+  },
+  {
+   "name": "xbrz/shaders/4xbrz.glsl",
+   "cycles": 164.0,
+   "inst": 2096,
+   "tex": 10.5,
+   "arith": 61.208332,
+   "ldst": 164.0,
+   "regs": 64,
+   "threads": 1,
+   "spills": 44,
+   "fills": 106
+  },
+  {
+   "name": "crt/shaders/crt-lottes.glsl",
+   "cycles": 135.0,
+   "inst": 2253,
+   "tex": 15.5,
+   "arith": 60.625,
+   "ldst": 135.0,
+   "regs": 64,
+   "threads": 1,
+   "spills": 29,
+   "fills": 106
+  },
+  {
+   "name": "scalenx/shaders/mmpx.glsl",
+   "cycles": 117.0,
+   "inst": 965,
+   "tex": 12.5,
+   "arith": 26.625,
+   "ldst": 117.0,
+   "regs": 64,
+   "threads": 1,
+   "spills": 36,
+   "fills": 85
+  },
+  {
+   "name": "crt/shaders/crt-mattias.glsl",
+   "cycles": 111.0,
+   "inst": 2812,
+   "tex": 111.0,
+   "arith": 74.958336,
+   "ldst": 0.0,
+   "regs": 51,
+   "threads": 1,
+   "spills": 0,
+   "fills": 0
+  },
+  {
+   "name": "nnedi3/shaders/nnedi3-nns32-win8x4-pass1-luma.glsl",
+   "cycles": 101.875,
+   "inst": 3018,
+   "tex": 16.5,
+   "arith": 101.875,
+   "ldst": 0.0,
+   "regs": 44,
+   "threads": 1,
+   "spills": 0,
+   "fills": 0
+  },
+  {
+   "name": "nnedi3/shaders/nnedi3-nns32-win8x4-pass2-luma.glsl",
+   "cycles": 101.75,
+   "inst": 3015,
+   "tex": 16.5,
+   "arith": 101.75,
+   "ldst": 0.0,
+   "regs": 44,
+   "threads": 1,
+   "spills": 0,
+   "fills": 0
+  },
+  {
+   "name": "scalefx/shaders/scalefx-pass3.glsl",
+   "cycles": 101.0,
+   "inst": 1068,
+   "tex": 6.5,
+   "arith": 26.25,
+   "ldst": 101.0,
+   "regs": 64,
+   "threads": 1,
+   "spills": 48,
+   "fills": 53
+  },
+  {
+   "name": "sharpen/shaders/adaptive-sharpen-pass2.glsl",
+   "cycles": 88.0,
+   "inst": 1080,
+   "tex": 12.5,
+   "arith": 30.125,
+   "ldst": 88.0,
+   "regs": 64,
+   "threads": 1,
+   "spills": 18,
+   "fills": 24
+  },
+  {
+   "name": "denoisers/shaders/median_5x5.glsl",
+   "cycles": 82.0,
+   "inst": 693,
+   "tex": 12.5,
+   "arith": 21.5,
+   "ldst": 82.0,
+   "regs": 64,
+   "threads": 1,
+   "spills": 39,
+   "fills": 43
+  },
+  {
+   "name": "xbrz/shaders/xbrz-freescale-multipass/xbrz-freescale-pass0.glsl",
+   "cycles": 78.5,
+   "inst": 2594,
+   "tex": 18.5,
+   "arith": 78.5,
+   "ldst": 4.0,
+   "regs": 64,
+   "threads": 1,
+   "spills": 2,
+   "fills": 2
+  }
+ ],
+ "spill_worst_es": [
+  {
+   "name": "xbrz/shaders/6xbrz.glsl",
+   "cycles": 674.0,
+   "spills": 169,
+   "fills": 385
+  },
+  {
+   "name": "xbrz/shaders/5xbrz.glsl",
+   "cycles": 452.0,
+   "spills": 94,
+   "fills": 294
+  },
+  {
+   "name": "scalefx/shaders/scalefx-pass3.glsl",
+   "cycles": 101.0,
+   "spills": 48,
+   "fills": 53
+  },
+  {
+   "name": "xbrz/shaders/4xbrz.glsl",
+   "cycles": 164.0,
+   "spills": 44,
+   "fills": 106
+  },
+  {
+   "name": "nnedi3/shaders/nnedi3-nns16-win8x4-pass2-rgb.glsl",
+   "cycles": 304.0,
+   "spills": 41,
+   "fills": 260
+  },
+  {
+   "name": "nnedi3/shaders/nnedi3-nns32-win8x4-pass2-rgb.glsl",
+   "cycles": 496.0,
+   "spills": 41,
+   "fills": 452
+  },
+  {
+   "name": "nnedi3/shaders/nnedi3-nns64-win8x4-pass2-rgb.glsl",
+   "cycles": 880.0,
+   "spills": 41,
+   "fills": 836
+  },
+  {
+   "name": "nnedi3/shaders/nnedi3-nns16-win8x4-pass1-rgb.glsl",
+   "cycles": 270.0,
+   "spills": 40,
+   "fills": 227
+  },
+  {
+   "name": "nnedi3/shaders/nnedi3-nns32-win8x4-pass1-rgb.glsl",
+   "cycles": 430.0,
+   "spills": 40,
+   "fills": 387
+  },
+  {
+   "name": "nnedi3/shaders/nnedi3-nns64-win8x4-pass1-rgb.glsl",
+   "cycles": 750.0,
+   "spills": 40,
+   "fills": 707
+  }
+ ],
+ "gl_vs_es": {
+  "both": 475,
+  "only_es": 15,
+  "only_desktop": 163,
+  "identical_cycles": 98,
+  "es_cheaper": 51,
+  "desktop_cheaper": 326,
+  "median_ratio_desktop_over_es": 0.9548388105723258,
+  "desktop_threads1": 235,
+  "es_threads1": 118,
+  "desktop_spill": 71,
+  "es_spill": 35,
+  "biggest_diffs": [
+   {
+    "name": "omniscale/shaders/omniscale.glsl",
+    "es": 40.541668,
+    "desktop": 385.0
+   },
+   {
+    "name": "xbrz/shaders/4xbrz.glsl",
+    "es": 164.0,
+    "desktop": 482.0
+   },
+   {
+    "name": "xbrz/shaders/6xbrz.glsl",
+    "es": 674.0,
+    "desktop": 924.0
+   },
+   {
+    "name": "xbrz/shaders/5xbrz.glsl",
+    "es": 452.0,
+    "desktop": 646.0
+   },
+   {
+    "name": "handheld/shaders/authentic_gbc/authentic_gbc.glsl",
+    "es": 43.5,
+    "desktop": 209.0
+   },
+   {
+    "name": "handheld/shaders/authentic_gbc/authentic_gbc_single_pass.glsl",
+    "es": 46.541668,
+    "desktop": 209.0
+   },
+   {
+    "name": "xbr/shaders/xbr-lv3-multipass/xbr-lv3-pass0.glsl",
+    "es": 23.083334,
+    "desktop": 138.0
+   },
+   {
+    "name": "scalenx/shaders/mmpx.glsl",
+    "es": 117.0,
+    "desktop": 191.0
+   }
+  ]
+ },
+ "desktop_only_failures_es_ok": [
+  "nedi/shaders/nedi-pass0.glsl",
+  "nedi/shaders/nedi-pass1.glsl",
+  "nedi/shaders/nedi-pass2.glsl",
+  "nnedi3/shaders/nnedi3-nns16-win8x4-pass1-luma.glsl",
+  "nnedi3/shaders/nnedi3-nns16-win8x4-pass1-rgb.glsl",
+  "nnedi3/shaders/nnedi3-nns16-win8x4-pass2-luma.glsl",
+  "nnedi3/shaders/nnedi3-nns16-win8x4-pass2-rgb.glsl",
+  "nnedi3/shaders/nnedi3-nns32-win8x4-pass1-luma.glsl",
+  "nnedi3/shaders/nnedi3-nns32-win8x4-pass1-rgb.glsl",
+  "nnedi3/shaders/nnedi3-nns32-win8x4-pass2-luma.glsl",
+  "nnedi3/shaders/nnedi3-nns32-win8x4-pass2-rgb.glsl",
+  "nnedi3/shaders/nnedi3-nns64-win8x4-pass1-luma.glsl",
+  "nnedi3/shaders/nnedi3-nns64-win8x4-pass1-rgb.glsl",
+  "nnedi3/shaders/nnedi3-nns64-win8x4-pass2-luma.glsl",
+  "nnedi3/shaders/nnedi3-nns64-win8x4-pass2-rgb.glsl"
+ ],
+ "ra_stock": {
+  "es": [
+   {
+    "name": "video-default__gl",
+    "rc": 0,
+    "cycles": 0.708333,
+    "inst": 43,
+    "regs": 9,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "video-default__glcore",
+    "rc": 0,
+    "cycles": 0.5,
+    "inst": 11,
+    "regs": 7,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "menu-blend__gl",
+    "rc": 0,
+    "cycles": 1.166667,
+    "inst": 61,
+    "regs": 12,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "menu-blend__glcore",
+    "rc": 0,
+    "cycles": 0.75,
+    "inst": 22,
+    "regs": 8,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-ribbon__gl",
+    "rc": 0,
+    "cycles": 1.708333,
+    "inst": 53,
+    "regs": 9,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-ribbon__glcore",
+    "rc": 0,
+    "cycles": 1.708333,
+    "inst": 53,
+    "regs": 9,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-ribbon-simple__gl",
+    "rc": 0,
+    "cycles": 0.666667,
+    "inst": 40,
+    "regs": 6,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-ribbon-simple__glcore",
+    "rc": 0,
+    "cycles": 0.125,
+    "inst": 7,
+    "regs": 6,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-snow-simple__gl",
+    "rc": 0,
+    "cycles": 15.25,
+    "inst": 532,
+    "regs": 17,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-snow-simple__glcore",
+    "rc": 3,
+    "cycles": null,
+    "inst": null,
+    "regs": null,
+    "threads": null,
+    "spills": null,
+    "err": "error: illegal use of reserved word `X'"
+   },
+   {
+    "name": "xmb-snow__gl",
+    "rc": 0,
+    "cycles": 15.25,
+    "inst": 532,
+    "regs": 17,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-snow__glcore",
+    "rc": 3,
+    "cycles": null,
+    "inst": null,
+    "regs": null,
+    "threads": null,
+    "spills": null,
+    "err": "error: illegal use of reserved word `X'"
+   },
+   {
+    "name": "xmb-bokeh__gl",
+    "rc": 0,
+    "cycles": 11.875,
+    "inst": 382,
+    "regs": 21,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-bokeh__glcore",
+    "rc": 3,
+    "cycles": null,
+    "inst": null,
+    "regs": null,
+    "threads": null,
+    "spills": null,
+    "err": "error: illegal use of reserved word `X'"
+   },
+   {
+    "name": "xmb-snowflake__gl",
+    "rc": 0,
+    "cycles": 5.166667,
+    "inst": 189,
+    "regs": 20,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-snowflake__glcore",
+    "rc": 3,
+    "cycles": null,
+    "inst": null,
+    "regs": null,
+    "threads": null,
+    "spills": null,
+    "err": "error: illegal use of reserved word `X'"
+   }
+  ],
+  "desktop": [
+   {
+    "name": "video-default__gl",
+    "rc": 0,
+    "cycles": 0.708333,
+    "inst": 43,
+    "regs": 9,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "video-default__glcore",
+    "rc": 0,
+    "cycles": 0.5,
+    "inst": 5,
+    "regs": 5,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "menu-blend__gl",
+    "rc": 0,
+    "cycles": 1.041667,
+    "inst": 55,
+    "regs": 14,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "menu-blend__glcore",
+    "rc": 0,
+    "cycles": 0.75,
+    "inst": 16,
+    "regs": 10,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-ribbon__gl",
+    "rc": 0,
+    "cycles": 1.708333,
+    "inst": 53,
+    "regs": 9,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-ribbon__glcore",
+    "rc": 0,
+    "cycles": 1.708333,
+    "inst": 53,
+    "regs": 9,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-ribbon-simple__gl",
+    "rc": 0,
+    "cycles": 0.708333,
+    "inst": 42,
+    "regs": 6,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-ribbon-simple__glcore",
+    "rc": 0,
+    "cycles": 0.125,
+    "inst": 7,
+    "regs": 6,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-snow-simple__gl",
+    "rc": 0,
+    "cycles": 15.291667,
+    "inst": 533,
+    "regs": 17,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-snow-simple__glcore",
+    "rc": 0,
+    "cycles": 15.291667,
+    "inst": 533,
+    "regs": 17,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-snow__gl",
+    "rc": 0,
+    "cycles": 15.291667,
+    "inst": 533,
+    "regs": 17,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-snow__glcore",
+    "rc": 0,
+    "cycles": 15.291667,
+    "inst": 533,
+    "regs": 17,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-bokeh__gl",
+    "rc": 0,
+    "cycles": 11.875,
+    "inst": 377,
+    "regs": 21,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-bokeh__glcore",
+    "rc": 0,
+    "cycles": 11.875,
+    "inst": 377,
+    "regs": 21,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-snowflake__gl",
+    "rc": 0,
+    "cycles": 5.125,
+    "inst": 190,
+    "regs": 20,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   },
+   {
+    "name": "xmb-snowflake__glcore",
+    "rc": 0,
+    "cycles": 5.125,
+    "inst": 190,
+    "regs": 20,
+    "threads": 2,
+    "spills": 0,
+    "err": ""
+   }
+  ]
+ },
+ "crt": [
+  {
+   "name": "crt/shaders/crt-easymode.glsl",
+   "cycles": 14.375,
+   "inst": 493,
+   "tex": 4.0,
+   "regs": 34,
+   "threads": 1
+  },
+  {
+   "name": "crt/shaders/crt-geom.glsl",
+   "cycles": 28.375,
+   "inst": 1037,
+   "tex": 4.0,
+   "regs": 46,
+   "threads": 1
+  },
+  {
+   "name": "crt/shaders/crt-pi.glsl",
+   "cycles": 3.458333,
+   "inst": 143,
+   "tex": 0.5,
+   "regs": 14,
+   "threads": 2
+  }
+ ],
+ "melonds_gl": [
+  {
+   "name": "2DCompositor",
+   "cycles": 44.916668,
+   "inst": 1593,
+   "arith": 44.916668,
+   "tex": 29.0,
+   "ldst": 38.0,
+   "regs": 55,
+   "threads": 1,
+   "spills": 0
+  },
+  {
+   "name": "2DLayerPre",
+   "cycles": 24.0,
+   "inst": 349,
+   "arith": 9.416667,
+   "tex": 9.5,
+   "ldst": 24.0,
+   "regs": 13,
+   "threads": 2,
+   "spills": 0
+  },
+  {
+   "name": "2DSprite",
+   "cycles": 16.0,
+   "inst": 204,
+   "arith": 5.125,
+   "tex": 1.5,
+   "ldst": 16.0,
+   "regs": 16,
+   "threads": 2,
+   "spills": 0
+  },
+  {
+   "name": "2DSpritePre",
+   "cycles": 10.0,
+   "inst": 122,
+   "arith": 3.208333,
+   "tex": 3.0,
+   "ldst": 10.0,
+   "regs": 8,
+   "threads": 2,
+   "spills": 0
+  },
+  {
+   "name": "3DClear",
+   "cycles": 0.458333,
+   "inst": 16,
+   "arith": 0.458333,
+   "tex": 0.0,
+   "ldst": 0.0,
+   "regs": 6,
+   "threads": 2,
+   "spills": 0
+  },
+  {
+   "name": "3DClearBitmap",
+   "cycles": 1.0,
+   "inst": 24,
+   "arith": 0.5,
+   "tex": 1.0,
+   "ldst": 0.0,
+   "regs": 7,
+   "threads": 2,
+   "spills": 0
+  },
+  {
+   "name": "3DFinalPass_Edge",
+   "cycles": 5.0,
+   "inst": 86,
+   "arith": 1.958333,
+   "tex": 5.0,
+   "ldst": 2.0,
+   "regs": 16,
+   "threads": 2,
+   "spills": 0
+  },
+  {
+   "name": "3DFinalPass_Fog",
+   "cycles": 4.0,
+   "inst": 44,
+   "arith": 1.041667,
+   "tex": 1.0,
+   "ldst": 4.0,
+   "regs": 8,
+   "threads": 2,
+   "spills": 0
+  },
+  {
+   "name": "3DRender_Z",
+   "cycles": 4.0,
+   "inst": 132,
+   "arith": 3.5,
+   "tex": 1.5,
+   "ldst": 4.0,
+   "regs": 19,
+   "threads": 2,
+   "spills": 0
+  },
+  {
+   "name": "3DRender_W",
+   "cycles": 4.0,
+   "inst": 132,
+   "arith": 3.458333,
+   "tex": 1.5,
+   "ldst": 4.0,
+   "regs": 20,
+   "threads": 2,
+   "spills": 0
+  },
+  {
+   "name": "Capture",
+   "cycles": 6.0,
+   "inst": 118,
+   "arith": 3.041667,
+   "tex": 2.0,
+   "ldst": 6.0,
+   "regs": 12,
+   "threads": 2,
+   "spills": 0
+  },
+  {
+   "name": "CaptureDownscale",
+   "cycles": 0.541667,
+   "inst": 24,
+   "arith": 0.541667,
+   "tex": 0.5,
+   "ldst": 0.0,
+   "regs": 8,
+   "threads": 2,
+   "spills": 0
+  },
+  {
+   "name": "FinalPass",
+   "cycles": 9.0,
+   "inst": 180,
+   "arith": 4.958333,
+   "tex": 1.0,
+   "ldst": 9.0,
+   "regs": 19,
+   "threads": 2,
+   "spills": 0
+  },
+  {
+   "name": "melondsds_hw_screen(libretro frontend)",
+   "cycles": 3.0,
+   "inst": 33,
+   "arith": 0.75,
+   "tex": 0.5,
+   "ldst": 3.0,
+   "regs": 13,
+   "threads": 2,
+   "spills": 0
+  }
+ ],
+ "melonds_compute_raw_keys": [
+  "es_err",
+  "es_out",
+  "es_rc",
+  "es_stats",
+  "gl_err",
+  "gl_rc",
+  "name"
+ ],
+ "melonds_compute": [
+  {
+   "name": "BinCombined_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:418(37): error: initializer of type int cannot be assigned to variable of type uint"
+  },
+  {
+   "name": "CalculateWorkOffsets_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:341(6): error: operands of `==' must have the same type"
+  },
+  {
+   "name": "ClearCoarseBinMask_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:338(48): error: could not implicitly convert operands to arithmetic operator"
+  },
+  {
+   "name": "ClearIndirectWorkCount_",
+   "es_rc": -11,
+   "es_stats": [
+    "MESA_SHADER_COMPUTE shader: 9 instrs, 6 tuples, 1 clauses, 1.000000 cycles, 0.208333 arith, 0.000000 t, 1.000000 ldst, 0.000000 v, 0 preloads, 2 threads, 128 code size, 0 loops, 0:0 spills:fills, 0 spill cost, 6 registers used, 2 uniforms used"
+   ],
+   "es_err": ""
+  },
+  {
+   "name": "DepthBlend_WBuffer_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:355(31): error: initializer of type int cannot be assigned to variable of type uint"
+  },
+  {
+   "name": "DepthBlend_ZBuffer_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:355(31): error: initializer of type int cannot be assigned to variable of type uint"
+  },
+  {
+   "name": "FinalPass_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:320(31): error: initializer of type int cannot be assigned to variable of type uint"
+  },
+  {
+   "name": "FinalPass_AntiAliasing_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:321(31): error: initializer of type int cannot be assigned to variable of type uint"
+  },
+  {
+   "name": "FinalPass_AntiAliasing_EdgeMarking_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:322(31): error: initializer of type int cannot be assigned to variable of type uint"
+  },
+  {
+   "name": "FinalPass_AntiAliasing_EdgeMarking_Fog_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:323(31): error: initializer of type int cannot be assigned to variable of type uint"
+  },
+  {
+   "name": "FinalPass_AntiAliasing_Fog_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:322(31): error: initializer of type int cannot be assigned to variable of type uint"
+  },
+  {
+   "name": "FinalPass_EdgeMarking_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:321(31): error: initializer of type int cannot be assigned to variable of type uint"
+  },
+  {
+   "name": "FinalPass_EdgeMarking_Fog_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:322(31): error: initializer of type int cannot be assigned to variable of type uint"
+  },
+  {
+   "name": "FinalPass_Fog_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:321(31): error: initializer of type int cannot be assigned to variable of type uint"
+  },
+  {
+   "name": "InterpSpans_WBuffer_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:68(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "InterpSpans_ZBuffer_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:68(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_WBuffer_NoTexture_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:69(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_WBuffer_NoTexture_Highlight_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:70(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_WBuffer_NoTexture_Toon_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:70(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_WBuffer_ShadowMask_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:69(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_WBuffer_UseTexture_Decal_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:70(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_WBuffer_UseTexture_Highlight_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:70(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_WBuffer_UseTexture_Modulate_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:70(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_WBuffer_UseTexture_Toon_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:70(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_ZBuffer_NoTexture_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:69(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_ZBuffer_NoTexture_Highlight_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:70(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_ZBuffer_NoTexture_Toon_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:70(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_ZBuffer_ShadowMask_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:69(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_ZBuffer_UseTexture_Decal_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:70(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_ZBuffer_UseTexture_Highlight_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:70(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_ZBuffer_UseTexture_Modulate_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:70(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "Rasterise_ZBuffer_UseTexture_Toon_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:70(30): error: type error in array constructor: expected: uint, found int"
+  },
+  {
+   "name": "SortWork_",
+   "es_rc": 3,
+   "es_stats": [],
+   "es_err": "0:361(37): error: initializer of type int cannot be assigned to variable of type uint"
+  }
+ ],
+ "families_es": [
+  [
+   "nnedi3",
+   19,
+   101.75,
+   880.0
+  ],
+  [
+   "xbrz",
+   6,
+   121.25,
+   674.0
+  ],
+  [
+   "crt",
+   127,
+   4.5,
+   135.0
+  ],
+  [
+   "scalenx",
+   5,
+   4.166667,
+   117.0
+  ],
+  [
+   "scalefx",
+   6,
+   5.9166665,
+   101.0
+  ],
+  [
+   "sharpen",
+   5,
+   11.875,
+   88.0
+  ],
+  [
+   "denoisers",
+   4,
+   22.895834,
+   82.0
+  ],
+  [
+   "borders",
+   17,
+   3.416667,
+   66.666664
+  ],
+  [
+   "omniscale",
+   2,
+   50.270834,
+   60.0
+  ],
+  [
+   "ntsc",
+   31,
+   4.5,
+   57.0
+  ],
+  [
+   "xbr",
+   22,
+   17.4375,
+   56.0
+  ],
+  [
+   "handheld",
+   62,
+   3.833333,
+   46.541668
+  ],
+  [
+   "anti-aliasing",
+   7,
+   8.5,
+   40.0
+  ],
+  [
+   "deblur",
+   2,
+   22.895833500000002,
+   35.5
+  ],
+  [
+   "cut",
+   6,
+   9.0,
+   29.541666
+  ],
+  [
+   "windowed",
+   11,
+   12.833333,
+   27.25
+  ],
+  [
+   "sabr",
+   2,
+   27.0,
+   27.0
+  ],
+  [
+   "nedi",
+   4,
+   16.25,
+   26.875
+  ],
+  [
+   "dithering",
+   13,
+   4.5,
+   25.166666
+  ],
+  [
+   "vhs",
+   3,
+   12.458333,
+   23.0
+  ],
+  [
+   "reshade",
+   6,
+   3.1458335,
+   20.5
+  ],
+  [
+   "nes_raw_palette",
+   7,
+   4.375,
+   19.0
+  ],
+  [
+   "pixel-art-scaling",
+   8,
+   0.875,
+   16.666666
+  ],
+  [
+   "fsr",
+   2,
+   9.7291665,
+   16.166666
+  ],
+  [
+   "procedural",
+   2,
+   14.9375,
+   16.0
+  ],
+  [
+   "cubic",
+   7,
+   5.416667,
+   15.583333
+  ],
+  [
+   "hqx",
+   6,
+   8.791667,
+   15.375
+  ],
+  [
+   "blurs",
+   27,
+   2.208333,
+   14.291667
+  ],
+  [
+   "interpolation",
+   12,
+   1.9583335,
+   12.875
+  ],
+  [
+   "xsal",
+   4,
+   5.4375,
+   12.0
+  ],
+  [
+   "cel",
+   4,
+   10.5625,
+   11.416667
+  ],
+  [
+   "misc",
+   19,
+   2.333333,
+   9.666667
+  ],
+  [
+   "xsoft",
+   2,
+   8.0625,
+   9.625
+  ],
+  [
+   "eagle",
+   1,
+   9.0,
+   9.0
+  ],
+  [
+   "scalehq",
+   2,
+   6.8958335,
+   8.041667
+  ],
+  [
+   "scanlines",
+   7,
+   2.125,
+   6.5
+  ],
+  [
+   "motionblur",
+   5,
+   4.0,
+   6.125
+  ],
+  [
+   "film",
+   1,
+   5.083333,
+   5.083333
+  ],
+  [
+   "pal",
+   1,
+   4.291667,
+   4.291667
+  ],
+  [
+   "ddt",
+   1,
+   3.875,
+   3.875
+  ],
+  [
+   "stereoscopic-3d",
+   3,
+   3.666667,
+   3.708333
+  ],
+  [
+   "gpu",
+   3,
+   1.666667,
+   2.375
+  ],
+  [
+   "auto-box",
+   3,
+   1.25,
+   1.25
+  ],
+  [
+   "linear",
+   1,
+   0.875,
+   0.875
+  ],
+  [
+   "slang-conversion-template.glsl",
+   1,
+   0.666667,
+   0.666667
+  ],
+  [
+   "stock.glsl",
+   1,
+   0.666667,
+   0.666667
+  ]
+ ],
+ "melonds_compute_summary": {
+  "total": 33,
+  "with_stats": 1,
+  "errs": [
+   [
+    "error: type error in array constructor: expected: uint, found int",
+    18
+   ],
+   [
+    "error: initializer of type int cannot be assigned to variable of type ",
+    12
+   ],
+   [
+    "error: operands of `==' must have the same type",
+    1
+   ],
+   [
+    "error: could not implicitly convert operands to arithmetic operator",
+    1
+   ]
+  ]
+ },
+ "llvmpipe_control": {
+  "llvmpipe_fail": 195,
+  "g52_fail": 194,
+  "both": 194,
+  "g52_only": [],
+  "llvmpipe_only": [
+   [
+    "crt/shaders/crt-geom.glsl",
+    -11
+   ]
+  ]
+ },
+ "budget": {
+  "pixels": 518400,
+  "clock_hz": 850000000.0,
+  "cores": 2,
+  "fps": 60,
+  "core_cycles_per_frame": 28333333.333333332,
+  "cycles_per_pixel_100pct": 54.65534979423868,
+  "cycles_per_pixel_50pct": 27.32767489711934
+ }
+}
