@@ -9,7 +9,7 @@ stage refuses any device that is not `/dev/loop*` backed by its own `.part` file
 
 ```sh
 cd /home/dakoda/Projects/rotate-os/build
-./build.sh              # all stages: spl uboot kernel rootfs image
+./build.sh              # all stages: spl uboot kernel melonds rootfs image
 ./build.sh kernel       # one stage (or several: ./build.sh uboot image)
 FORCE=1 ./build.sh uboot    # ignore the cache stamp
 JOBS=16 ./build.sh ...      # default 16; CROSS_COMPILE=aarch64-linux-gnu- by default
@@ -37,7 +37,10 @@ Compilers go through ccache (symlink masquerade in `work/ccache-bin`, `CCACHE_DI
 | spl | PASS (2nd try) | 16 s | `out/spl/spl_a_open.img` (DHTB OK, payload 54632 B) | 4,194,304 | `ca641d90…1fd1e8dd3` |
 | uboot | PASS (2nd try) | 11 s | `out/uboot/uboot_dhtb.img` (DHTB OK, payload 571,904 B < 1 MiB) | 572,416 | `df3b67d6ac0249eb3d78f9eefbb5fdcbb02c0ba74efed71c158c3c23a3cf6c89` |
 | kernel | PASS (trimmed, 2026-10-31 re-run) | 358 s build.sh / 5m58 wall (-j16, ccache cold for the new source path; was 541 s untrimmed) | `out/kernel/Image`, `ums512-rg-rotate.dtb`, modules (1.3 MB, 17 .ko), `config` | Image 20,170,760 (was 31,447,552) | Image `e6f6b693…026ee` |
-| rootfs | PASS | 344 s | `out/rootfs/rootfs.tar.zst` (694 MiB unpacked, 148 packages) | 195,154,406 | `2db449d6…ee24aa` |
+| rootfs | PASS (superseded by the Phase 6 row below) | 344 s | `out/rootfs/rootfs.tar.zst` (694 MiB unpacked, 148 packages) | 195,154,406 | `2db449d6…ee24aa` |
+| melonds | PASS (`-fprofile-generate`) | 1225 s wall = chroot creation + 125 s cmake configure (FetchContent clones) + 781 s compile/link at `-j16` under qemu-user | `out/melonds/melondsds_libretro.pgo.so` | 10,251,072 | `f9625592…2cf15` |
+| rootfs | PASS (Phase 6: RetroArch/cores/PortMaster) | 284 s (incl. pacman of 186 extra packages, qemu-user) | `out/rootfs/rootfs.tar.zst` (**1675 MiB unpacked, 334 packages**; was 694 MiB / 148) | 492,008,541 | `82fe7f66…d4441` |
+| image | PASS (Phase 6 rebuild) | 11 s | `out/image/rotate-os.img` (sparse 6 GiB, p3 5.7 GiB) | 6,442,450,944 | img `7abccb38e8ce79ee90c4e4b41b221b9c2c3a1c6777e4551ac580538afcd9e7bf` |
 | image | PASS (rebuilt after trim + watchdog) | 8 s (rootfs re-run 179 s for the overlay change) | `out/image/rotate-os.img` (sparse 6 GiB) + `rotate-os.spl.img` | 6,442,450,944 | img `d7684959afd86c3fcfb6c92987da55c06febf389bddbbe446c9f0cebbfd9ef22` |
 
 Full hashes: `out/*/SHA256SUMS`. Kernel release string: `7.2.9-sprd-ums512` (the build now uses a `git archive` work copy, so no `+` dirty marker; it was `…+` before).
@@ -120,3 +123,69 @@ byte: read back from the file at 1 MiB, `check-dhtb.py` passes. `fsck.vfat -n` a
 - ALARM tarball GPG signature not verified (no key imported); md5 only. Package versions float with the mirror at build time, so the rootfs stage is not bit-reproducible (`packages.txt` records the result).
 - Hardware watchdog: `rootfs/overlay/etc/systemd/system.conf.d/10-rotate-watchdog.conf` sets `RuntimeWatchdogSec=20s`, `RebootWatchdogSec=2min` (`SPRD_WATCHDOG=y`, DT `timeout-sec=30`, driver range 3-60 s; the SoC watchdog only counts once userspace opens it, so PID 1 arms it). File verified inside the built image; **not run on hardware**. There are two watchdog drivers (`sprd_wdt`, `sc27xx_wdt`); systemd opens `/dev/watchdog`, which is whichever registered as watchdog0 - check `cat /sys/class/watchdog/watchdog0/identity` on device and set `RuntimeWatchdogDevice=` if it is the PMIC one. No audio/UCM, no Mesa/RetroArch/frontend: later phases. logind lid handling is set to ignore.
 - Trimmed kernel only builds and links; it has never booted. Windows/macOS hosts are not supported by these scripts.
+
+## Phase 6 prep: RetroArch on KMS, cores, melonDS PGO, PortMaster
+
+Everything below was built/inspected on this host (2026-10-31). Nothing ran on the device: items marked UNVERIFIED need it.
+
+### RetroArch config (`rootfs/overlay/etc/retroarch.cfg`, `etc/asound.conf`, `usr/share/rotate/autoconfig/udev/gpio-keys-gamepad.cfg`)
+- **`video_driver = "gl"`, `video_context_driver = "kms"`.** `glcore` is not usable: it needs desktop GL 3.2 core and Mesa documents Panfrost G52 as
+  OpenGL 3.1 / OpenGL ES 3.1 (https://docs.mesa3d.org/drivers/panfrost.html). Arch's `retroarch 1.22.2-5` reports OpenGL, OpenGLES, EGL and KMS as built
+  (`out/rootfs/retroarch-features.txt`), so `gl` + `kms` is available; whether `gl` picks GLES or desktop GL at runtime is UNVERIFIED (needs the GPU).
+- No compositor, `video_threaded = false`, `video_vsync = true`, `video_max_swapchain_images = 3` (2 = less latency, more dropped frames), hard sync off,
+  720x720 fullscreen, core aspect kept. ALSA direct (no pipewire), `audio_latency = 64` (lower is UNVERIFIED on this codec).
+- `network_cmd_enable = true`, `network_cmd_port = 55355`; `savestate_auto_save` / `savestate_auto_load = true`.
+  **Checked for real** in the built rootfs under qemu-user: with this config RetroArch logs `[NetCMD] bringing_up_command_interface_at_port 55355.` and answers UDP
+  `VERSION` -> `1.22.2`, `GET_STATUS` -> `GET_STATUS CONTENTLESS` on 127.0.0.1. (The frontend's `RetroArchCtl` uses IPv4 UDP: `frontend/src/retroarch.cpp` L67-L87.)
+- **Found by that test:** Arch's RetroArch has the Qt desktop UI and aborts without a display ("could not load the Qt platform plugin"), so the config sets
+  `ui_companion_enable`, `ui_companion_start_on_boot`, `desktop_menu_enable` to false.
+- Input autoconfig for the RG Rotate pad: device name `gpio-keys-gamepad` comes from the DT node (`ums512-rg-rotate.dts` L213; `gpio_keys.c` L886 falls back to the
+  platform-device name); plorpOS's SDL GUID `19007b94…` contains CRC16("gpio-keys-gamepad") = 0x947b, which I recomputed. **Evdev name and button numbering are UNVERIFIED on a running device.**
+  The pad has no analog sticks: only `BTN_THUMBR`.
+- Sources: MIROKI `system/rootfs/etc/retroarch.cfg` L4-L38 and `etc/asound.conf` (no licence; knobs read, text re-written), `tools/build_retroarch.sh` L40-L60.
+  ALSA is pinned to 48 kHz mono S16 on `hw:0,0` following MIROKI's note that the AGDSP/VBC path is one mono speaker; card/device index and mono pin UNVERIFIED on our kernel.
+
+### Cores (A75x2 + A55x6, Mali-G52; ALARM aarch64 repos queried 2026-10-31: `build/work/pkgdb/{core,extra,alarm,aur}.db`)
+| System | Core installed | Why / not chosen |
+|---|---|---|
+| GB / GBC / GBA | `libretro-mgba` (`mgba`) | accurate and light; `gambatte`/`sameboy` available but unnecessary |
+| NES | `libretro-nestopia` | `fceumm` not packaged |
+| SNES | `libretro-snes9x` | fast on A55; `bsnes`/`bsnes-hd` are in the repo, accuracy cores want far more CPU than the 2 big cores can spare |
+| MD/SMS/GG | `libretro-genesis-plus-gx` | `picodrive`/`blastem` also in repo |
+| PC Engine | `libretro-beetle-pce-fast` | |
+| N64 | `libretro-mupen64plus-next` | GLES3 path suits Panfrost; `parallel-n64` is in the repo, older. Performance UNVERIFIED |
+| PS1 | `libretro-pcsx-rearmed` | ARM dynarec + NEON; `beetle-psx`/`duckstation`/`mednafen-psx` are heavier |
+| Dreamcast | `libretro-flycast` | will be heavy on a G52; UNVERIFIED |
+| NDS | `libretro-melonds` now, PGO `melondsds` later | `desmume` also packaged |
+| PSP | **none installed** | no `libretro-ppsspp` in ALARM; only the standalone `ppsspp 1.20.4` package (not tested). Follow-up |
+`frontend/config/frontend.ini` was reconciled: every `core =` resolves to a file in the built rootfs (`usr/lib/libretro/<core>_libretro.so`; all 13 systems checked
+against `rootfs.tar.zst`, 0 missing). Added NES, SMS, GG, PCE, Dreamcast systems; NDS stays on `melonds` until `melondsds` is trained. The frontend test suite still passes (7/7).
+ALARM packaging bug: `libretro-core-info` and `libretro-pcsx-rearmed` both ship `pcsx_rearmed_libretro.info`; the rootfs setup allows that one overwrite.
+
+**Cost of using Arch's `retroarch`:** it depends on qt6-base, ffmpeg, pipewire/pulse, X11 libs. Rootfs went from 148 packages / 694 MiB to 334 packages / 1675 MiB. A trimmed RetroArch
+built with MIROKI's flag list (as a reference) would remove most of that; not done here (child-card candidate).
+
+### melonDS PGO (`stages/melonds.sh`, `stages/melonds-pgo.sh`, `patches/melonds/`, `tools/dsbench.c`)
+- Recipe = thwonp/plorpOS `mk/build-melondsds.sh` (sources JesseTG/melonds-ds `f394adba` + melonDS `16f127db`, two plorpOS patches copied verbatim into `patches/melonds/`, MIT).
+  Flags: `-mcpu=cortex-a75.cortex-a55`, `-DENABLE_OPENGL=OFF -DENABLE_JIT=ON -DENABLE_THREADED_RENDERER=ON`, Release.
+- **Built natively in an aarch64 ALARM chroot under qemu-user, not cross-compiled**, because a `.gcda` profile is only valid for the GCC that instrumented it (here GCC 16.1.1) and the
+  same chroot compiler does the `-fprofile-use` pass. Compile+link 781 s at `-j16` (host: 16 cores); whole stage 1225 s including chroot creation (cached in `work/melonds-chroot`) and a 125 s configure.
+- `./build.sh melonds` -> `out/melonds/melondsds_libretro.pgo.so` (`-fprofile-generate -fprofile-update=atomic`). Checked: aarch64 ELF, 15 `gcov` symbols, 20 CRC32 instructions (plorpOS patch active),
+  no undefined unversioned symbols, needs `GLIBC_2.43` (matches the ALARM rootfs, NOT Debian), and it `dlopen`s and initialises under qemu-user via `dsbench` (it then rejects a dummy ROM; no real ROM was available, so no frame was emulated and no `.gcda` was produced here).
+- **Device step (for Dakoda):** on the RG Rotate run `/usr/lib/rotate/ds-pgo-train.sh /roms/nds/<your .nds files>` (plorpOS trained on Pokemon Pearl, Metroid Prime Hunters, Advance Wars; ~6 min).
+  It leaves `/var/lib/rotate/pgo-profile/build/out/build/**.gcda`. Then on the host:
+  `tar czf melonds-profile.tgz -C <that dir> . && MELONDS_PROFILE=melonds-profile.tgz build/build.sh melonds-pgo rootfs image` -> `out/melonds/melondsds_libretro.so` installed as the live core;
+  then set `core = melondsds` for `[system.nds]`. `melonds-pgo` fails fast without `MELONDS_PROFILE`. The `-fprofile-use` pass is UNRUN (no profile exists).
+- The instrumented core, `dsbench` (cross-built, MIT) and the trainer are in the image under `/opt/rotate/pgo` and `/usr/lib/rotate/ds-pgo-train.sh`. Do not use the instrumented core for play.
+
+### PortMaster (`pins.env`, `stage rootfs`, `rootfs/overlay/usr/share/rotate/portmaster/control.txt`, `usr/lib/rotate/rotate-pm-run`)
+- Pinned **PortMaster-GUI 2026.10.29-1355**, asset `PortMaster.zip`, sha256 `6261911f…ed9643` (matches GitHub's asset digest and the release's `.md5`), cached in `cache/`, unpacked to `/opt/rotate/portmaster/PortMaster`.
+  Not the AUR `portmaster-bin` (that is the unrelated Safing firewall).
+- Runtime deps installed (from the PortMaster CFW requirements gist, https://gist.github.com/bmdhacks/f26dbb60dc0ff0b9bc8e043fac8b813b): bash, coreutils, python (lzma import checked in the rootfs),
+  squashfs-tools (`mksquashfs 4.7.5`), unzip, zip, rsync, xdelta3, dialog, 7zip, sdl2-compat + image/mixer/ttf. Kernel: `SQUASHFS`(+zlib/xz/zstd/lz4), `BLK_DEV_LOOP`, `INPUT_UINPUT`, `ZRAM` are `=y` in `out/kernel/config`.
+- `control.txt` (own file, structure per PortMaster's contract; the SDL-GUID one-line gamecontrollerdb trick from plorpOS `portmaster/control.txt`): `DEVICE_NAME="RG Rotate"` (also `/etc/device_model`),
+  `ANALOGSTICKS=0` (no sticks), `LOWRES=N`, 720x720, `CFW_NAME=ROCKNIX` for ports (mainline + Panfrost + SDL2 KMSDRM = ROCKNIX's environment; same as plorpOS), ports in `/roms/ports`.
+  `rotate-pm-run` restores it before every run (a PortMaster self-update restores the stock one) and keeps the CFW name for scripts that re-source `device_info.txt`.
+  **Checked:** `source control.txt; get_controls` in the built rootfs under qemu prints `CFW=ROCKNIX DEV=RG Rotate param=rgrotate sticks=0 arch=aarch64 dir=roms` and the expected one-line controller DB.
+  No port was run (no device, no ports); first-run PortMaster GUI behaviour, `pylibs.zip` unpack (a `cp ... pylibs/resources/*.ttf` error appears before first run) and gptokeyb are UNVERIFIED.
+- plorpOS's `chdread.c/.h` (PolyForm Noncommercial) were not used; the image contains no `chdread` file.

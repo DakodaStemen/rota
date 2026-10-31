@@ -1,0 +1,43 @@
+# Packages the rootfs stage installs on top of the ALARM base (one per line, # comments). Source of truth for stage rootfs.
+# Repo membership checked 2026-10-31 against http://mirror.archlinuxarm.org/aarch64/{core,extra}/*.db (build/work/pkgdb).
+
+# --- base additions (unchanged from the first rootfs) ---
+iwd
+cpio
+wireless-regdb
+
+# --- graphics / audio stack (RetroArch on KMS, Mesa Panfrost) ---
+mesa            # panfrost gallium + GLES/EGL/GBM; Mali-G52 = OpenGL ES 3.1 per docs.mesa3d.org
+libdrm
+alsa-lib
+alsa-utils      # aplay/amixer for bring-up
+alsa-ucm-conf
+retroarch       # 1.22.2 from extra; pulls qt6/ffmpeg/x11 (Arch's build is not minimal, see README)
+libretro-core-info
+
+# --- cores (selection rationale in build/README.md) ---
+libretro-mgba               # GB / GBC / GBA
+libretro-snes9x             # SNES
+libretro-genesis-plus-gx    # MD / SMS / GG / Sega CD
+libretro-mupen64plus-next   # N64
+libretro-pcsx-rearmed       # PS1
+libretro-flycast            # Dreamcast (heavy on a G52; experimental)
+libretro-melonds            # NDS fallback until the PGO melondsds core is trained
+libretro-nestopia           # NES
+libretro-beetle-pce-fast    # PC Engine
+
+# --- PortMaster runtime dependencies (https://gist.github.com/bmdhacks/f26dbb60dc0ff0b9bc8e043fac8b813b) ---
+bash
+coreutils
+python          # includes lzma
+squashfs-tools
+unzip
+zip
+rsync
+xdelta3
+dialog
+7zip
+sdl2-compat
+sdl2_image
+sdl2_mixer
+sdl2_ttf

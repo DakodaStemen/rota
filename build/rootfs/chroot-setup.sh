@@ -18,7 +18,17 @@ for p in linux-aarch64 linux-firmware linux-firmware-atheros linux-firmware-cirr
   pacman -Qq "$p" >/dev/null 2>&1 && DROP+=("$p")
 done
 ((${#DROP[@]})) && pacman -Rdd --noconfirm "${DROP[@]}"
-pacman -Syu --noconfirm --needed iwd cpio wireless-regdb
+# package set: rootfs/packages.list (copied to /root/packages.list by the rootfs stage)
+mapfile -t PKGS < <(sed 's/#.*//' /root/packages.list | awk 'NF{print $1}')
+# ALARM packaging bug (seen 2026-10-31): libretro-core-info and libretro-pcsx-rearmed both own
+# /usr/share/libretro/info/pcsx_rearmed_libretro.info; allow exactly that one file to be overwritten.
+pacman -Syu --noconfirm --needed --overwrite '/usr/share/libretro/info/pcsx_rearmed_libretro.info' "${PKGS[@]}"
+# the generic linux-aarch64 kernel / firmware may have been pulled back in as a dependency: drop again
+for p in linux-aarch64 linux-firmware linux-firmware-whence; do pacman -Qq "$p" >/dev/null 2>&1 && pacman -Rdd --noconfirm "$p" || true; done
+# RetroArch must have KMS + EGL + network commands; the swivel pause (UDP 55355) and no-compositor path depend on it
+FEAT="$(retroarch --features 2>&1 || true)"; echo "$FEAT" | grep -E -i 'kms|egl|network|alsa|udev|opengl|threads' || true
+echo "$FEAT" > /root/retroarch-features.txt
+chmod 755 /usr/lib/rotate/rotate-pm-run 2>/dev/null || true
 rm -rf /var/cache/pacman/pkg/* /var/lib/pacman/sync/*
 # services
 systemctl enable sshd.service iwd.service systemd-networkd.service systemd-resolved.service systemd-timesyncd.service \

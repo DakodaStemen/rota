@@ -1,0 +1,72 @@
+#!/bin/bash
+#
+# PortMaster control.txt for Rotate OS on the Anbernic RG Rotate (720x720, no analog sticks).
+# Replaces the stock control.txt before every run (rotate-pm-run copies it in, because a PortMaster self-update
+# restores the stock one).
+#
+# Structure follows PortMaster's own control.txt contract (https://portmaster.games/ and the stock file shipped in
+# PortMaster.zip 2026.10.29-1355: ports `source $controlfolder/control.txt` and expect controlfolder, directory,
+# ESUDO/ESUDOKILL, GPTOKEYB/GPTOKEYB2, get_controls -> DEVICE, param_device, ANALOGSTICKS, LOWRES, sdl_controllerconfig).
+# The per-device get_controls body and the SDL-GUID trick (a one-line gamecontrollerdb, because exporting PortMaster's
+# 470 KB database breaks exec with "Argument list too long") follow thwonp/plorpOS
+# upstream/plorpOS/sd/rotate/portmaster/control.txt (MIT).
+# UNVERIFIED on the device: no hardware attached, and no port has been run.
+#
+# SPDX-License-Identifier: MIT
+
+CUR_TTY=/dev/tty0
+
+# --- paths ------------------------------------------------------------------------------------------------------
+export controlfolder="/opt/rotate/portmaster/PortMaster"
+# Ports live in "/$directory/ports/<name>" -> /roms/ports (frontend roms_root = /roms).
+export directory="roms"
+
+# --- privileges: the session runs as root, so no sudo ------------------------------------------------------------
+export ESUDO=""
+export ESUDOKILL="-1"
+export ESUDOKILL2="-1"
+
+# --- device identity ---------------------------------------------------------------------------------------------
+# DEVICE_NAME is also written to /etc/device_model (one of the files device_info.txt probes); set here as well so
+# a stale/removed file cannot make ports see "Unknown".
+export DEVICE_NAME="RG Rotate"
+export DISPLAY_WIDTH=720 DISPLAY_HEIGHT=720
+
+SDLDBFILE="$controlfolder/gamecontrollerdb.txt"
+SDLDBUSERFILE="${HOME}/.config/SDL-GameControllerDB/gamecontrollerdb.txt"
+
+get_controls() {
+  # The RG Rotate has a d-pad, A/B/X/Y, L1/R1/L2/R2 (digital), Select/Start/Mode, and ONE stick click (BTN_THUMBR,
+  # upstream/linux-mainline-sprd ums512-rg-rotate.dts L213-L315): there are no analog sticks. 0 = none (the stock
+  # control.txt uses ANALOGSTICKS=0 for the d-pad-only gkd-pixel2). Ports then map the d-pad to movement.
+  ANALOGSTICKS="0"
+  LOWRES="N"                       # 720x720 is not a "low-res" handheld in PortMaster's sense (the stock file sets Y only for the small RK3326 handhelds)
+  DEVICE="19007b94010000000100000000010000"   # SDL GUID of gpio-keys-gamepad (CRC16 0x947b of the name, recomputed)
+  param_device="rgrotate"
+  export HOTKEY="guide"            # Mode button, same as RetroArch's hotkey-enable in /etc/retroarch.cfg
+  export SDL_GAMECONTROLLERCONFIG_FILE="/tmp/gamecontrollerdb.txt"
+  # SDL mapping by evdev button index (a:b0 b:b1 x:b2 y:b3 shoulders b4/b5 triggers b6/b7 back b8 start b9 guide b10
+  # rightstick b11 d-pad b12-b15), the same order as /usr/share/rotate/autoconfig/udev/gpio-keys-gamepad.cfg.
+  echo "$DEVICE,gpio-keys-gamepad,a:b0,b:b1,x:b2,y:b3,back:b8,guide:b10,start:b9,rightstick:b11,leftshoulder:b4,rightshoulder:b5,dpup:b12,dpdown:b13,dpleft:b14,dpright:b15,lefttrigger:b6,righttrigger:b7,platform:Linux," \
+    > "$SDL_GAMECONTROLLERCONFIG_FILE"
+  sdl_controllerconfig="$(< "$SDL_GAMECONTROLLERCONFIG_FILE")"
+}
+
+source "$controlfolder/device_info.txt"
+source "$controlfolder/funcs.txt"
+
+# --- CFW name -----------------------------------------------------------------------------------------------------
+# device_info.txt names the system from /etc/os-release ("Arch Linux ARM"), a name no port script or mod_*.txt knows.
+# Mainline kernel + Panfrost + SDL2 KMSDRM is exactly ROCKNIX's port environment (mod_ROCKNIX.txt, libgl_ROCKNIX.txt are
+# shipped in the PortMaster zip), so ports are told "ROCKNIX". plorpOS does the same
+# (upstream/plorpOS/sd/rotate/portmaster/control.txt, "CFW_NAME=ROCKNIX"). PortMaster's own GUI is not a port and sees
+# the real name (rotate-pm-run sets ROTATE_PM_GUI=1).
+[ -n "${ROTATE_PM_GUI:-}" ] || export CFW_NAME="ROCKNIX"
+export CFW_REAL_NAME="Rotate OS"
+
+# SDL's pipewire backend is not installed; plain ALSA through /etc/asound.conf.
+export SDL_AUDIODRIVER="alsa"
+export SDL_VIDEODRIVER="${SDL_VIDEODRIVER:-KMSDRM}"
+
+export GPTOKEYB2="$ESUDO env LD_PRELOAD=$controlfolder/libinterpose.${DEVICE_ARCH}.so $controlfolder/gptokeyb2 $ESUDOKILL2"
+export GPTOKEYB="$ESUDO $controlfolder/gptokeyb $ESUDOKILL"

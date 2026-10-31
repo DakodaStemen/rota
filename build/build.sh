@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 # Rotate OS image build driver. See build/README.md.
-# usage: build.sh [-h] [stage...]    stages: spl uboot kernel rootfs image (default: all, in order)
+# usage: build.sh [-h] [stage...]    stages: spl uboot kernel melonds rootfs image (default: all, in order); melonds-pgo (explicit only)
 # env: FORCE=1 rebuild even if stamp matches; JOBS=16
 # exit: 0 ok; 2 usage; 3 missing host tool; else the failing stage's exit status.
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
-ALL=(spl uboot kernel rootfs image)
+ALL=(spl uboot kernel melonds rootfs image)
+OPTIONAL=(melonds-pgo)   # needs MELONDS_PROFILE=<dir|tgz> from the device; not in the default run
 usage() { sed -n '2,5p' "$0" | sed 's/^# \{0,1\}//'; }
 case "${1:-}" in -h|--help) usage; exit 0;; esac
 STAGES=("$@"); (( ${#STAGES[@]} )) || STAGES=("${ALL[@]}")
-for s in "${STAGES[@]}"; do [[ " ${ALL[*]} " == *" $s "* ]] || { echo "unknown stage: $s" >&2; usage >&2; exit 2; }; done
+for s in "${STAGES[@]}"; do [[ " ${ALL[*]} ${OPTIONAL[*]} " == *" $s "* ]] || { echo "unknown stage: $s" >&2; usage >&2; exit 2; }; done
 for t in git make python3 patch ccache aarch64-linux-gnu-gcc; do command -v "$t" >/dev/null || { echo "missing host tool: $t" >&2; exit 3; }; done
 mkdir -p "$HERE/logs"
 for s in "${STAGES[@]}"; do

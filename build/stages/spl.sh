@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Stage spl: crackerjacques/ums512_spl (armbian branch, pinned) -> 4 MiB DHTB 'open' image.
+# Stage spl: thwonp/ums512_spl (plorpos-cm4 branch, pinned; = crackerjacques armbian + cm4_sec() skipped) -> 4 MiB DHTB 'open' image.
 # Output: out/spl/spl_a_open.img  (flashed ONCE to eMMC boot0 by Dakoda; never part of the SD image)
 . "$(dirname "$0")/../lib/common.sh"
 SRC_GIT="$ROOT/upstream/ums512_spl"

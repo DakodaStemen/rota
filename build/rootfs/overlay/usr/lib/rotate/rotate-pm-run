@@ -1,0 +1,22 @@
+#!/bin/bash
+# rotate-pm-run SCRIPT [ARGS]: run PortMaster.sh or a port script on Rotate OS.
+# Restores our control.txt (a PortMaster self-update puts the stock one back), points PortMaster at its folders, and
+# re-names the CFW after each sourced file, because older port scripts source device_info.txt again after control.txt
+# (the same trap plorpOS uses: upstream/plorpOS/sd/rotate/portmaster/pm-run.sh, final `exec bash -c 'trap ...'`).
+# Exit: 0 ok, 1 usage/setup error, else the port's status.
+set -u
+PMDATA=/opt/rotate/portmaster
+PM=$PMDATA/PortMaster
+[ $# -ge 1 ] || { echo "usage: rotate-pm-run SCRIPT [ARGS]" >&2; exit 1; }
+[ -f "$PM/PortMaster.sh" ] || { echo "rotate-pm-run: PortMaster not installed at $PM" >&2; exit 1; }
+cmp -s /usr/share/rotate/portmaster/control.txt "$PM/control.txt" || cp /usr/share/rotate/portmaster/control.txt "$PM/control.txt"
+export XDG_DATA_HOME=$PMDATA
+export HM_TOOLS_DIR=$PMDATA HM_PORTS_DIR=/roms/ports HM_SCRIPTS_DIR=/roms/ports
+mkdir -p /roms/ports "$PMDATA/home"
+export HOME=$PMDATA/home
+# stale squashfs runtime mounts left by a killed port
+grep -E " squashfs | $HOME/" /proc/mounts | cut -d" " -f2 | sort -r | while read -r m; do umount "$m" 2>/dev/null || umount -l "$m"; done
+[ "$(basename "$1")" = PortMaster.sh ] && export ROTATE_PM_GUI=1
+cd "$(dirname "$1")" || exit 1
+[ -n "${ROTATE_PM_GUI:-}" ] && exec bash "$@"
+exec bash -c 'trap "export CFW_NAME=ROCKNIX" RETURN; . "$0" "$@"' "$@"
