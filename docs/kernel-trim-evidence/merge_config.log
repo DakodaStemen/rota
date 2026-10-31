@@ -1,0 +1,2562 @@
+Using .config as base
+Merging /home/dakoda/.hermes/cache/scratch/kernel-trim.config
+Value of CONFIG_POSIX_MQUEUE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_POSIX_MQUEUE=y
+New value: # CONFIG_POSIX_MQUEUE is not set
+
+Value of CONFIG_AUDIT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_AUDIT=y
+New value: # CONFIG_AUDIT is not set
+
+Value of CONFIG_PREEMPT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_PREEMPT=y
+New value: # CONFIG_PREEMPT is not set
+
+Value of CONFIG_PREEMPT_LAZY is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: # CONFIG_PREEMPT_LAZY is not set
+New value: CONFIG_PREEMPT_LAZY=y
+
+Value of CONFIG_PREEMPT_DYNAMIC is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: # CONFIG_PREEMPT_DYNAMIC is not set
+New value: CONFIG_PREEMPT_DYNAMIC=y
+
+Value of CONFIG_BSD_PROCESS_ACCT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_BSD_PROCESS_ACCT=y
+New value: # CONFIG_BSD_PROCESS_ACCT is not set
+
+Value of CONFIG_BSD_PROCESS_ACCT_V3 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_BSD_PROCESS_ACCT_V3=y
+New value: # CONFIG_BSD_PROCESS_ACCT_V3 is not set
+
+Value of CONFIG_TASKSTATS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TASKSTATS=y
+New value: # CONFIG_TASKSTATS is not set
+
+Value of CONFIG_TASK_XACCT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TASK_XACCT=y
+New value: # CONFIG_TASK_XACCT is not set
+
+Value of CONFIG_TASK_IO_ACCOUNTING is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TASK_IO_ACCOUNTING=y
+New value: # CONFIG_TASK_IO_ACCOUNTING is not set
+
+Value of CONFIG_UCLAMP_TASK is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: # CONFIG_UCLAMP_TASK is not set
+New value: CONFIG_UCLAMP_TASK=y
+
+Value of CONFIG_NUMA_BALANCING is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NUMA_BALANCING=y
+New value: # CONFIG_NUMA_BALANCING is not set
+
+Value of CONFIG_CGROUP_HUGETLB is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CGROUP_HUGETLB=y
+New value: # CONFIG_CGROUP_HUGETLB is not set
+
+Value of CONFIG_CGROUP_PERF is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CGROUP_PERF=y
+New value: # CONFIG_CGROUP_PERF is not set
+
+Value of CONFIG_KALLSYMS_ALL is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_KALLSYMS_ALL=y
+New value: # CONFIG_KALLSYMS_ALL is not set
+
+Value of CONFIG_PROFILING is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_PROFILING=y
+New value: # CONFIG_PROFILING is not set
+
+Value of CONFIG_KEXEC is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_KEXEC=y
+New value: # CONFIG_KEXEC is not set
+
+Value of CONFIG_KEXEC_FILE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_KEXEC_FILE=y
+New value: # CONFIG_KEXEC_FILE is not set
+
+Value of CONFIG_NUMA is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NUMA=y
+New value: # CONFIG_NUMA is not set
+
+Value of CONFIG_XEN is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_XEN=y
+New value: # CONFIG_XEN is not set
+
+Value of CONFIG_ARM64_PTR_AUTH is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_ARM64_PTR_AUTH=y
+New value: # CONFIG_ARM64_PTR_AUTH is not set
+
+Value of CONFIG_ARM64_BTI is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_ARM64_BTI=y
+New value: # CONFIG_ARM64_BTI is not set
+
+Value of CONFIG_ARM64_MTE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_ARM64_MTE=y
+New value: # CONFIG_ARM64_MTE is not set
+
+Value of CONFIG_CMDLINE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CMDLINE="loglevel=7"
+New value: CONFIG_CMDLINE="loglevel=3"
+
+Value of CONFIG_EFI is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_EFI=y
+New value: # CONFIG_EFI is not set
+
+Value of CONFIG_CPU_IDLE_GOV_MENU is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CPU_IDLE_GOV_MENU=y
+New value: # CONFIG_CPU_IDLE_GOV_MENU is not set
+
+Value of CONFIG_CPU_IDLE_GOV_TEO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: # CONFIG_CPU_IDLE_GOV_TEO is not set
+New value: CONFIG_CPU_IDLE_GOV_TEO=y
+
+Value of CONFIG_CPU_FREQ_GOV_USERSPACE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CPU_FREQ_GOV_USERSPACE=m
+New value: # CONFIG_CPU_FREQ_GOV_USERSPACE is not set
+
+Value of CONFIG_CPU_FREQ_GOV_ONDEMAND is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CPU_FREQ_GOV_ONDEMAND=y
+New value: # CONFIG_CPU_FREQ_GOV_ONDEMAND is not set
+
+Value of CONFIG_CPU_FREQ_GOV_CONSERVATIVE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CPU_FREQ_GOV_CONSERVATIVE=m
+New value: # CONFIG_CPU_FREQ_GOV_CONSERVATIVE is not set
+
+Value of CONFIG_ARM_SCPI_CPUFREQ is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_ARM_SCPI_CPUFREQ=y
+New value: # CONFIG_ARM_SCPI_CPUFREQ is not set
+
+Value of CONFIG_ARM_SCMI_CPUFREQ is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_ARM_SCMI_CPUFREQ=y
+New value: # CONFIG_ARM_SCMI_CPUFREQ is not set
+
+Value of CONFIG_VIRTUALIZATION is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_VIRTUALIZATION=y
+New value: # CONFIG_VIRTUALIZATION is not set
+
+Value of CONFIG_KVM is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_KVM=y
+New value: # CONFIG_KVM is not set
+
+Value of CONFIG_SCHED_SMT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SCHED_SMT=y
+New value: # CONFIG_SCHED_SMT is not set
+
+Value of CONFIG_STACKPROTECTOR is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_STACKPROTECTOR=y
+New value: # CONFIG_STACKPROTECTOR is not set
+
+Value of CONFIG_RANDOMIZE_KSTACK_OFFSET is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_RANDOMIZE_KSTACK_OFFSET=y
+New value: # CONFIG_RANDOMIZE_KSTACK_OFFSET is not set
+
+Value of CONFIG_MEMORY_HOTPLUG is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MEMORY_HOTPLUG=y
+New value: # CONFIG_MEMORY_HOTPLUG is not set
+
+Value of CONFIG_MEMORY_HOTREMOVE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MEMORY_HOTREMOVE=y
+New value: # CONFIG_MEMORY_HOTREMOVE is not set
+
+Value of CONFIG_KSM is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_KSM=y
+New value: # CONFIG_KSM is not set
+
+Value of CONFIG_MEMORY_FAILURE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MEMORY_FAILURE=y
+New value: # CONFIG_MEMORY_FAILURE is not set
+
+Value of CONFIG_TRANSPARENT_HUGEPAGE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TRANSPARENT_HUGEPAGE=y
+New value: # CONFIG_TRANSPARENT_HUGEPAGE is not set
+
+Value of CONFIG_LRU_GEN is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: # CONFIG_LRU_GEN is not set
+New value: CONFIG_LRU_GEN=y
+
+Value of CONFIG_IP_PNP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IP_PNP=y
+New value: # CONFIG_IP_PNP is not set
+
+Value of CONFIG_NF_CONNTRACK_FTP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NF_CONNTRACK_FTP=y
+New value: # CONFIG_NF_CONNTRACK_FTP is not set
+
+Value of CONFIG_NF_CONNTRACK_H323 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NF_CONNTRACK_H323=y
+New value: # CONFIG_NF_CONNTRACK_H323 is not set
+
+Value of CONFIG_NF_CONNTRACK_IRC is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NF_CONNTRACK_IRC=y
+New value: # CONFIG_NF_CONNTRACK_IRC is not set
+
+Value of CONFIG_NF_CONNTRACK_NETBIOS_NS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NF_CONNTRACK_NETBIOS_NS=y
+New value: # CONFIG_NF_CONNTRACK_NETBIOS_NS is not set
+
+Value of CONFIG_NF_CONNTRACK_PPTP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NF_CONNTRACK_PPTP=y
+New value: # CONFIG_NF_CONNTRACK_PPTP is not set
+
+Value of CONFIG_NF_CONNTRACK_SANE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NF_CONNTRACK_SANE=y
+New value: # CONFIG_NF_CONNTRACK_SANE is not set
+
+Value of CONFIG_NF_CONNTRACK_SIP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NF_CONNTRACK_SIP=y
+New value: # CONFIG_NF_CONNTRACK_SIP is not set
+
+Value of CONFIG_NF_CONNTRACK_TFTP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NF_CONNTRACK_TFTP=y
+New value: # CONFIG_NF_CONNTRACK_TFTP is not set
+
+Value of CONFIG_NF_TABLES_NETDEV is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NF_TABLES_NETDEV=y
+New value: # CONFIG_NF_TABLES_NETDEV is not set
+
+Value of CONFIG_NFT_NUMGEN is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFT_NUMGEN=y
+New value: # CONFIG_NFT_NUMGEN is not set
+
+Value of CONFIG_NFT_CONNLIMIT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFT_CONNLIMIT=y
+New value: # CONFIG_NFT_CONNLIMIT is not set
+
+Value of CONFIG_NFT_TUNNEL is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFT_TUNNEL=y
+New value: # CONFIG_NFT_TUNNEL is not set
+
+Value of CONFIG_NFT_QUEUE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFT_QUEUE=y
+New value: # CONFIG_NFT_QUEUE is not set
+
+Value of CONFIG_NFT_QUOTA is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFT_QUOTA=y
+New value: # CONFIG_NFT_QUOTA is not set
+
+Value of CONFIG_NFT_HASH is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFT_HASH=y
+New value: # CONFIG_NFT_HASH is not set
+
+Value of CONFIG_NFT_SOCKET is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFT_SOCKET=y
+New value: # CONFIG_NFT_SOCKET is not set
+
+Value of CONFIG_NFT_OSF is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFT_OSF=y
+New value: # CONFIG_NFT_OSF is not set
+
+Value of CONFIG_NFT_TPROXY is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFT_TPROXY=y
+New value: # CONFIG_NFT_TPROXY is not set
+
+Value of CONFIG_NFT_SYNPROXY is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFT_SYNPROXY=y
+New value: # CONFIG_NFT_SYNPROXY is not set
+
+Value of CONFIG_NFT_DUP_NETDEV is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFT_DUP_NETDEV=y
+New value: # CONFIG_NFT_DUP_NETDEV is not set
+
+Value of CONFIG_NFT_FWD_NETDEV is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFT_FWD_NETDEV=y
+New value: # CONFIG_NFT_FWD_NETDEV is not set
+
+Value of CONFIG_NFT_REJECT_NETDEV is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFT_REJECT_NETDEV=y
+New value: # CONFIG_NFT_REJECT_NETDEV is not set
+
+Value of CONFIG_NF_FLOW_TABLE_INET is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NF_FLOW_TABLE_INET=y
+New value: # CONFIG_NF_FLOW_TABLE_INET is not set
+
+Value of CONFIG_NF_FLOW_TABLE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NF_FLOW_TABLE=y
+New value: # CONFIG_NF_FLOW_TABLE is not set
+
+Value of CONFIG_NETFILTER_XT_TARGET_AUDIT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_TARGET_AUDIT=y
+New value: # CONFIG_NETFILTER_XT_TARGET_AUDIT is not set
+
+Value of CONFIG_NETFILTER_XT_TARGET_CONNMARK is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_TARGET_CONNMARK=y
+New value: # CONFIG_NETFILTER_XT_TARGET_CONNMARK is not set
+
+Value of CONFIG_NETFILTER_XT_TARGET_HL is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_TARGET_HL=y
+New value: # CONFIG_NETFILTER_XT_TARGET_HL is not set
+
+Value of CONFIG_NETFILTER_XT_TARGET_HMARK is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_TARGET_HMARK=y
+New value: # CONFIG_NETFILTER_XT_TARGET_HMARK is not set
+
+Value of CONFIG_NETFILTER_XT_TARGET_IDLETIMER is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_TARGET_IDLETIMER=y
+New value: # CONFIG_NETFILTER_XT_TARGET_IDLETIMER is not set
+
+Value of CONFIG_NETFILTER_XT_TARGET_LED is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_TARGET_LED=y
+New value: # CONFIG_NETFILTER_XT_TARGET_LED is not set
+
+Value of CONFIG_NETFILTER_XT_TARGET_NETMAP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_TARGET_NETMAP=y
+New value: # CONFIG_NETFILTER_XT_TARGET_NETMAP is not set
+
+Value of CONFIG_NETFILTER_XT_TARGET_NFQUEUE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_TARGET_NFQUEUE=y
+New value: # CONFIG_NETFILTER_XT_TARGET_NFQUEUE is not set
+
+Value of CONFIG_NETFILTER_XT_TARGET_TEE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_TARGET_TEE=y
+New value: # CONFIG_NETFILTER_XT_TARGET_TEE is not set
+
+Value of CONFIG_NETFILTER_XT_TARGET_TPROXY is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_TARGET_TPROXY=y
+New value: # CONFIG_NETFILTER_XT_TARGET_TPROXY is not set
+
+Value of CONFIG_NETFILTER_XT_TARGET_TCPOPTSTRIP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_TARGET_TCPOPTSTRIP=y
+New value: # CONFIG_NETFILTER_XT_TARGET_TCPOPTSTRIP is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_CLUSTER is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_CLUSTER=y
+New value: # CONFIG_NETFILTER_XT_MATCH_CLUSTER is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_CPU is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_CPU=y
+New value: # CONFIG_NETFILTER_XT_MATCH_CPU is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_DCCP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_DCCP=y
+New value: # CONFIG_NETFILTER_XT_MATCH_DCCP is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_DEVGROUP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_DEVGROUP=y
+New value: # CONFIG_NETFILTER_XT_MATCH_DEVGROUP is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_ESP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_ESP=y
+New value: # CONFIG_NETFILTER_XT_MATCH_ESP is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_HASHLIMIT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_HASHLIMIT=y
+New value: # CONFIG_NETFILTER_XT_MATCH_HASHLIMIT is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_IPCOMP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_IPCOMP=y
+New value: # CONFIG_NETFILTER_XT_MATCH_IPCOMP is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_IPVS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_IPVS=y
+New value: # CONFIG_NETFILTER_XT_MATCH_IPVS is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_L2TP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_L2TP=y
+New value: # CONFIG_NETFILTER_XT_MATCH_L2TP is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_NFACCT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_NFACCT=y
+New value: # CONFIG_NETFILTER_XT_MATCH_NFACCT is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_OSF is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_OSF=y
+New value: # CONFIG_NETFILTER_XT_MATCH_OSF is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_RATEEST is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_RATEEST=y
+New value: # CONFIG_NETFILTER_XT_MATCH_RATEEST is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_REALM is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_REALM=y
+New value: # CONFIG_NETFILTER_XT_MATCH_REALM is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_SCTP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_SCTP=y
+New value: # CONFIG_NETFILTER_XT_MATCH_SCTP is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_STRING is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_STRING=y
+New value: # CONFIG_NETFILTER_XT_MATCH_STRING is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_TIME is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_TIME=y
+New value: # CONFIG_NETFILTER_XT_MATCH_TIME is not set
+
+Value of CONFIG_NETFILTER_XT_MATCH_U32 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NETFILTER_XT_MATCH_U32=y
+New value: # CONFIG_NETFILTER_XT_MATCH_U32 is not set
+
+Value of CONFIG_IP_VS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IP_VS=y
+New value: # CONFIG_IP_VS is not set
+
+Value of CONFIG_IP_NF_TARGET_SYNPROXY is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IP_NF_TARGET_SYNPROXY=y
+New value: # CONFIG_IP_NF_TARGET_SYNPROXY is not set
+
+Value of CONFIG_IP6_NF_MATCH_MH is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IP6_NF_MATCH_MH=y
+New value: # CONFIG_IP6_NF_MATCH_MH is not set
+
+Value of CONFIG_IP6_NF_MATCH_SRH is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IP6_NF_MATCH_SRH=y
+New value: # CONFIG_IP6_NF_MATCH_SRH is not set
+
+Value of CONFIG_IP6_NF_TARGET_SYNPROXY is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IP6_NF_TARGET_SYNPROXY=y
+New value: # CONFIG_IP6_NF_TARGET_SYNPROXY is not set
+
+Value of CONFIG_IP6_NF_TARGET_NPT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IP6_NF_TARGET_NPT=y
+New value: # CONFIG_IP6_NF_TARGET_NPT is not set
+
+Value of CONFIG_BRIDGE_VLAN_FILTERING is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_BRIDGE_VLAN_FILTERING=y
+New value: # CONFIG_BRIDGE_VLAN_FILTERING is not set
+
+Value of CONFIG_NET_DSA is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NET_DSA=y
+New value: # CONFIG_NET_DSA is not set
+
+Value of CONFIG_NET_DSA_TAG_NONE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NET_DSA_TAG_NONE=y
+New value: # CONFIG_NET_DSA_TAG_NONE is not set
+
+Value of CONFIG_VLAN_8021Q_GVRP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_VLAN_8021Q_GVRP=y
+New value: # CONFIG_VLAN_8021Q_GVRP is not set
+
+Value of CONFIG_VLAN_8021Q_MVRP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_VLAN_8021Q_MVRP=y
+New value: # CONFIG_VLAN_8021Q_MVRP is not set
+
+Value of CONFIG_NET_SCH_CBS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NET_SCH_CBS=y
+New value: # CONFIG_NET_SCH_CBS is not set
+
+Value of CONFIG_NET_SCH_ETF is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NET_SCH_ETF=y
+New value: # CONFIG_NET_SCH_ETF is not set
+
+Value of CONFIG_NET_SCH_TAPRIO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NET_SCH_TAPRIO=y
+New value: # CONFIG_NET_SCH_TAPRIO is not set
+
+Value of CONFIG_NET_SCH_MQPRIO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NET_SCH_MQPRIO=y
+New value: # CONFIG_NET_SCH_MQPRIO is not set
+
+Value of CONFIG_NET_CLS_FLOWER is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NET_CLS_FLOWER=y
+New value: # CONFIG_NET_CLS_FLOWER is not set
+
+Value of CONFIG_NET_ACT_GATE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NET_ACT_GATE=y
+New value: # CONFIG_NET_ACT_GATE is not set
+
+Value of CONFIG_BT_BNEP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_BT_BNEP=m
+New value: # CONFIG_BT_BNEP is not set
+
+Value of CONFIG_BT_HIDP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_BT_HIDP=m
+New value: # CONFIG_BT_HIDP is not set
+
+Value of CONFIG_BT_MSFTEXT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_BT_MSFTEXT=y
+New value: # CONFIG_BT_MSFTEXT is not set
+
+Value of CONFIG_BT_AOSPEXT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_BT_AOSPEXT=y
+New value: # CONFIG_BT_AOSPEXT is not set
+
+Value of CONFIG_BT_HCIBTUSB is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_BT_HCIBTUSB=m
+New value: # CONFIG_BT_HCIBTUSB is not set
+
+Value of CONFIG_MAC80211_LEDS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MAC80211_LEDS=y
+New value: # CONFIG_MAC80211_LEDS is not set
+
+Value of CONFIG_NET_9P is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NET_9P=y
+New value: # CONFIG_NET_9P is not set
+
+Value of CONFIG_NFC is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFC=y
+New value: # CONFIG_NFC is not set
+
+Value of CONFIG_VEXPRESS_CONFIG is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_VEXPRESS_CONFIG=y
+New value: # CONFIG_VEXPRESS_CONFIG is not set
+
+Value of CONFIG_MHI_BUS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MHI_BUS=y
+New value: # CONFIG_MHI_BUS is not set
+
+Value of CONFIG_ARM_SCMI_PROTOCOL is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_ARM_SCMI_PROTOCOL=y
+New value: # CONFIG_ARM_SCMI_PROTOCOL is not set
+
+Value of CONFIG_IMX_SCMI_BBM_EXT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IMX_SCMI_BBM_EXT=y
+New value: # CONFIG_IMX_SCMI_BBM_EXT is not set
+
+Value of CONFIG_ARM_SCPI_PROTOCOL is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_ARM_SCPI_PROTOCOL=y
+New value: # CONFIG_ARM_SCPI_PROTOCOL is not set
+
+Value of CONFIG_GOOGLE_FIRMWARE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_GOOGLE_FIRMWARE=y
+New value: # CONFIG_GOOGLE_FIRMWARE is not set
+
+Value of CONFIG_GNSS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_GNSS=y
+New value: # CONFIG_GNSS is not set
+
+Value of CONFIG_ZRAM_DEF_COMP_LZ4 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: # CONFIG_ZRAM_DEF_COMP_LZ4 is not set
+New value: CONFIG_ZRAM_DEF_COMP_LZ4=y
+
+Value of CONFIG_ZRAM_DEF_COMP_ZSTD is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_ZRAM_DEF_COMP_ZSTD=y
+New value: # CONFIG_ZRAM_DEF_COMP_ZSTD is not set
+
+Value of CONFIG_BLK_DEV_NBD is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_BLK_DEV_NBD=y
+New value: # CONFIG_BLK_DEV_NBD is not set
+
+Value of CONFIG_VIRTIO_BLK is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_VIRTIO_BLK=y
+New value: # CONFIG_VIRTIO_BLK is not set
+
+Value of CONFIG_SRAM is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SRAM=y
+New value: # CONFIG_SRAM is not set
+
+Value of CONFIG_EEPROM_AT24 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_EEPROM_AT24=m
+New value: # CONFIG_EEPROM_AT24 is not set
+
+Value of CONFIG_EEPROM_AT25 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_EEPROM_AT25=m
+New value: # CONFIG_EEPROM_AT25 is not set
+
+Value of CONFIG_UACCE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_UACCE=y
+New value: # CONFIG_UACCE is not set
+
+Value of CONFIG_SCSI_SAS_ATA is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SCSI_SAS_ATA=y
+New value: # CONFIG_SCSI_SAS_ATA is not set
+
+Value of CONFIG_SCSI_HISI_SAS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SCSI_HISI_SAS=y
+New value: # CONFIG_SCSI_HISI_SAS is not set
+
+Value of CONFIG_ATA is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_ATA=y
+New value: # CONFIG_ATA is not set
+
+Value of CONFIG_MD is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MD=y
+New value: # CONFIG_MD is not set
+
+Value of CONFIG_MACVTAP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MACVTAP=y
+New value: # CONFIG_MACVTAP is not set
+
+Value of CONFIG_VIRTIO_NET is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_VIRTIO_NET=y
+New value: # CONFIG_VIRTIO_NET is not set
+
+Value of CONFIG_MHI_NET is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MHI_NET=y
+New value: # CONFIG_MHI_NET is not set
+
+Value of CONFIG_REALTEK_PHY is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_REALTEK_PHY=y
+New value: # CONFIG_REALTEK_PHY is not set
+
+Value of CONFIG_REALTEK_PHY_HWMON is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_REALTEK_PHY_HWMON=y
+New value: # CONFIG_REALTEK_PHY_HWMON is not set
+
+Value of CONFIG_MDIO_BITBANG is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MDIO_BITBANG=y
+New value: # CONFIG_MDIO_BITBANG is not set
+
+Value of CONFIG_MDIO_BCM_UNIMAC is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MDIO_BCM_UNIMAC=y
+New value: # CONFIG_MDIO_BCM_UNIMAC is not set
+
+Value of CONFIG_MDIO_GPIO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MDIO_GPIO=y
+New value: # CONFIG_MDIO_GPIO is not set
+
+Value of CONFIG_MDIO_BUS_MUX_MULTIPLEXER is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MDIO_BUS_MUX_MULTIPLEXER=y
+New value: # CONFIG_MDIO_BUS_MUX_MULTIPLEXER is not set
+
+Value of CONFIG_MDIO_BUS_MUX_MMIOREG is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MDIO_BUS_MUX_MMIOREG=y
+New value: # CONFIG_MDIO_BUS_MUX_MMIOREG is not set
+
+Value of CONFIG_PCS_XPCS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_PCS_XPCS=y
+New value: # CONFIG_PCS_XPCS is not set
+
+Value of CONFIG_USB_PEGASUS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_PEGASUS=y
+New value: # CONFIG_USB_PEGASUS is not set
+
+Value of CONFIG_USB_RTL8150 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_RTL8150=y
+New value: # CONFIG_USB_RTL8150 is not set
+
+Value of CONFIG_USB_LAN78XX is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_LAN78XX=y
+New value: # CONFIG_USB_LAN78XX is not set
+
+Value of CONFIG_USB_NET_DM9601 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_NET_DM9601=y
+New value: # CONFIG_USB_NET_DM9601 is not set
+
+Value of CONFIG_USB_NET_SR9800 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_NET_SR9800=y
+New value: # CONFIG_USB_NET_SR9800 is not set
+
+Value of CONFIG_USB_NET_SMSC75XX is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_NET_SMSC75XX=y
+New value: # CONFIG_USB_NET_SMSC75XX is not set
+
+Value of CONFIG_USB_NET_SMSC95XX is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_NET_SMSC95XX=y
+New value: # CONFIG_USB_NET_SMSC95XX is not set
+
+Value of CONFIG_USB_NET_PLUSB is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_NET_PLUSB=y
+New value: # CONFIG_USB_NET_PLUSB is not set
+
+Value of CONFIG_USB_NET_MCS7830 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_NET_MCS7830=y
+New value: # CONFIG_USB_NET_MCS7830 is not set
+
+Value of CONFIG_WWAN is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_WWAN=y
+New value: # CONFIG_WWAN is not set
+
+Value of CONFIG_INPUT_MATRIXKMAP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_INPUT_MATRIXKMAP=y
+New value: # CONFIG_INPUT_MATRIXKMAP is not set
+
+Value of CONFIG_KEYBOARD_ADC is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_KEYBOARD_ADC=y
+New value: # CONFIG_KEYBOARD_ADC is not set
+
+Value of CONFIG_KEYBOARD_GPIO_POLLED is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_KEYBOARD_GPIO_POLLED=y
+New value: # CONFIG_KEYBOARD_GPIO_POLLED is not set
+
+Value of CONFIG_KEYBOARD_IMX_BBM_SCMI is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_KEYBOARD_IMX_BBM_SCMI=y
+New value: # CONFIG_KEYBOARD_IMX_BBM_SCMI is not set
+
+Value of CONFIG_INPUT_UINPUT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: # CONFIG_INPUT_UINPUT is not set
+New value: CONFIG_INPUT_UINPUT=y
+
+Value of CONFIG_INPUT_PWM_BEEPER is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_INPUT_PWM_BEEPER=y
+New value: # CONFIG_INPUT_PWM_BEEPER is not set
+
+Value of CONFIG_INPUT_PWM_VIBRA is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_INPUT_PWM_VIBRA=y
+New value: # CONFIG_INPUT_PWM_VIBRA is not set
+
+Value of CONFIG_SERIO_AMBAKMI is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SERIO_AMBAKMI=y
+New value: # CONFIG_SERIO_AMBAKMI is not set
+
+Value of CONFIG_SERIAL_AMBA_PL011 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SERIAL_AMBA_PL011=y
+New value: # CONFIG_SERIAL_AMBA_PL011 is not set
+
+Value of CONFIG_SERIAL_AMBA_PL011_CONSOLE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SERIAL_AMBA_PL011_CONSOLE=y
+New value: # CONFIG_SERIAL_AMBA_PL011_CONSOLE is not set
+
+Value of CONFIG_SERIAL_XILINX_PS_UART is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SERIAL_XILINX_PS_UART=y
+New value: # CONFIG_SERIAL_XILINX_PS_UART is not set
+
+Value of CONFIG_SERIAL_XILINX_PS_UART_CONSOLE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SERIAL_XILINX_PS_UART_CONSOLE=y
+New value: # CONFIG_SERIAL_XILINX_PS_UART_CONSOLE is not set
+
+Value of CONFIG_SERIAL_FSL_LPUART is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SERIAL_FSL_LPUART=y
+New value: # CONFIG_SERIAL_FSL_LPUART is not set
+
+Value of CONFIG_SERIAL_FSL_LPUART_CONSOLE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SERIAL_FSL_LPUART_CONSOLE=y
+New value: # CONFIG_SERIAL_FSL_LPUART_CONSOLE is not set
+
+Value of CONFIG_SERIAL_FSL_LINFLEXUART is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SERIAL_FSL_LINFLEXUART=y
+New value: # CONFIG_SERIAL_FSL_LINFLEXUART is not set
+
+Value of CONFIG_SERIAL_FSL_LINFLEXUART_CONSOLE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SERIAL_FSL_LINFLEXUART_CONSOLE=y
+New value: # CONFIG_SERIAL_FSL_LINFLEXUART_CONSOLE is not set
+
+Value of CONFIG_SERIAL_SPRD_CONSOLE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SERIAL_SPRD_CONSOLE=y
+New value: # CONFIG_SERIAL_SPRD_CONSOLE is not set
+
+Value of CONFIG_VIRTIO_CONSOLE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_VIRTIO_CONSOLE=y
+New value: # CONFIG_VIRTIO_CONSOLE is not set
+
+Value of CONFIG_IPMI_HANDLER is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IPMI_HANDLER=y
+New value: # CONFIG_IPMI_HANDLER is not set
+
+Value of CONFIG_IPMI_DEVICE_INTERFACE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IPMI_DEVICE_INTERFACE=y
+New value: # CONFIG_IPMI_DEVICE_INTERFACE is not set
+
+Value of CONFIG_IPMI_SI is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IPMI_SI=y
+New value: # CONFIG_IPMI_SI is not set
+
+Value of CONFIG_HW_RANDOM_VIRTIO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_HW_RANDOM_VIRTIO=y
+New value: # CONFIG_HW_RANDOM_VIRTIO is not set
+
+Value of CONFIG_TCG_TPM is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TCG_TPM=y
+New value: # CONFIG_TCG_TPM is not set
+
+Value of CONFIG_TCG_TIS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TCG_TIS=y
+New value: # CONFIG_TCG_TIS is not set
+
+Value of CONFIG_SPI_SPIDEV is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SPI_SPIDEV=y
+New value: # CONFIG_SPI_SPIDEV is not set
+
+Value of CONFIG_PTP_1588_CLOCK is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_PTP_1588_CLOCK=y
+New value: # CONFIG_PTP_1588_CLOCK is not set
+
+Value of CONFIG_GPIO_MAX732X is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_GPIO_MAX732X=y
+New value: # CONFIG_GPIO_MAX732X is not set
+
+Value of CONFIG_GPIO_PCA953X is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_GPIO_PCA953X=y
+New value: # CONFIG_GPIO_PCA953X is not set
+
+Value of CONFIG_GPIO_AGGREGATOR is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_GPIO_AGGREGATOR=y
+New value: # CONFIG_GPIO_AGGREGATOR is not set
+
+Value of CONFIG_BATTERY_SBS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_BATTERY_SBS=m
+New value: # CONFIG_BATTERY_SBS is not set
+
+Value of CONFIG_BATTERY_BQ27XXX is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_BATTERY_BQ27XXX=y
+New value: # CONFIG_BATTERY_BQ27XXX is not set
+
+Value of CONFIG_BATTERY_MAX17042 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_BATTERY_MAX17042=m
+New value: # CONFIG_BATTERY_MAX17042 is not set
+
+Value of CONFIG_CHARGER_MANAGER is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CHARGER_MANAGER=y
+New value: # CONFIG_CHARGER_MANAGER is not set
+
+Value of CONFIG_SENSORS_ARM_SCMI is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SENSORS_ARM_SCMI=y
+New value: # CONFIG_SENSORS_ARM_SCMI is not set
+
+Value of CONFIG_SENSORS_ARM_SCPI is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SENSORS_ARM_SCPI=y
+New value: # CONFIG_SENSORS_ARM_SCPI is not set
+
+Value of CONFIG_SENSORS_GPIO_FAN is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SENSORS_GPIO_FAN=y
+New value: # CONFIG_SENSORS_GPIO_FAN is not set
+
+Value of CONFIG_SENSORS_JC42 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SENSORS_JC42=m
+New value: # CONFIG_SENSORS_JC42 is not set
+
+Value of CONFIG_SENSORS_LM75 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SENSORS_LM75=m
+New value: # CONFIG_SENSORS_LM75 is not set
+
+Value of CONFIG_SENSORS_LM90 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SENSORS_LM90=m
+New value: # CONFIG_SENSORS_LM90 is not set
+
+Value of CONFIG_SENSORS_PWM_FAN is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SENSORS_PWM_FAN=m
+New value: # CONFIG_SENSORS_PWM_FAN is not set
+
+Value of CONFIG_SENSORS_INA2XX is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SENSORS_INA2XX=m
+New value: # CONFIG_SENSORS_INA2XX is not set
+
+Value of CONFIG_SENSORS_INA3221 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SENSORS_INA3221=m
+New value: # CONFIG_SENSORS_INA3221 is not set
+
+Value of CONFIG_MEDIA_SUPPORT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MEDIA_SUPPORT=y
+New value: # CONFIG_MEDIA_SUPPORT is not set
+
+Value of CONFIG_VIDEO_IMX219 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_VIDEO_IMX219=m
+New value: # CONFIG_VIDEO_IMX219 is not set
+
+Value of CONFIG_VIDEO_IMX412 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_VIDEO_IMX412=m
+New value: # CONFIG_VIDEO_IMX412 is not set
+
+Value of CONFIG_VIDEO_OV5640 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_VIDEO_OV5640=m
+New value: # CONFIG_VIDEO_OV5640 is not set
+
+Value of CONFIG_VIDEO_OV5645 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_VIDEO_OV5645=m
+New value: # CONFIG_VIDEO_OV5645 is not set
+
+Value of CONFIG_DRM_MALI_DISPLAY is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_DRM_MALI_DISPLAY=y
+New value: # CONFIG_DRM_MALI_DISPLAY is not set
+
+Value of CONFIG_DRM_KOMEDA is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_DRM_KOMEDA=y
+New value: # CONFIG_DRM_KOMEDA is not set
+
+Value of CONFIG_SND_ALOOP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_ALOOP=m
+New value: # CONFIG_SND_ALOOP is not set
+
+Value of CONFIG_SND_SOC_FSL_ASRC is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_FSL_ASRC=m
+New value: # CONFIG_SND_SOC_FSL_ASRC is not set
+
+Value of CONFIG_SND_SOC_FSL_SAI is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_FSL_SAI=m
+New value: # CONFIG_SND_SOC_FSL_SAI is not set
+
+Value of CONFIG_SND_SOC_FSL_AUDMIX is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_FSL_AUDMIX=m
+New value: # CONFIG_SND_SOC_FSL_AUDMIX is not set
+
+Value of CONFIG_SND_SOC_FSL_SSI is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_FSL_SSI=m
+New value: # CONFIG_SND_SOC_FSL_SSI is not set
+
+Value of CONFIG_SND_SOC_FSL_SPDIF is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_FSL_SPDIF=m
+New value: # CONFIG_SND_SOC_FSL_SPDIF is not set
+
+Value of CONFIG_SND_SOC_FSL_ESAI is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_FSL_ESAI=m
+New value: # CONFIG_SND_SOC_FSL_ESAI is not set
+
+Value of CONFIG_SND_SOC_FSL_MICFIL is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_FSL_MICFIL=m
+New value: # CONFIG_SND_SOC_FSL_MICFIL is not set
+
+Value of CONFIG_SND_SOC_FSL_EASRC is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_FSL_EASRC=m
+New value: # CONFIG_SND_SOC_FSL_EASRC is not set
+
+Value of CONFIG_SND_SOC_IMX_AUDMUX is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_IMX_AUDMUX=m
+New value: # CONFIG_SND_SOC_IMX_AUDMUX is not set
+
+Value of CONFIG_SND_SOC_ADAU7002 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_ADAU7002=m
+New value: # CONFIG_SND_SOC_ADAU7002 is not set
+
+Value of CONFIG_SND_SOC_AK4613 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_AK4613=m
+New value: # CONFIG_SND_SOC_AK4613 is not set
+
+Value of CONFIG_SND_SOC_AK4619 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_AK4619=m
+New value: # CONFIG_SND_SOC_AK4619 is not set
+
+Value of CONFIG_SND_SOC_BT_SCO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_BT_SCO=m
+New value: # CONFIG_SND_SOC_BT_SCO is not set
+
+Value of CONFIG_SND_SOC_DA7213 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_DA7213=m
+New value: # CONFIG_SND_SOC_DA7213 is not set
+
+Value of CONFIG_SND_SOC_DMIC is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_DMIC=m
+New value: # CONFIG_SND_SOC_DMIC is not set
+
+Value of CONFIG_SND_SOC_ES7134 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_ES7134=m
+New value: # CONFIG_SND_SOC_ES7134 is not set
+
+Value of CONFIG_SND_SOC_ES7241 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_ES7241=m
+New value: # CONFIG_SND_SOC_ES7241 is not set
+
+Value of CONFIG_SND_SOC_ES8316 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_ES8316=m
+New value: # CONFIG_SND_SOC_ES8316 is not set
+
+Value of CONFIG_SND_SOC_GTM601 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_GTM601=m
+New value: # CONFIG_SND_SOC_GTM601 is not set
+
+Value of CONFIG_SND_SOC_MAX98357A is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_MAX98357A=m
+New value: # CONFIG_SND_SOC_MAX98357A is not set
+
+Value of CONFIG_SND_SOC_MAX98927 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_MAX98927=m
+New value: # CONFIG_SND_SOC_MAX98927 is not set
+
+Value of CONFIG_SND_SOC_MAX98390 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_MAX98390=m
+New value: # CONFIG_SND_SOC_MAX98390 is not set
+
+Value of CONFIG_SND_SOC_MSM8916_WCD_DIGITAL is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_MSM8916_WCD_DIGITAL=m
+New value: # CONFIG_SND_SOC_MSM8916_WCD_DIGITAL is not set
+
+Value of CONFIG_SND_SOC_PCM3168A_I2C is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_PCM3168A_I2C=m
+New value: # CONFIG_SND_SOC_PCM3168A_I2C is not set
+
+Value of CONFIG_SND_SOC_RT5640 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_RT5640=m
+New value: # CONFIG_SND_SOC_RT5640 is not set
+
+Value of CONFIG_SND_SOC_RT5659 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_RT5659=m
+New value: # CONFIG_SND_SOC_RT5659 is not set
+
+Value of CONFIG_SND_SOC_SGTL5000 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_SGTL5000=m
+New value: # CONFIG_SND_SOC_SGTL5000 is not set
+
+Value of CONFIG_SND_SOC_SIMPLE_AMPLIFIER is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_SIMPLE_AMPLIFIER=y
+New value: # CONFIG_SND_SOC_SIMPLE_AMPLIFIER is not set
+
+Value of CONFIG_SND_SOC_SIMPLE_MUX is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_SIMPLE_MUX=m
+New value: # CONFIG_SND_SOC_SIMPLE_MUX is not set
+
+Value of CONFIG_SND_SOC_SPDIF is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_SPDIF=m
+New value: # CONFIG_SND_SOC_SPDIF is not set
+
+Value of CONFIG_SND_SOC_TAS2552 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_TAS2552=m
+New value: # CONFIG_SND_SOC_TAS2552 is not set
+
+Value of CONFIG_SND_SOC_TAS571X is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_TAS571X=m
+New value: # CONFIG_SND_SOC_TAS571X is not set
+
+Value of CONFIG_SND_SOC_TLV320AIC31XX is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_TLV320AIC31XX=m
+New value: # CONFIG_SND_SOC_TLV320AIC31XX is not set
+
+Value of CONFIG_SND_SOC_TLV320AIC32X4_I2C is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_TLV320AIC32X4_I2C=m
+New value: # CONFIG_SND_SOC_TLV320AIC32X4_I2C is not set
+
+Value of CONFIG_SND_SOC_TLV320AIC3X_I2C is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_TLV320AIC3X_I2C=m
+New value: # CONFIG_SND_SOC_TLV320AIC3X_I2C is not set
+
+Value of CONFIG_SND_SOC_TS3A227E is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_TS3A227E=m
+New value: # CONFIG_SND_SOC_TS3A227E is not set
+
+Value of CONFIG_SND_SOC_UMS9230_DIGITAL is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_UMS9230_DIGITAL=y
+New value: # CONFIG_SND_SOC_UMS9230_DIGITAL is not set
+
+Value of CONFIG_SND_SOC_WM8524 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_WM8524=m
+New value: # CONFIG_SND_SOC_WM8524 is not set
+
+Value of CONFIG_SND_SOC_WM8904 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_WM8904=m
+New value: # CONFIG_SND_SOC_WM8904 is not set
+
+Value of CONFIG_SND_SOC_WM8960 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_WM8960=m
+New value: # CONFIG_SND_SOC_WM8960 is not set
+
+Value of CONFIG_SND_SOC_WM8962 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_WM8962=m
+New value: # CONFIG_SND_SOC_WM8962 is not set
+
+Value of CONFIG_SND_SOC_WM8978 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_WM8978=m
+New value: # CONFIG_SND_SOC_WM8978 is not set
+
+Value of CONFIG_SND_SOC_MT6357 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_MT6357=m
+New value: # CONFIG_SND_SOC_MT6357 is not set
+
+Value of CONFIG_SND_SOC_MT6358 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_MT6358=m
+New value: # CONFIG_SND_SOC_MT6358 is not set
+
+Value of CONFIG_SND_SOC_NAU8822 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_NAU8822=m
+New value: # CONFIG_SND_SOC_NAU8822 is not set
+
+Value of CONFIG_SND_SOC_LPASS_WSA_MACRO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_LPASS_WSA_MACRO=m
+New value: # CONFIG_SND_SOC_LPASS_WSA_MACRO is not set
+
+Value of CONFIG_SND_SOC_LPASS_VA_MACRO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_LPASS_VA_MACRO=m
+New value: # CONFIG_SND_SOC_LPASS_VA_MACRO is not set
+
+Value of CONFIG_SND_SOC_LPASS_RX_MACRO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_LPASS_RX_MACRO=m
+New value: # CONFIG_SND_SOC_LPASS_RX_MACRO is not set
+
+Value of CONFIG_SND_SOC_LPASS_TX_MACRO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SOC_LPASS_TX_MACRO=m
+New value: # CONFIG_SND_SOC_LPASS_TX_MACRO is not set
+
+Value of CONFIG_SND_SIMPLE_CARD is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_SIMPLE_CARD=m
+New value: # CONFIG_SND_SIMPLE_CARD is not set
+
+Value of CONFIG_SND_AUDIO_GRAPH_CARD is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_AUDIO_GRAPH_CARD=m
+New value: # CONFIG_SND_AUDIO_GRAPH_CARD is not set
+
+Value of CONFIG_SND_AUDIO_GRAPH_CARD2 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SND_AUDIO_GRAPH_CARD2=m
+New value: # CONFIG_SND_AUDIO_GRAPH_CARD2 is not set
+
+Value of CONFIG_HID_A4TECH is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_HID_A4TECH=y
+New value: # CONFIG_HID_A4TECH is not set
+
+Value of CONFIG_HID_APPLE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_HID_APPLE=y
+New value: # CONFIG_HID_APPLE is not set
+
+Value of CONFIG_HID_BELKIN is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_HID_BELKIN=y
+New value: # CONFIG_HID_BELKIN is not set
+
+Value of CONFIG_HID_CHERRY is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_HID_CHERRY=y
+New value: # CONFIG_HID_CHERRY is not set
+
+Value of CONFIG_HID_CHICONY is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_HID_CHICONY=y
+New value: # CONFIG_HID_CHICONY is not set
+
+Value of CONFIG_HID_CYPRESS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_HID_CYPRESS=y
+New value: # CONFIG_HID_CYPRESS is not set
+
+Value of CONFIG_HID_EZKEY is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_HID_EZKEY=y
+New value: # CONFIG_HID_EZKEY is not set
+
+Value of CONFIG_HID_ITE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_HID_ITE=y
+New value: # CONFIG_HID_ITE is not set
+
+Value of CONFIG_HID_KENSINGTON is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_HID_KENSINGTON=y
+New value: # CONFIG_HID_KENSINGTON is not set
+
+Value of CONFIG_HID_LOGITECH is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_HID_LOGITECH=m
+New value: # CONFIG_HID_LOGITECH is not set
+
+Value of CONFIG_HID_REDRAGON is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_HID_REDRAGON=y
+New value: # CONFIG_HID_REDRAGON is not set
+
+Value of CONFIG_HID_MONTEREY is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_HID_MONTEREY=y
+New value: # CONFIG_HID_MONTEREY is not set
+
+Value of CONFIG_HID_MULTITOUCH is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_HID_MULTITOUCH=m
+New value: # CONFIG_HID_MULTITOUCH is not set
+
+Value of CONFIG_I2C_HID_OF is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_I2C_HID_OF=m
+New value: # CONFIG_I2C_HID_OF is not set
+
+Value of CONFIG_I2C_HID_OF_ELAN is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_I2C_HID_OF_ELAN=m
+New value: # CONFIG_I2C_HID_OF_ELAN is not set
+
+Value of CONFIG_USB_XHCI_HCD is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_XHCI_HCD=y
+New value: # CONFIG_USB_XHCI_HCD is not set
+
+Value of CONFIG_USB_EHCI_HCD is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_EHCI_HCD=y
+New value: # CONFIG_USB_EHCI_HCD is not set
+
+Value of CONFIG_USB_OHCI_HCD is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_OHCI_HCD=y
+New value: # CONFIG_USB_OHCI_HCD is not set
+
+Value of CONFIG_USB_SERIAL is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_SERIAL=m
+New value: # CONFIG_USB_SERIAL is not set
+
+Value of CONFIG_USB_HSIC_USB3503 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_HSIC_USB3503=y
+New value: # CONFIG_USB_HSIC_USB3503 is not set
+
+Value of CONFIG_USB_ONBOARD_DEV is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_ONBOARD_DEV=m
+New value: # CONFIG_USB_ONBOARD_DEV is not set
+
+Value of CONFIG_USB_SNP_UDC_PLAT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_SNP_UDC_PLAT=y
+New value: # CONFIG_USB_SNP_UDC_PLAT is not set
+
+Value of CONFIG_USB_BDC_UDC is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_BDC_UDC=y
+New value: # CONFIG_USB_BDC_UDC is not set
+
+Value of CONFIG_USB_CONFIGFS_OBEX is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_CONFIGFS_OBEX=y
+New value: # CONFIG_USB_CONFIGFS_OBEX is not set
+
+Value of CONFIG_USB_CONFIGFS_ECM_SUBSET is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_CONFIGFS_ECM_SUBSET=y
+New value: # CONFIG_USB_CONFIGFS_ECM_SUBSET is not set
+
+Value of CONFIG_USB_CONFIGFS_RNDIS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_CONFIGFS_RNDIS=y
+New value: # CONFIG_USB_CONFIGFS_RNDIS is not set
+
+Value of CONFIG_USB_CONFIGFS_EEM is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_USB_CONFIGFS_EEM=y
+New value: # CONFIG_USB_CONFIGFS_EEM is not set
+
+Value of CONFIG_TYPEC_TCPCI is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TYPEC_TCPCI=y
+New value: # CONFIG_TYPEC_TCPCI is not set
+
+Value of CONFIG_TYPEC_FUSB302 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TYPEC_FUSB302=y
+New value: # CONFIG_TYPEC_FUSB302 is not set
+
+Value of CONFIG_TYPEC_UCSI is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TYPEC_UCSI=y
+New value: # CONFIG_TYPEC_UCSI is not set
+
+Value of CONFIG_TYPEC_MUX_FSA4480 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TYPEC_MUX_FSA4480=m
+New value: # CONFIG_TYPEC_MUX_FSA4480 is not set
+
+Value of CONFIG_TYPEC_MUX_GPIO_SBU is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TYPEC_MUX_GPIO_SBU=m
+New value: # CONFIG_TYPEC_MUX_GPIO_SBU is not set
+
+Value of CONFIG_TYPEC_MUX_NB7VPQ904M is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TYPEC_MUX_NB7VPQ904M=m
+New value: # CONFIG_TYPEC_MUX_NB7VPQ904M is not set
+
+Value of CONFIG_TYPEC_MUX_WCD939X_USBSS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TYPEC_MUX_WCD939X_USBSS=m
+New value: # CONFIG_TYPEC_MUX_WCD939X_USBSS is not set
+
+Value of CONFIG_TYPEC_DP_ALTMODE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TYPEC_DP_ALTMODE=m
+New value: # CONFIG_TYPEC_DP_ALTMODE is not set
+
+Value of CONFIG_SCSI_UFSHCD is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SCSI_UFSHCD=y
+New value: # CONFIG_SCSI_UFSHCD is not set
+
+Value of CONFIG_DMABUF_HEAPS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: # CONFIG_DMABUF_HEAPS is not set
+New value: CONFIG_DMABUF_HEAPS=y
+
+Value of CONFIG_VFIO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_VFIO=y
+New value: # CONFIG_VFIO is not set
+
+Value of CONFIG_VIRTIO_BALLOON is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_VIRTIO_BALLOON=y
+New value: # CONFIG_VIRTIO_BALLOON is not set
+
+Value of CONFIG_VIRTIO_MMIO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_VIRTIO_MMIO=y
+New value: # CONFIG_VIRTIO_MMIO is not set
+
+Value of CONFIG_CLK_VEXPRESS_OSC is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CLK_VEXPRESS_OSC=y
+New value: # CONFIG_CLK_VEXPRESS_OSC is not set
+
+Value of CONFIG_COMMON_CLK_SCMI is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_COMMON_CLK_SCMI=y
+New value: # CONFIG_COMMON_CLK_SCMI is not set
+
+Value of CONFIG_COMMON_CLK_SCPI is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_COMMON_CLK_SCPI=y
+New value: # CONFIG_COMMON_CLK_SCPI is not set
+
+Value of CONFIG_COMMON_CLK_CS2000_CP is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_COMMON_CLK_CS2000_CP=y
+New value: # CONFIG_COMMON_CLK_CS2000_CP is not set
+
+Value of CONFIG_COMMON_CLK_XGENE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_COMMON_CLK_XGENE=y
+New value: # CONFIG_COMMON_CLK_XGENE is not set
+
+Value of CONFIG_COMMON_CLK_RS9_PCIE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_COMMON_CLK_RS9_PCIE=y
+New value: # CONFIG_COMMON_CLK_RS9_PCIE is not set
+
+Value of CONFIG_COMMON_CLK_VC3 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_COMMON_CLK_VC3=y
+New value: # CONFIG_COMMON_CLK_VC3 is not set
+
+Value of CONFIG_COMMON_CLK_VC5 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_COMMON_CLK_VC5=y
+New value: # CONFIG_COMMON_CLK_VC5 is not set
+
+Value of CONFIG_IOMMU_IO_PGTABLE_DART is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IOMMU_IO_PGTABLE_DART=y
+New value: # CONFIG_IOMMU_IO_PGTABLE_DART is not set
+
+Value of CONFIG_ARM_SMMU is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_ARM_SMMU=y
+New value: # CONFIG_ARM_SMMU is not set
+
+Value of CONFIG_ARM_SMMU_V3 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_ARM_SMMU_V3=y
+New value: # CONFIG_ARM_SMMU_V3 is not set
+
+Value of CONFIG_EXTCON_PTN5150 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_EXTCON_PTN5150=m
+New value: # CONFIG_EXTCON_PTN5150 is not set
+
+Value of CONFIG_EXTCON_USB_GPIO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_EXTCON_USB_GPIO=y
+New value: # CONFIG_EXTCON_USB_GPIO is not set
+
+Value of CONFIG_MAX9611 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MAX9611=m
+New value: # CONFIG_MAX9611 is not set
+
+Value of CONFIG_TI_ADS1015 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TI_ADS1015=m
+New value: # CONFIG_TI_ADS1015 is not set
+
+Value of CONFIG_IIO_ST_LSM6DSX is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IIO_ST_LSM6DSX=m
+New value: # CONFIG_IIO_ST_LSM6DSX is not set
+
+Value of CONFIG_IIO_SPRD_SHUB_LIGHT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IIO_SPRD_SHUB_LIGHT=y
+New value: # CONFIG_IIO_SPRD_SHUB_LIGHT is not set
+
+Value of CONFIG_SENSORS_ISL29018 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SENSORS_ISL29018=m
+New value: # CONFIG_SENSORS_ISL29018 is not set
+
+Value of CONFIG_VCNL4000 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_VCNL4000=m
+New value: # CONFIG_VCNL4000 is not set
+
+Value of CONFIG_IIO_SPRD_SHUB_COMPASS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IIO_SPRD_SHUB_COMPASS=y
+New value: # CONFIG_IIO_SPRD_SHUB_COMPASS is not set
+
+Value of CONFIG_IIO_SPRD_SHUB_MAGN is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IIO_SPRD_SHUB_MAGN=y
+New value: # CONFIG_IIO_SPRD_SHUB_MAGN is not set
+
+Value of CONFIG_IIO_ST_MAGN_3AXIS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IIO_ST_MAGN_3AXIS=m
+New value: # CONFIG_IIO_ST_MAGN_3AXIS is not set
+
+Value of CONFIG_MPL3115 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MPL3115=m
+New value: # CONFIG_MPL3115 is not set
+
+Value of CONFIG_IIO_SPRD_SHUB_PROXIMITY is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_IIO_SPRD_SHUB_PROXIMITY=y
+New value: # CONFIG_IIO_SPRD_SHUB_PROXIMITY is not set
+
+Value of CONFIG_ARM_PMU is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: # CONFIG_ARM_PMU is not set
+New value: CONFIG_ARM_PMU=y
+
+Value of CONFIG_ANDROID_BINDERFS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: # CONFIG_ANDROID_BINDERFS is not set
+New value: CONFIG_ANDROID_BINDERFS=y
+
+Value of CONFIG_STM is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_STM=y
+New value: # CONFIG_STM is not set
+
+Value of CONFIG_TEE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_TEE=y
+New value: # CONFIG_TEE is not set
+
+Value of CONFIG_OPTEE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_OPTEE=y
+New value: # CONFIG_OPTEE is not set
+
+Value of CONFIG_MUX_GPIO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MUX_GPIO=y
+New value: # CONFIG_MUX_GPIO is not set
+
+Value of CONFIG_MUX_MMIO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MUX_MMIO=y
+New value: # CONFIG_MUX_MMIO is not set
+
+Value of CONFIG_BTRFS_FS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_BTRFS_FS=y
+New value: # CONFIG_BTRFS_FS is not set
+
+Value of CONFIG_BTRFS_FS_POSIX_ACL is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_BTRFS_FS_POSIX_ACL=y
+New value: # CONFIG_BTRFS_FS_POSIX_ACL is not set
+
+Value of CONFIG_FANOTIFY is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_FANOTIFY=y
+New value: # CONFIG_FANOTIFY is not set
+
+Value of CONFIG_FANOTIFY_ACCESS_PERMISSIONS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_FANOTIFY_ACCESS_PERMISSIONS=y
+New value: # CONFIG_FANOTIFY_ACCESS_PERMISSIONS is not set
+
+Value of CONFIG_QUOTA is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_QUOTA=y
+New value: # CONFIG_QUOTA is not set
+
+Value of CONFIG_AUTOFS_FS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_AUTOFS_FS=y
+New value: # CONFIG_AUTOFS_FS is not set
+
+Value of CONFIG_CUSE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CUSE=y
+New value: # CONFIG_CUSE is not set
+
+Value of CONFIG_HUGETLBFS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_HUGETLBFS=y
+New value: # CONFIG_HUGETLBFS is not set
+
+Value of CONFIG_SQUASHFS_XZ is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: # CONFIG_SQUASHFS_XZ is not set
+New value: CONFIG_SQUASHFS_XZ=y
+
+Value of CONFIG_SQUASHFS_ZSTD is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: # CONFIG_SQUASHFS_ZSTD is not set
+New value: CONFIG_SQUASHFS_ZSTD=y
+
+Value of CONFIG_PSTORE_PMSG is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_PSTORE_PMSG=y
+New value: # CONFIG_PSTORE_PMSG is not set
+
+Value of CONFIG_PSTORE_BLK is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_PSTORE_BLK=y
+New value: # CONFIG_PSTORE_BLK is not set
+
+Value of CONFIG_NFS_FS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFS_FS=y
+New value: # CONFIG_NFS_FS is not set
+
+Value of CONFIG_NFS_V4 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFS_V4=y
+New value: # CONFIG_NFS_V4 is not set
+
+Value of CONFIG_NFS_V4_2 is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_NFS_V4_2=y
+New value: # CONFIG_NFS_V4_2 is not set
+
+Value of CONFIG_ROOT_NFS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_ROOT_NFS=y
+New value: # CONFIG_ROOT_NFS is not set
+
+Value of CONFIG_9P_FS is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_9P_FS=y
+New value: # CONFIG_9P_FS is not set
+
+Value of CONFIG_CRYPTO_USER is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CRYPTO_USER=y
+New value: # CONFIG_CRYPTO_USER is not set
+
+Value of CONFIG_CRYPTO_DH is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CRYPTO_DH=y
+New value: # CONFIG_CRYPTO_DH is not set
+
+Value of CONFIG_CRYPTO_DES is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CRYPTO_DES=y
+New value: # CONFIG_CRYPTO_DES is not set
+
+Value of CONFIG_CRYPTO_DEFLATE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CRYPTO_DEFLATE=y
+New value: # CONFIG_CRYPTO_DEFLATE is not set
+
+Value of CONFIG_CRYPTO_LZO is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CRYPTO_LZO=y
+New value: # CONFIG_CRYPTO_LZO is not set
+
+Value of CONFIG_CRYPTO_DEV_CCREE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CRYPTO_DEV_CCREE=y
+New value: # CONFIG_CRYPTO_DEV_CCREE is not set
+
+Value of CONFIG_CRYPTO_DEV_AMLOGIC_GXL is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CRYPTO_DEV_AMLOGIC_GXL=m
+New value: # CONFIG_CRYPTO_DEV_AMLOGIC_GXL is not set
+
+Value of CONFIG_CONSOLE_LOGLEVEL_DEFAULT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CONSOLE_LOGLEVEL_DEFAULT=8
+New value: CONFIG_CONSOLE_LOGLEVEL_DEFAULT=4
+
+Value of CONFIG_BOOT_PRINTK_DELAY is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_BOOT_PRINTK_DELAY=y
+New value: # CONFIG_BOOT_PRINTK_DELAY is not set
+
+Value of CONFIG_DEBUG_INFO_NONE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: # CONFIG_DEBUG_INFO_NONE is not set
+New value: CONFIG_DEBUG_INFO_NONE=y
+
+Value of CONFIG_DEBUG_INFO_REDUCED is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_DEBUG_INFO_REDUCED=y
+New value: # CONFIG_DEBUG_INFO_REDUCED is not set
+
+Value of CONFIG_SLUB_DEBUG is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_SLUB_DEBUG=y
+New value: # CONFIG_SLUB_DEBUG is not set
+
+Value of CONFIG_DEBUG_MEMORY_INIT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_DEBUG_MEMORY_INIT=y
+New value: # CONFIG_DEBUG_MEMORY_INIT is not set
+
+Value of CONFIG_RCU_TRACE is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_RCU_TRACE=y
+New value: # CONFIG_RCU_TRACE is not set
+
+Value of CONFIG_CORESIGHT is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_CORESIGHT=m
+New value: # CONFIG_CORESIGHT is not set
+
+Value of CONFIG_MEMTEST is redefined by fragment /home/dakoda/.hermes/cache/scratch/kernel-trim.config:
+Previous value: CONFIG_MEMTEST=y
+New value: # CONFIG_MEMTEST is not set
+
+#
+# configuration written to .config
+#
+WARNING: Value requested for CONFIG_POSIX_MQUEUE_SYSCTL not in final .config
+Requested value: CONFIG_POSIX_MQUEUE_SYSCTL=y
+Actual value:    
+WARNING: Value requested for CONFIG_AUDITSYSCALL not in final .config
+Requested value: CONFIG_AUDITSYSCALL=y
+Actual value:    
+WARNING: Value requested for CONFIG_NUMA_BALANCING_DEFAULT_ENABLED not in final .config
+Requested value: CONFIG_NUMA_BALANCING_DEFAULT_ENABLED=y
+Actual value:    
+WARNING: Value requested for CONFIG_FUTEX_MPOL not in final .config
+Requested value: CONFIG_FUTEX_MPOL=y
+Actual value:    
+WARNING: Value requested for CONFIG_GUEST_PERF_EVENTS not in final .config
+Requested value: CONFIG_GUEST_PERF_EVENTS=y
+Actual value:    
+WARNING: Value requested for CONFIG_CRASH_RESERVE not in final .config
+Requested value: CONFIG_CRASH_RESERVE=y
+Actual value:    
+WARNING: Value requested for CONFIG_VMCORE_INFO not in final .config
+Requested value: CONFIG_VMCORE_INFO=y
+Actual value:    
+WARNING: Value requested for CONFIG_KEXEC_CORE not in final .config
+Requested value: CONFIG_KEXEC_CORE=y
+Actual value:    
+WARNING: Value requested for CONFIG_CRASH_DUMP not in final .config
+Requested value: CONFIG_CRASH_DUMP=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARM64_ERRATUM_834220 not in final .config
+Requested value: CONFIG_ARM64_ERRATUM_834220=y
+Actual value:    
+WARNING: Value requested for CONFIG_NODES_SHIFT not in final .config
+Requested value: CONFIG_NODES_SHIFT=4
+Actual value:    
+WARNING: Value requested for CONFIG_ARCH_SELECTS_KEXEC_FILE not in final .config
+Requested value: CONFIG_ARCH_SELECTS_KEXEC_FILE=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARCH_HAS_GENERIC_CRASHKERNEL_RESERVATION not in final .config
+Requested value: CONFIG_ARCH_HAS_GENERIC_CRASHKERNEL_RESERVATION=y
+Actual value:    
+WARNING: Value requested for CONFIG_TRANS_TABLE not in final .config
+Requested value: CONFIG_TRANS_TABLE=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_DOM0 not in final .config
+Requested value: CONFIG_XEN_DOM0=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARM64_PTR_AUTH_KERNEL not in final .config
+Requested value: CONFIG_ARM64_PTR_AUTH_KERNEL=y
+Actual value:    
+WARNING: Value requested for CONFIG_STACKPROTECTOR_PER_TASK not in final .config
+Requested value: CONFIG_STACKPROTECTOR_PER_TASK=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARM64_CONTPTE not in final .config
+Requested value: CONFIG_ARM64_CONTPTE=y
+Actual value:    
+WARNING: Value requested for CONFIG_EFI_STUB not in final .config
+Requested value: CONFIG_EFI_STUB=y
+Actual value:    
+WARNING: Value requested for CONFIG_DMI not in final .config
+Requested value: CONFIG_DMI=y
+Actual value:    
+WARNING: Value requested for CONFIG_CPU_FREQ_GOV_COMMON not in final .config
+Requested value: CONFIG_CPU_FREQ_GOV_COMMON=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARCH_SUPPORTS_ACPI not in final .config
+Requested value: CONFIG_ARCH_SUPPORTS_ACPI=y
+Actual value:    
+WARNING: Value requested for CONFIG_KVM_COMMON not in final .config
+Requested value: CONFIG_KVM_COMMON=y
+Actual value:    
+WARNING: Value requested for CONFIG_HAVE_KVM_IRQCHIP not in final .config
+Requested value: CONFIG_HAVE_KVM_IRQCHIP=y
+Actual value:    
+WARNING: Value requested for CONFIG_HAVE_KVM_IRQ_ROUTING not in final .config
+Requested value: CONFIG_HAVE_KVM_IRQ_ROUTING=y
+Actual value:    
+WARNING: Value requested for CONFIG_HAVE_KVM_DIRTY_RING not in final .config
+Requested value: CONFIG_HAVE_KVM_DIRTY_RING=y
+Actual value:    
+WARNING: Value requested for CONFIG_HAVE_KVM_DIRTY_RING_ACQ_REL not in final .config
+Requested value: CONFIG_HAVE_KVM_DIRTY_RING_ACQ_REL=y
+Actual value:    
+WARNING: Value requested for CONFIG_NEED_KVM_DIRTY_RING_WITH_BITMAP not in final .config
+Requested value: CONFIG_NEED_KVM_DIRTY_RING_WITH_BITMAP=y
+Actual value:    
+WARNING: Value requested for CONFIG_KVM_MMIO not in final .config
+Requested value: CONFIG_KVM_MMIO=y
+Actual value:    
+WARNING: Value requested for CONFIG_HAVE_KVM_MSI not in final .config
+Requested value: CONFIG_HAVE_KVM_MSI=y
+Actual value:    
+WARNING: Value requested for CONFIG_HAVE_KVM_READONLY_MEM not in final .config
+Requested value: CONFIG_HAVE_KVM_READONLY_MEM=y
+Actual value:    
+WARNING: Value requested for CONFIG_HAVE_KVM_CPU_RELAX_INTERCEPT not in final .config
+Requested value: CONFIG_HAVE_KVM_CPU_RELAX_INTERCEPT=y
+Actual value:    
+WARNING: Value requested for CONFIG_KVM_VFIO not in final .config
+Requested value: CONFIG_KVM_VFIO=y
+Actual value:    
+WARNING: Value requested for CONFIG_KVM_GENERIC_DIRTYLOG_READ_PROTECT not in final .config
+Requested value: CONFIG_KVM_GENERIC_DIRTYLOG_READ_PROTECT=y
+Actual value:    
+WARNING: Value requested for CONFIG_HAVE_KVM_IRQ_BYPASS not in final .config
+Requested value: CONFIG_HAVE_KVM_IRQ_BYPASS=y
+Actual value:    
+WARNING: Value requested for CONFIG_HAVE_KVM_VCPU_RUN_PID_CHANGE not in final .config
+Requested value: CONFIG_HAVE_KVM_VCPU_RUN_PID_CHANGE=y
+Actual value:    
+WARNING: Value requested for CONFIG_VIRT_XFER_TO_GUEST_WORK not in final .config
+Requested value: CONFIG_VIRT_XFER_TO_GUEST_WORK=y
+Actual value:    
+WARNING: Value requested for CONFIG_KVM_GENERIC_HARDWARE_ENABLING not in final .config
+Requested value: CONFIG_KVM_GENERIC_HARDWARE_ENABLING=y
+Actual value:    
+WARNING: Value requested for CONFIG_KVM_GUEST_MEMFD not in final .config
+Requested value: CONFIG_KVM_GUEST_MEMFD=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARCH_HAS_DMA_OPS not in final .config
+Requested value: CONFIG_ARCH_HAS_DMA_OPS=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARCH_HAS_SUBPAGE_FAULTS not in final .config
+Requested value: CONFIG_ARCH_HAS_SUBPAGE_FAULTS=y
+Actual value:    
+WARNING: Value requested for CONFIG_STACKPROTECTOR_STRONG not in final .config
+Requested value: CONFIG_STACKPROTECTOR_STRONG=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARCH_WANT_PMD_MKWRITE not in final .config
+Requested value: CONFIG_ARCH_WANT_PMD_MKWRITE=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARCH_USE_MEMREMAP_PROT not in final .config
+Requested value: CONFIG_ARCH_USE_MEMREMAP_PROT=y
+Actual value:    
+WARNING: Value requested for CONFIG_HAVE_ARCH_GET_SECUREBOOT not in final .config
+Requested value: CONFIG_HAVE_ARCH_GET_SECUREBOOT=y
+Actual value:    
+WARNING: Value requested for CONFIG_BLK_CGROUP_PUNT_BIO not in final .config
+Requested value: CONFIG_BLK_CGROUP_PUNT_BIO=y
+Actual value:    
+WARNING: Value requested for CONFIG_BLOCK_HOLDER_DEPRECATED not in final .config
+Requested value: CONFIG_BLOCK_HOLDER_DEPRECATED=y
+Actual value:    
+WARNING: Value requested for CONFIG_BLK_MQ_STACKING not in final .config
+Requested value: CONFIG_BLK_MQ_STACKING=y
+Actual value:    
+WARNING: Value requested for CONFIG_PREEMPT_NOTIFIERS not in final .config
+Requested value: CONFIG_PREEMPT_NOTIFIERS=y
+Actual value:    
+WARNING: Value requested for CONFIG_PADATA not in final .config
+Requested value: CONFIG_PADATA=y
+Actual value:    
+WARNING: Value requested for CONFIG_NUMA_KEEP_MEMINFO not in final .config
+Requested value: CONFIG_NUMA_KEEP_MEMINFO=y
+Actual value:    
+WARNING: Value requested for CONFIG_MHP_DEFAULT_ONLINE_TYPE_OFFLINE not in final .config
+Requested value: CONFIG_MHP_DEFAULT_ONLINE_TYPE_OFFLINE=y
+Actual value:    
+WARNING: Value requested for CONFIG_MHP_MEMMAP_ON_MEMORY not in final .config
+Requested value: CONFIG_MHP_MEMMAP_ON_MEMORY=y
+Actual value:    
+WARNING: Value requested for CONFIG_BALLOON not in final .config
+Requested value: CONFIG_BALLOON=y
+Actual value:    
+WARNING: Value requested for CONFIG_BALLOON_MIGRATION not in final .config
+Requested value: CONFIG_BALLOON_MIGRATION=y
+Actual value:    
+WARNING: Value requested for CONFIG_NUMA_MIGRATION not in final .config
+Requested value: CONFIG_NUMA_MIGRATION=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARCH_ENABLE_HUGEPAGE_MIGRATION not in final .config
+Requested value: CONFIG_ARCH_ENABLE_HUGEPAGE_MIGRATION=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARCH_ENABLE_THP_MIGRATION not in final .config
+Requested value: CONFIG_ARCH_ENABLE_THP_MIGRATION=y
+Actual value:    
+WARNING: Value requested for CONFIG_MMU_NOTIFIER not in final .config
+Requested value: CONFIG_MMU_NOTIFIER=y
+Actual value:    
+WARNING: Value requested for CONFIG_MM_ID not in final .config
+Requested value: CONFIG_MM_ID=y
+Actual value:    
+WARNING: Value requested for CONFIG_TRANSPARENT_HUGEPAGE_ALWAYS not in final .config
+Requested value: CONFIG_TRANSPARENT_HUGEPAGE_ALWAYS=y
+Actual value:    
+WARNING: Value requested for CONFIG_TRANSPARENT_HUGEPAGE_SHMEM_HUGE_NEVER not in final .config
+Requested value: CONFIG_TRANSPARENT_HUGEPAGE_SHMEM_HUGE_NEVER=y
+Actual value:    
+WARNING: Value requested for CONFIG_TRANSPARENT_HUGEPAGE_TMPFS_HUGE_NEVER not in final .config
+Requested value: CONFIG_TRANSPARENT_HUGEPAGE_TMPFS_HUGE_NEVER=y
+Actual value:    
+WARNING: Value requested for CONFIG_THP_SWAP not in final .config
+Requested value: CONFIG_THP_SWAP=y
+Actual value:    
+WARNING: Value requested for CONFIG_PGTABLE_HAS_HUGE_LEAVES not in final .config
+Requested value: CONFIG_PGTABLE_HAS_HUGE_LEAVES=y
+Actual value:    
+WARNING: Value requested for CONFIG_HAVE_GIGANTIC_FOLIOS not in final .config
+Requested value: CONFIG_HAVE_GIGANTIC_FOLIOS=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARCH_SUPPORTS_HUGE_PFNMAP not in final .config
+Requested value: CONFIG_ARCH_SUPPORTS_HUGE_PFNMAP=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARCH_SUPPORTS_PMD_PFNMAP not in final .config
+Requested value: CONFIG_ARCH_SUPPORTS_PMD_PFNMAP=y
+Actual value:    
+WARNING: Value requested for CONFIG_NEED_PER_CPU_EMBED_FIRST_CHUNK not in final .config
+Requested value: CONFIG_NEED_PER_CPU_EMBED_FIRST_CHUNK=y
+Actual value:    
+WARNING: Value requested for CONFIG_NEED_PER_CPU_PAGE_FIRST_CHUNK not in final .config
+Requested value: CONFIG_NEED_PER_CPU_PAGE_FIRST_CHUNK=y
+Actual value:    
+WARNING: Value requested for CONFIG_USE_PERCPU_NUMA_NODE_ID not in final .config
+Requested value: CONFIG_USE_PERCPU_NUMA_NODE_ID=y
+Actual value:    
+WARNING: Value requested for CONFIG_HAVE_SETUP_PER_CPU_AREA not in final .config
+Requested value: CONFIG_HAVE_SETUP_PER_CPU_AREA=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARCH_USES_PG_ARCH_2 not in final .config
+Requested value: CONFIG_ARCH_USES_PG_ARCH_2=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARCH_USES_PG_ARCH_3 not in final .config
+Requested value: CONFIG_ARCH_USES_PG_ARCH_3=y
+Actual value:    
+WARNING: Value requested for CONFIG_NUMA_MEMBLKS not in final .config
+Requested value: CONFIG_NUMA_MEMBLKS=y
+Actual value:    
+WARNING: Value requested for CONFIG_FIND_NORMAL_PAGE not in final .config
+Requested value: CONFIG_FIND_NORMAL_PAGE=y
+Actual value:    
+WARNING: Value requested for CONFIG_NET_HANDSHAKE not in final .config
+Requested value: CONFIG_NET_HANDSHAKE=y
+Actual value:    
+WARNING: Value requested for CONFIG_IP_ROUTE_CLASSID not in final .config
+Requested value: CONFIG_IP_ROUTE_CLASSID=y
+Actual value:    
+WARNING: Value requested for CONFIG_IP_PNP_DHCP not in final .config
+Requested value: CONFIG_IP_PNP_DHCP=y
+Actual value:    
+WARNING: Value requested for CONFIG_IP_PNP_BOOTP not in final .config
+Requested value: CONFIG_IP_PNP_BOOTP=y
+Actual value:    
+WARNING: Value requested for CONFIG_NET_PTP_CLASSIFY not in final .config
+Requested value: CONFIG_NET_PTP_CLASSIFY=y
+Actual value:    
+WARNING: Value requested for CONFIG_NF_CT_PROTO_GRE not in final .config
+Requested value: CONFIG_NF_CT_PROTO_GRE=y
+Actual value:    
+WARNING: Value requested for CONFIG_NF_CONNTRACK_BROADCAST not in final .config
+Requested value: CONFIG_NF_CONNTRACK_BROADCAST=y
+Actual value:    
+WARNING: Value requested for CONFIG_NF_NAT_FTP not in final .config
+Requested value: CONFIG_NF_NAT_FTP=y
+Actual value:    
+WARNING: Value requested for CONFIG_NF_NAT_IRC not in final .config
+Requested value: CONFIG_NF_NAT_IRC=y
+Actual value:    
+WARNING: Value requested for CONFIG_NF_NAT_SIP not in final .config
+Requested value: CONFIG_NF_NAT_SIP=y
+Actual value:    
+WARNING: Value requested for CONFIG_NF_NAT_TFTP not in final .config
+Requested value: CONFIG_NF_NAT_TFTP=y
+Actual value:    
+WARNING: Value requested for CONFIG_NETFILTER_SYNPROXY not in final .config
+Requested value: CONFIG_NETFILTER_SYNPROXY=y
+Actual value:    
+WARNING: Value requested for CONFIG_NF_DUP_NETDEV not in final .config
+Requested value: CONFIG_NF_DUP_NETDEV=y
+Actual value:    
+WARNING: Value requested for CONFIG_IP_VS_TAB_BITS not in final .config
+Requested value: CONFIG_IP_VS_TAB_BITS=12
+Actual value:    
+WARNING: Value requested for CONFIG_IP_VS_SH_TAB_BITS not in final .config
+Requested value: CONFIG_IP_VS_SH_TAB_BITS=8
+Actual value:    
+WARNING: Value requested for CONFIG_IP_VS_MH_TAB_INDEX not in final .config
+Requested value: CONFIG_IP_VS_MH_TAB_INDEX=12
+Actual value:    
+WARNING: Value requested for CONFIG_NF_NAT_PPTP not in final .config
+Requested value: CONFIG_NF_NAT_PPTP=y
+Actual value:    
+WARNING: Value requested for CONFIG_NF_NAT_H323 not in final .config
+Requested value: CONFIG_NF_NAT_H323=y
+Actual value:    
+WARNING: Value requested for CONFIG_GARP not in final .config
+Requested value: CONFIG_GARP=y
+Actual value:    
+WARNING: Value requested for CONFIG_MRP not in final .config
+Requested value: CONFIG_MRP=y
+Actual value:    
+WARNING: Value requested for CONFIG_NET_DSA_TAG_BRCM_COMMON not in final .config
+Requested value: CONFIG_NET_DSA_TAG_BRCM_COMMON=y
+Actual value:    
+WARNING: Value requested for CONFIG_NET_DSA_TAG_BRCM not in final .config
+Requested value: CONFIG_NET_DSA_TAG_BRCM=y
+Actual value:    
+WARNING: Value requested for CONFIG_NET_DSA_TAG_BRCM_LEGACY not in final .config
+Requested value: CONFIG_NET_DSA_TAG_BRCM_LEGACY=y
+Actual value:    
+WARNING: Value requested for CONFIG_NET_DSA_TAG_BRCM_PREPEND not in final .config
+Requested value: CONFIG_NET_DSA_TAG_BRCM_PREPEND=y
+Actual value:    
+WARNING: Value requested for CONFIG_NET_DSA_TAG_OCELOT not in final .config
+Requested value: CONFIG_NET_DSA_TAG_OCELOT=y
+Actual value:    
+WARNING: Value requested for CONFIG_NET_DSA_TAG_OCELOT_8021Q not in final .config
+Requested value: CONFIG_NET_DSA_TAG_OCELOT_8021Q=y
+Actual value:    
+WARNING: Value requested for CONFIG_NET_SCH_MQPRIO_LIB not in final .config
+Requested value: CONFIG_NET_SCH_MQPRIO_LIB=y
+Actual value:    
+WARNING: Value requested for CONFIG_BT_BNEP_MC_FILTER not in final .config
+Requested value: CONFIG_BT_BNEP_MC_FILTER=y
+Actual value:    
+WARNING: Value requested for CONFIG_BT_BNEP_PROTO_FILTER not in final .config
+Requested value: CONFIG_BT_BNEP_PROTO_FILTER=y
+Actual value:    
+WARNING: Value requested for CONFIG_BT_INTEL not in final .config
+Requested value: CONFIG_BT_INTEL=m
+Actual value:    
+WARNING: Value requested for CONFIG_BT_BCM not in final .config
+Requested value: CONFIG_BT_BCM=m
+Actual value:    
+WARNING: Value requested for CONFIG_BT_RTL not in final .config
+Requested value: CONFIG_BT_RTL=m
+Actual value:    
+WARNING: Value requested for CONFIG_BT_MTK not in final .config
+Requested value: CONFIG_BT_MTK=m
+Actual value:    
+WARNING: Value requested for CONFIG_BT_HCIBTUSB_POLL_SYNC not in final .config
+Requested value: CONFIG_BT_HCIBTUSB_POLL_SYNC=y
+Actual value:    
+WARNING: Value requested for CONFIG_BT_HCIBTUSB_BCM not in final .config
+Requested value: CONFIG_BT_HCIBTUSB_BCM=y
+Actual value:    
+WARNING: Value requested for CONFIG_BT_HCIBTUSB_MTK not in final .config
+Requested value: CONFIG_BT_HCIBTUSB_MTK=y
+Actual value:    
+WARNING: Value requested for CONFIG_BT_HCIBTUSB_RTL not in final .config
+Requested value: CONFIG_BT_HCIBTUSB_RTL=y
+Actual value:    
+WARNING: Value requested for CONFIG_NET_9P_FD not in final .config
+Requested value: CONFIG_NET_9P_FD=y
+Actual value:    
+WARNING: Value requested for CONFIG_NET_9P_VIRTIO not in final .config
+Requested value: CONFIG_NET_9P_VIRTIO=y
+Actual value:    
+WARNING: Value requested for CONFIG_NFC_NCI not in final .config
+Requested value: CONFIG_NFC_NCI=y
+Actual value:    
+WARNING: Value requested for CONFIG_NFC_NXP_NCI not in final .config
+Requested value: CONFIG_NFC_NXP_NCI=y
+Actual value:    
+WARNING: Value requested for CONFIG_NFC_S3FWRN5 not in final .config
+Requested value: CONFIG_NFC_S3FWRN5=m
+Actual value:    
+WARNING: Value requested for CONFIG_NFC_S3FWRN5_I2C not in final .config
+Requested value: CONFIG_NFC_S3FWRN5_I2C=m
+Actual value:    
+WARNING: Value requested for CONFIG_NET_DEVLINK not in final .config
+Requested value: CONFIG_NET_DEVLINK=y
+Actual value:    
+WARNING: Value requested for CONFIG_SYS_HYPERVISOR not in final .config
+Requested value: CONFIG_SYS_HYPERVISOR=y
+Actual value:    
+WARNING: Value requested for CONFIG_GENERIC_ARCH_NUMA not in final .config
+Requested value: CONFIG_GENERIC_ARCH_NUMA=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARM_SCMI_QUIRKS not in final .config
+Requested value: CONFIG_ARM_SCMI_QUIRKS=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARM_SCMI_HAVE_TRANSPORT not in final .config
+Requested value: CONFIG_ARM_SCMI_HAVE_TRANSPORT=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARM_SCMI_HAVE_SHMEM not in final .config
+Requested value: CONFIG_ARM_SCMI_HAVE_SHMEM=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARM_SCMI_HAVE_MSG not in final .config
+Requested value: CONFIG_ARM_SCMI_HAVE_MSG=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARM_SCMI_TRANSPORT_MAILBOX not in final .config
+Requested value: CONFIG_ARM_SCMI_TRANSPORT_MAILBOX=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARM_SCMI_TRANSPORT_SMC not in final .config
+Requested value: CONFIG_ARM_SCMI_TRANSPORT_SMC=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARM_SCMI_TRANSPORT_OPTEE not in final .config
+Requested value: CONFIG_ARM_SCMI_TRANSPORT_OPTEE=y
+Actual value:    
+WARNING: Value requested for CONFIG_DMIID not in final .config
+Requested value: CONFIG_DMIID=y
+Actual value:    
+WARNING: Value requested for CONFIG_GOOGLE_CBMEM not in final .config
+Requested value: CONFIG_GOOGLE_CBMEM=m
+Actual value:    
+WARNING: Value requested for CONFIG_GOOGLE_COREBOOT_TABLE not in final .config
+Requested value: CONFIG_GOOGLE_COREBOOT_TABLE=m
+Actual value:    
+WARNING: Value requested for CONFIG_EFI_ESRT not in final .config
+Requested value: CONFIG_EFI_ESRT=y
+Actual value:    
+WARNING: Value requested for CONFIG_EFI_VARS_PSTORE not in final .config
+Requested value: CONFIG_EFI_VARS_PSTORE=y
+Actual value:    
+WARNING: Value requested for CONFIG_EFI_PARAMS_FROM_FDT not in final .config
+Requested value: CONFIG_EFI_PARAMS_FROM_FDT=y
+Actual value:    
+WARNING: Value requested for CONFIG_EFI_RUNTIME_WRAPPERS not in final .config
+Requested value: CONFIG_EFI_RUNTIME_WRAPPERS=y
+Actual value:    
+WARNING: Value requested for CONFIG_EFI_GENERIC_STUB not in final .config
+Requested value: CONFIG_EFI_GENERIC_STUB=y
+Actual value:    
+WARNING: Value requested for CONFIG_EFI_ARMSTUB_DTB_LOADER not in final .config
+Requested value: CONFIG_EFI_ARMSTUB_DTB_LOADER=y
+Actual value:    
+WARNING: Value requested for CONFIG_EFI_EARLYCON not in final .config
+Requested value: CONFIG_EFI_EARLYCON=y
+Actual value:    
+WARNING: Value requested for CONFIG_GNSS_SERIAL not in final .config
+Requested value: CONFIG_GNSS_SERIAL=m
+Actual value:    
+WARNING: Value requested for CONFIG_GNSS_MTK_SERIAL not in final .config
+Requested value: CONFIG_GNSS_MTK_SERIAL=m
+Actual value:    
+WARNING: Value requested for CONFIG_OF_NUMA not in final .config
+Requested value: CONFIG_OF_NUMA=y
+Actual value:    
+WARNING: CONFIG_ZRAM_DEF_COMP differs:
+Requested value: CONFIG_ZRAM_DEF_COMP="zstd"
+Actual value:    CONFIG_ZRAM_DEF_COMP="lz4"
+WARNING: Value requested for CONFIG_XEN_BLKDEV_FRONTEND not in final .config
+Requested value: CONFIG_XEN_BLKDEV_FRONTEND=y
+Actual value:    
+WARNING: Value requested for CONFIG_SATA_HOST not in final .config
+Requested value: CONFIG_SATA_HOST=y
+Actual value:    
+WARNING: Value requested for CONFIG_ATA_VERBOSE_ERROR not in final .config
+Requested value: CONFIG_ATA_VERBOSE_ERROR=y
+Actual value:    
+WARNING: Value requested for CONFIG_ATA_FORCE not in final .config
+Requested value: CONFIG_ATA_FORCE=y
+Actual value:    
+WARNING: Value requested for CONFIG_SATA_PMP not in final .config
+Requested value: CONFIG_SATA_PMP=y
+Actual value:    
+WARNING: Value requested for CONFIG_SATA_AHCI_PLATFORM not in final .config
+Requested value: CONFIG_SATA_AHCI_PLATFORM=y
+Actual value:    
+WARNING: Value requested for CONFIG_AHCI_DWC not in final .config
+Requested value: CONFIG_AHCI_DWC=y
+Actual value:    
+WARNING: Value requested for CONFIG_AHCI_CEVA not in final .config
+Requested value: CONFIG_AHCI_CEVA=y
+Actual value:    
+WARNING: Value requested for CONFIG_ATA_SFF not in final .config
+Requested value: CONFIG_ATA_SFF=y
+Actual value:    
+WARNING: Value requested for CONFIG_ATA_BMDMA not in final .config
+Requested value: CONFIG_ATA_BMDMA=y
+Actual value:    
+WARNING: Value requested for CONFIG_PATA_PLATFORM not in final .config
+Requested value: CONFIG_PATA_PLATFORM=y
+Actual value:    
+WARNING: Value requested for CONFIG_PATA_OF_PLATFORM not in final .config
+Requested value: CONFIG_PATA_OF_PLATFORM=y
+Actual value:    
+WARNING: Value requested for CONFIG_BLK_DEV_MD not in final .config
+Requested value: CONFIG_BLK_DEV_MD=y
+Actual value:    
+WARNING: Value requested for CONFIG_MD_BITMAP not in final .config
+Requested value: CONFIG_MD_BITMAP=y
+Actual value:    
+WARNING: Value requested for CONFIG_MD_AUTODETECT not in final .config
+Requested value: CONFIG_MD_AUTODETECT=y
+Actual value:    
+WARNING: Value requested for CONFIG_MD_BITMAP_FILE not in final .config
+Requested value: CONFIG_MD_BITMAP_FILE=y
+Actual value:    
+WARNING: Value requested for CONFIG_BLK_DEV_DM_BUILTIN not in final .config
+Requested value: CONFIG_BLK_DEV_DM_BUILTIN=y
+Actual value:    
+WARNING: Value requested for CONFIG_BLK_DEV_DM not in final .config
+Requested value: CONFIG_BLK_DEV_DM=y
+Actual value:    
+WARNING: Value requested for CONFIG_DM_CRYPT not in final .config
+Requested value: CONFIG_DM_CRYPT=y
+Actual value:    
+WARNING: Value requested for CONFIG_DM_MIRROR not in final .config
+Requested value: CONFIG_DM_MIRROR=y
+Actual value:    
+WARNING: Value requested for CONFIG_DM_ZERO not in final .config
+Requested value: CONFIG_DM_ZERO=y
+Actual value:    
+WARNING: Value requested for CONFIG_TAP not in final .config
+Requested value: CONFIG_TAP=y
+Actual value:    
+WARNING: Value requested for CONFIG_PHY_PACKAGE not in final .config
+Requested value: CONFIG_PHY_PACKAGE=y
+Actual value:    
+WARNING: Value requested for CONFIG_MDIO_BUS_MUX not in final .config
+Requested value: CONFIG_MDIO_BUS_MUX=y
+Actual value:    
+WARNING: Value requested for CONFIG_WWAN_DEBUGFS not in final .config
+Requested value: CONFIG_WWAN_DEBUGFS=y
+Actual value:    
+WARNING: Value requested for CONFIG_RPMSG_WWAN_CTRL not in final .config
+Requested value: CONFIG_RPMSG_WWAN_CTRL=y
+Actual value:    
+WARNING: Value requested for CONFIG_RPMSG_WWAN_NET not in final .config
+Requested value: CONFIG_RPMSG_WWAN_NET=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_NETDEV_FRONTEND not in final .config
+Requested value: CONFIG_XEN_NETDEV_FRONTEND=y
+Actual value:    
+WARNING: Value requested for CONFIG_INPUT_XEN_KBDDEV_FRONTEND not in final .config
+Requested value: CONFIG_INPUT_XEN_KBDDEV_FRONTEND=y
+Actual value:    
+WARNING: Value requested for CONFIG_SERIAL_EARLYCON not in final .config
+Requested value: CONFIG_SERIAL_EARLYCON=y
+Actual value:    
+WARNING: Value requested for CONFIG_SERIAL_CORE_CONSOLE not in final .config
+Requested value: CONFIG_SERIAL_CORE_CONSOLE=y
+Actual value:    
+WARNING: Value requested for CONFIG_HVC_DRIVER not in final .config
+Requested value: CONFIG_HVC_DRIVER=y
+Actual value:    
+WARNING: Value requested for CONFIG_HVC_IRQ not in final .config
+Requested value: CONFIG_HVC_IRQ=y
+Actual value:    
+WARNING: Value requested for CONFIG_HVC_XEN not in final .config
+Requested value: CONFIG_HVC_XEN=y
+Actual value:    
+WARNING: Value requested for CONFIG_HVC_XEN_FRONTEND not in final .config
+Requested value: CONFIG_HVC_XEN_FRONTEND=y
+Actual value:    
+WARNING: Value requested for CONFIG_IPMI_DMI_DECODE not in final .config
+Requested value: CONFIG_IPMI_DMI_DECODE=y
+Actual value:    
+WARNING: Value requested for CONFIG_IPMI_PLAT_DATA not in final .config
+Requested value: CONFIG_IPMI_PLAT_DATA=y
+Actual value:    
+WARNING: Value requested for CONFIG_HW_RANDOM_OPTEE not in final .config
+Requested value: CONFIG_HW_RANDOM_OPTEE=y
+Actual value:    
+WARNING: Value requested for CONFIG_HW_RANDOM_TPM not in final .config
+Requested value: CONFIG_HW_RANDOM_TPM=y
+Actual value:    
+WARNING: Value requested for CONFIG_TCG_TIS_CORE not in final .config
+Requested value: CONFIG_TCG_TIS_CORE=y
+Actual value:    
+WARNING: Value requested for CONFIG_TCG_TIS_SPI not in final .config
+Requested value: CONFIG_TCG_TIS_SPI=y
+Actual value:    
+WARNING: Value requested for CONFIG_TCG_TIS_SPI_CR50 not in final .config
+Requested value: CONFIG_TCG_TIS_SPI_CR50=y
+Actual value:    
+WARNING: Value requested for CONFIG_TCG_TIS_I2C_CR50 not in final .config
+Requested value: CONFIG_TCG_TIS_I2C_CR50=y
+Actual value:    
+WARNING: Value requested for CONFIG_TCG_TIS_I2C_INFINEON not in final .config
+Requested value: CONFIG_TCG_TIS_I2C_INFINEON=y
+Actual value:    
+WARNING: Value requested for CONFIG_PTP_1588_CLOCK_KVM not in final .config
+Requested value: CONFIG_PTP_1588_CLOCK_KVM=y
+Actual value:    
+WARNING: Value requested for CONFIG_PTP_1588_CLOCK_VMCLOCK not in final .config
+Requested value: CONFIG_PTP_1588_CLOCK_VMCLOCK=y
+Actual value:    
+WARNING: Value requested for CONFIG_GPIO_PCA953X_IRQ not in final .config
+Requested value: CONFIG_GPIO_PCA953X_IRQ=y
+Actual value:    
+WARNING: Value requested for CONFIG_BATTERY_BQ27XXX_I2C not in final .config
+Requested value: CONFIG_BATTERY_BQ27XXX_I2C=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_SUPPORT_FILTER not in final .config
+Requested value: CONFIG_MEDIA_SUPPORT_FILTER=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_SUBDRV_AUTOSELECT not in final .config
+Requested value: CONFIG_MEDIA_SUBDRV_AUTOSELECT=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_CAMERA_SUPPORT not in final .config
+Requested value: CONFIG_MEDIA_CAMERA_SUPPORT=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_RADIO_SUPPORT not in final .config
+Requested value: CONFIG_MEDIA_RADIO_SUPPORT=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_SDR_SUPPORT not in final .config
+Requested value: CONFIG_MEDIA_SDR_SUPPORT=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_PLATFORM_SUPPORT not in final .config
+Requested value: CONFIG_MEDIA_PLATFORM_SUPPORT=y
+Actual value:    
+WARNING: Value requested for CONFIG_VIDEO_DEV not in final .config
+Requested value: CONFIG_VIDEO_DEV=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_CONTROLLER not in final .config
+Requested value: CONFIG_MEDIA_CONTROLLER=y
+Actual value:    
+WARNING: Value requested for CONFIG_VIDEO_V4L2_I2C not in final .config
+Requested value: CONFIG_VIDEO_V4L2_I2C=y
+Actual value:    
+WARNING: Value requested for CONFIG_VIDEO_V4L2_SUBDEV_API not in final .config
+Requested value: CONFIG_VIDEO_V4L2_SUBDEV_API=y
+Actual value:    
+WARNING: Value requested for CONFIG_V4L2_FWNODE not in final .config
+Requested value: CONFIG_V4L2_FWNODE=y
+Actual value:    
+WARNING: Value requested for CONFIG_V4L2_ASYNC not in final .config
+Requested value: CONFIG_V4L2_ASYNC=y
+Actual value:    
+WARNING: Value requested for CONFIG_V4L2_CCI not in final .config
+Requested value: CONFIG_V4L2_CCI=m
+Actual value:    
+WARNING: Value requested for CONFIG_V4L2_CCI_I2C not in final .config
+Requested value: CONFIG_V4L2_CCI_I2C=m
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_USB_SUPPORT not in final .config
+Requested value: CONFIG_MEDIA_USB_SUPPORT=y
+Actual value:    
+WARNING: Value requested for CONFIG_USB_VIDEO_CLASS not in final .config
+Requested value: CONFIG_USB_VIDEO_CLASS=y
+Actual value:    
+WARNING: Value requested for CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV not in final .config
+Requested value: CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV=y
+Actual value:    
+WARNING: Value requested for CONFIG_RADIO_ADAPTERS not in final .config
+Requested value: CONFIG_RADIO_ADAPTERS=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_PLATFORM_DRIVERS not in final .config
+Requested value: CONFIG_MEDIA_PLATFORM_DRIVERS=y
+Actual value:    
+WARNING: Value requested for CONFIG_V4L_PLATFORM_DRIVERS not in final .config
+Requested value: CONFIG_V4L_PLATFORM_DRIVERS=y
+Actual value:    
+WARNING: Value requested for CONFIG_SDR_PLATFORM_DRIVERS not in final .config
+Requested value: CONFIG_SDR_PLATFORM_DRIVERS=y
+Actual value:    
+WARNING: Value requested for CONFIG_V4L_MEM2MEM_DRIVERS not in final .config
+Requested value: CONFIG_V4L_MEM2MEM_DRIVERS=y
+Actual value:    
+WARNING: Value requested for CONFIG_UVC_COMMON not in final .config
+Requested value: CONFIG_UVC_COMMON=y
+Actual value:    
+WARNING: Value requested for CONFIG_VIDEOBUF2_CORE not in final .config
+Requested value: CONFIG_VIDEOBUF2_CORE=y
+Actual value:    
+WARNING: Value requested for CONFIG_VIDEOBUF2_V4L2 not in final .config
+Requested value: CONFIG_VIDEOBUF2_V4L2=y
+Actual value:    
+WARNING: Value requested for CONFIG_VIDEOBUF2_MEMOPS not in final .config
+Requested value: CONFIG_VIDEOBUF2_MEMOPS=y
+Actual value:    
+WARNING: Value requested for CONFIG_VIDEOBUF2_VMALLOC not in final .config
+Requested value: CONFIG_VIDEOBUF2_VMALLOC=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_ATTACH not in final .config
+Requested value: CONFIG_MEDIA_ATTACH=y
+Actual value:    
+WARNING: Value requested for CONFIG_VIDEO_CAMERA_SENSOR not in final .config
+Requested value: CONFIG_VIDEO_CAMERA_SENSOR=y
+Actual value:    
+WARNING: Value requested for CONFIG_VIDEO_CAMERA_LENS not in final .config
+Requested value: CONFIG_VIDEO_CAMERA_LENS=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_TUNER not in final .config
+Requested value: CONFIG_MEDIA_TUNER=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_TUNER_MC44S803 not in final .config
+Requested value: CONFIG_MEDIA_TUNER_MC44S803=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_TUNER_MT20XX not in final .config
+Requested value: CONFIG_MEDIA_TUNER_MT20XX=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_TUNER_SIMPLE not in final .config
+Requested value: CONFIG_MEDIA_TUNER_SIMPLE=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_TUNER_TDA18271 not in final .config
+Requested value: CONFIG_MEDIA_TUNER_TDA18271=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_TUNER_TDA827X not in final .config
+Requested value: CONFIG_MEDIA_TUNER_TDA827X=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_TUNER_TDA8290 not in final .config
+Requested value: CONFIG_MEDIA_TUNER_TDA8290=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_TUNER_TDA9887 not in final .config
+Requested value: CONFIG_MEDIA_TUNER_TDA9887=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_TUNER_TEA5761 not in final .config
+Requested value: CONFIG_MEDIA_TUNER_TEA5761=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_TUNER_TEA5767 not in final .config
+Requested value: CONFIG_MEDIA_TUNER_TEA5767=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_TUNER_XC2028 not in final .config
+Requested value: CONFIG_MEDIA_TUNER_XC2028=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_TUNER_XC4000 not in final .config
+Requested value: CONFIG_MEDIA_TUNER_XC4000=y
+Actual value:    
+WARNING: Value requested for CONFIG_MEDIA_TUNER_XC5000 not in final .config
+Requested value: CONFIG_MEDIA_TUNER_XC5000=y
+Actual value:    
+WARNING: Value requested for CONFIG_DRM_AUX_BRIDGE not in final .config
+Requested value: CONFIG_DRM_AUX_BRIDGE=m
+Actual value:    
+WARNING: Value requested for CONFIG_DRM_AUX_HPD_BRIDGE not in final .config
+Requested value: CONFIG_DRM_AUX_HPD_BRIDGE=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_FBDEV_FRONTEND not in final .config
+Requested value: CONFIG_XEN_FBDEV_FRONTEND=y
+Actual value:    
+WARNING: Value requested for CONFIG_SND_DMAENGINE_PCM not in final .config
+Requested value: CONFIG_SND_DMAENGINE_PCM=y
+Actual value:    
+WARNING: Value requested for CONFIG_SND_COMPRESS_OFFLOAD not in final .config
+Requested value: CONFIG_SND_COMPRESS_OFFLOAD=m
+Actual value:    
+WARNING: Value requested for CONFIG_SND_COMPRESS_ACCEL not in final .config
+Requested value: CONFIG_SND_COMPRESS_ACCEL=y
+Actual value:    
+WARNING: Value requested for CONFIG_SND_SOC_GENERIC_DMAENGINE_PCM not in final .config
+Requested value: CONFIG_SND_SOC_GENERIC_DMAENGINE_PCM=y
+Actual value:    
+WARNING: Value requested for CONFIG_SND_SOC_FSL_UTILS not in final .config
+Requested value: CONFIG_SND_SOC_FSL_UTILS=m
+Actual value:    
+WARNING: Value requested for CONFIG_SND_SOC_PCM3168A not in final .config
+Requested value: CONFIG_SND_SOC_PCM3168A=m
+Actual value:    
+WARNING: Value requested for CONFIG_SND_SOC_RL6231 not in final .config
+Requested value: CONFIG_SND_SOC_RL6231=m
+Actual value:    
+WARNING: Value requested for CONFIG_SND_SOC_TLV320AIC32X4 not in final .config
+Requested value: CONFIG_SND_SOC_TLV320AIC32X4=m
+Actual value:    
+WARNING: Value requested for CONFIG_SND_SOC_TLV320AIC3X not in final .config
+Requested value: CONFIG_SND_SOC_TLV320AIC3X=m
+Actual value:    
+WARNING: Value requested for CONFIG_SND_SOC_LPASS_MACRO_COMMON not in final .config
+Requested value: CONFIG_SND_SOC_LPASS_MACRO_COMMON=m
+Actual value:    
+WARNING: Value requested for CONFIG_SND_SIMPLE_CARD_UTILS not in final .config
+Requested value: CONFIG_SND_SIMPLE_CARD_UTILS=m
+Actual value:    
+WARNING: Value requested for CONFIG_I2C_HID_CORE not in final .config
+Requested value: CONFIG_I2C_HID_CORE=m
+Actual value:    
+WARNING: Value requested for CONFIG_USB_XHCI_PLATFORM not in final .config
+Requested value: CONFIG_USB_XHCI_PLATFORM=y
+Actual value:    
+WARNING: Value requested for CONFIG_USB_EHCI_ROOT_HUB_TT not in final .config
+Requested value: CONFIG_USB_EHCI_ROOT_HUB_TT=y
+Actual value:    
+WARNING: Value requested for CONFIG_USB_EHCI_TT_NEWSCHED not in final .config
+Requested value: CONFIG_USB_EHCI_TT_NEWSCHED=y
+Actual value:    
+WARNING: Value requested for CONFIG_USB_EHCI_HCD_PLATFORM not in final .config
+Requested value: CONFIG_USB_EHCI_HCD_PLATFORM=y
+Actual value:    
+WARNING: Value requested for CONFIG_USB_OHCI_HCD_PLATFORM not in final .config
+Requested value: CONFIG_USB_OHCI_HCD_PLATFORM=y
+Actual value:    
+WARNING: Value requested for CONFIG_USB_SERIAL_CP210X not in final .config
+Requested value: CONFIG_USB_SERIAL_CP210X=m
+Actual value:    
+WARNING: Value requested for CONFIG_USB_SERIAL_FTDI_SIO not in final .config
+Requested value: CONFIG_USB_SERIAL_FTDI_SIO=m
+Actual value:    
+WARNING: Value requested for CONFIG_USB_SERIAL_WWAN not in final .config
+Requested value: CONFIG_USB_SERIAL_WWAN=m
+Actual value:    
+WARNING: Value requested for CONFIG_USB_SERIAL_OPTION not in final .config
+Requested value: CONFIG_USB_SERIAL_OPTION=m
+Actual value:    
+WARNING: Value requested for CONFIG_USB_SNP_CORE not in final .config
+Requested value: CONFIG_USB_SNP_CORE=y
+Actual value:    
+WARNING: Value requested for CONFIG_USB_F_EEM not in final .config
+Requested value: CONFIG_USB_F_EEM=m
+Actual value:    
+WARNING: Value requested for CONFIG_USB_F_SUBSET not in final .config
+Requested value: CONFIG_USB_F_SUBSET=m
+Actual value:    
+WARNING: Value requested for CONFIG_USB_F_RNDIS not in final .config
+Requested value: CONFIG_USB_F_RNDIS=m
+Actual value:    
+WARNING: Value requested for CONFIG_SCSI_UFS_BSG not in final .config
+Requested value: CONFIG_SCSI_UFS_BSG=y
+Actual value:    
+WARNING: Value requested for CONFIG_SCSI_UFSHCD_PLATFORM not in final .config
+Requested value: CONFIG_SCSI_UFSHCD_PLATFORM=y
+Actual value:    
+WARNING: Value requested for CONFIG_LEDS_TRIGGER_DISK not in final .config
+Requested value: CONFIG_LEDS_TRIGGER_DISK=y
+Actual value:    
+WARNING: Value requested for CONFIG_VFIO_GROUP not in final .config
+Requested value: CONFIG_VFIO_GROUP=y
+Actual value:    
+WARNING: Value requested for CONFIG_VFIO_CONTAINER not in final .config
+Requested value: CONFIG_VFIO_CONTAINER=y
+Actual value:    
+WARNING: Value requested for CONFIG_VFIO_IOMMU_TYPE1 not in final .config
+Requested value: CONFIG_VFIO_IOMMU_TYPE1=y
+Actual value:    
+WARNING: Value requested for CONFIG_IRQ_BYPASS_MANAGER not in final .config
+Requested value: CONFIG_IRQ_BYPASS_MANAGER=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_BALLOON not in final .config
+Requested value: CONFIG_XEN_BALLOON=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_BALLOON_MEMORY_HOTPLUG not in final .config
+Requested value: CONFIG_XEN_BALLOON_MEMORY_HOTPLUG=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_SCRUB_PAGES_DEFAULT not in final .config
+Requested value: CONFIG_XEN_SCRUB_PAGES_DEFAULT=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_DEV_EVTCHN not in final .config
+Requested value: CONFIG_XEN_DEV_EVTCHN=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_BACKEND not in final .config
+Requested value: CONFIG_XEN_BACKEND=y
+Actual value:    
+WARNING: Value requested for CONFIG_XENFS not in final .config
+Requested value: CONFIG_XENFS=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_COMPAT_XENFS not in final .config
+Requested value: CONFIG_XEN_COMPAT_XENFS=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_SYS_HYPERVISOR not in final .config
+Requested value: CONFIG_XEN_SYS_HYPERVISOR=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_XENBUS_FRONTEND not in final .config
+Requested value: CONFIG_XEN_XENBUS_FRONTEND=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_GNTDEV not in final .config
+Requested value: CONFIG_XEN_GNTDEV=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_GRANT_DEV_ALLOC not in final .config
+Requested value: CONFIG_XEN_GRANT_DEV_ALLOC=y
+Actual value:    
+WARNING: Value requested for CONFIG_SWIOTLB_XEN not in final .config
+Requested value: CONFIG_SWIOTLB_XEN=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_PRIVCMD not in final .config
+Requested value: CONFIG_XEN_PRIVCMD=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_EFI not in final .config
+Requested value: CONFIG_XEN_EFI=y
+Actual value:    
+WARNING: Value requested for CONFIG_XEN_AUTO_XLATE not in final .config
+Requested value: CONFIG_XEN_AUTO_XLATE=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARM_SMMU_DISABLE_BYPASS_BY_DEFAULT not in final .config
+Requested value: CONFIG_ARM_SMMU_DISABLE_BYPASS_BY_DEFAULT=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARM_SMMU_MMU_500_CPRE_ERRATA not in final .config
+Requested value: CONFIG_ARM_SMMU_MMU_500_CPRE_ERRATA=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARM_SCMI_PERF_DOMAIN not in final .config
+Requested value: CONFIG_ARM_SCMI_PERF_DOMAIN=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARM_SCMI_POWER_DOMAIN not in final .config
+Requested value: CONFIG_ARM_SCMI_POWER_DOMAIN=y
+Actual value:    
+WARNING: Value requested for CONFIG_ARM_SCPI_POWER_DOMAIN not in final .config
+Requested value: CONFIG_ARM_SCPI_POWER_DOMAIN=y
+Actual value:    
+WARNING: Value requested for CONFIG_IIO_ST_SENSORS_I2C not in final .config
+Requested value: CONFIG_IIO_ST_SENSORS_I2C=m
+Actual value:    
+WARNING: Value requested for CONFIG_IIO_ST_SENSORS_SPI not in final .config
+Requested value: CONFIG_IIO_ST_SENSORS_SPI=m
+Actual value:    
+WARNING: Value requested for CONFIG_IIO_ST_SENSORS_CORE not in final .config
+Requested value: CONFIG_IIO_ST_SENSORS_CORE=m
+Actual value:    
+WARNING: Value requested for CONFIG_IIO_ST_LSM6DSX_I2C not in final .config
+Requested value: CONFIG_IIO_ST_LSM6DSX_I2C=m
+Actual value:    
+WARNING: Value requested for CONFIG_IIO_ST_LSM6DSX_SPI not in final .config
+Requested value: CONFIG_IIO_ST_LSM6DSX_SPI=m
+Actual value:    
+WARNING: Value requested for CONFIG_IIO_ST_MAGN_I2C_3AXIS not in final .config
+Requested value: CONFIG_IIO_ST_MAGN_I2C_3AXIS=m
+Actual value:    
+WARNING: Value requested for CONFIG_IIO_ST_MAGN_SPI_3AXIS not in final .config
+Requested value: CONFIG_IIO_ST_MAGN_SPI_3AXIS=m
+Actual value:    
+WARNING: Value requested for CONFIG_RESET_SCMI not in final .config
+Requested value: CONFIG_RESET_SCMI=y
+Actual value:    
+WARNING: Value requested for CONFIG_MULTIPLEXER not in final .config
+Requested value: CONFIG_MULTIPLEXER=y
+Actual value:    
+WARNING: Value requested for CONFIG_QUOTACTL not in final .config
+Requested value: CONFIG_QUOTACTL=y
+Actual value:    
+WARNING: Value requested for CONFIG_NETFS_SUPPORT not in final .config
+Requested value: CONFIG_NETFS_SUPPORT=y
+Actual value:    
+WARNING: Value requested for CONFIG_PROC_VMCORE not in final .config
+Requested value: CONFIG_PROC_VMCORE=y
+Actual value:    
+WARNING: Value requested for CONFIG_HUGETLB_PAGE not in final .config
+Requested value: CONFIG_HUGETLB_PAGE=y
+Actual value:    
+WARNING: Value requested for CONFIG_HUGETLB_PMD_PAGE_TABLE_SHARING not in final .config
+Requested value: CONFIG_HUGETLB_PMD_PAGE_TABLE_SHARING=y
+Actual value:    
+WARNING: Value requested for CONFIG_EFIVAR_FS not in final .config
+Requested value: CONFIG_EFIVAR_FS=m
+Actual value:    
+WARNING: Value requested for CONFIG_PSTORE_ZONE not in final .config
+Requested value: CONFIG_PSTORE_ZONE=y
+Actual value:    
+WARNING: Value requested for CONFIG_PSTORE_BLK_BLKDEV not in final .config
+Requested value: CONFIG_PSTORE_BLK_BLKDEV=""
+Actual value:    
+WARNING: Value requested for CONFIG_PSTORE_BLK_KMSG_SIZE not in final .config
+Requested value: CONFIG_PSTORE_BLK_KMSG_SIZE=64
+Actual value:    
+WARNING: Value requested for CONFIG_PSTORE_BLK_MAX_REASON not in final .config
+Requested value: CONFIG_PSTORE_BLK_MAX_REASON=2
+Actual value:    
+WARNING: Value requested for CONFIG_PSTORE_BLK_PMSG_SIZE not in final .config
+Requested value: CONFIG_PSTORE_BLK_PMSG_SIZE=64
+Actual value:    
+WARNING: Value requested for CONFIG_PSTORE_BLK_CONSOLE_SIZE not in final .config
+Requested value: CONFIG_PSTORE_BLK_CONSOLE_SIZE=64
+Actual value:    
+WARNING: Value requested for CONFIG_NFS_V3 not in final .config
+Requested value: CONFIG_NFS_V3=y
+Actual value:    
+WARNING: Value requested for CONFIG_NFS_V4_0 not in final .config
+Requested value: CONFIG_NFS_V4_0=y
+Actual value:    
+WARNING: Value requested for CONFIG_PNFS_FILE_LAYOUT not in final .config
+Requested value: CONFIG_PNFS_FILE_LAYOUT=y
+Actual value:    
+WARNING: Value requested for CONFIG_PNFS_BLOCK not in final .config
+Requested value: CONFIG_PNFS_BLOCK=y
+Actual value:    
+WARNING: Value requested for CONFIG_PNFS_FLEXFILE_LAYOUT not in final .config
+Requested value: CONFIG_PNFS_FLEXFILE_LAYOUT=y
+Actual value:    
+WARNING: Value requested for CONFIG_NFS_V4_1_IMPLEMENTATION_ID_DOMAIN not in final .config
+Requested value: CONFIG_NFS_V4_1_IMPLEMENTATION_ID_DOMAIN="kernel.org"
+Actual value:    
+WARNING: Value requested for CONFIG_NFS_V4_SECURITY_LABEL not in final .config
+Requested value: CONFIG_NFS_V4_SECURITY_LABEL=y
+Actual value:    
+WARNING: Value requested for CONFIG_NFS_USE_KERNEL_DNS not in final .config
+Requested value: CONFIG_NFS_USE_KERNEL_DNS=y
+Actual value:    
+WARNING: Value requested for CONFIG_NFS_DISABLE_UDP_SUPPORT not in final .config
+Requested value: CONFIG_NFS_DISABLE_UDP_SUPPORT=y
+Actual value:    
+WARNING: Value requested for CONFIG_NFS_V4_2_READ_PLUS not in final .config
+Requested value: CONFIG_NFS_V4_2_READ_PLUS=y
+Actual value:    
+WARNING: Value requested for CONFIG_GRACE_PERIOD not in final .config
+Requested value: CONFIG_GRACE_PERIOD=y
+Actual value:    
+WARNING: Value requested for CONFIG_LOCKD not in final .config
+Requested value: CONFIG_LOCKD=y
+Actual value:    
+WARNING: Value requested for CONFIG_LOCKD_V4 not in final .config
+Requested value: CONFIG_LOCKD_V4=y
+Actual value:    
+WARNING: Value requested for CONFIG_NFS_COMMON not in final .config
+Requested value: CONFIG_NFS_COMMON=y
+Actual value:    
+WARNING: Value requested for CONFIG_NFS_V4_2_SSC_HELPER not in final .config
+Requested value: CONFIG_NFS_V4_2_SSC_HELPER=y
+Actual value:    
+WARNING: Value requested for CONFIG_SUNRPC not in final .config
+Requested value: CONFIG_SUNRPC=y
+Actual value:    
+WARNING: Value requested for CONFIG_SUNRPC_GSS not in final .config
+Requested value: CONFIG_SUNRPC_GSS=y
+Actual value:    
+WARNING: Value requested for CONFIG_SUNRPC_BACKCHANNEL not in final .config
+Requested value: CONFIG_SUNRPC_BACKCHANNEL=y
+Actual value:    
+WARNING: Value requested for CONFIG_RPCSEC_GSS_KRB5 not in final .config
+Requested value: CONFIG_RPCSEC_GSS_KRB5=y
+Actual value:    
+WARNING: Value requested for CONFIG_HAS_SECURITY_AUDIT not in final .config
+Requested value: CONFIG_HAS_SECURITY_AUDIT=y
+Actual value:    
+WARNING: Value requested for CONFIG_INTEGRITY_AUDIT not in final .config
+Requested value: CONFIG_INTEGRITY_AUDIT=y
+Actual value:    
+WARNING: Value requested for CONFIG_CRYPTO_ENGINE not in final .config
+Requested value: CONFIG_CRYPTO_ENGINE=m
+Actual value:    
+WARNING: Value requested for CONFIG_CRYPTO_LIB_DES not in final .config
+Requested value: CONFIG_CRYPTO_LIB_DES=y
+Actual value:    
+WARNING: Value requested for CONFIG_XOR_BLOCKS not in final .config
+Requested value: CONFIG_XOR_BLOCKS=y
+Actual value:    
+WARNING: Value requested for CONFIG_XOR_BLOCKS_ARCH not in final .config
+Requested value: CONFIG_XOR_BLOCKS_ARCH=y
+Actual value:    
+WARNING: Value requested for CONFIG_RAID6_PQ not in final .config
+Requested value: CONFIG_RAID6_PQ=y
+Actual value:    
+WARNING: Value requested for CONFIG_RAID6_PQ_ARCH not in final .config
+Requested value: CONFIG_RAID6_PQ_ARCH=y
+Actual value:    
+WARNING: Value requested for CONFIG_RAID6_PQ_BENCHMARK not in final .config
+Requested value: CONFIG_RAID6_PQ_BENCHMARK=y
+Actual value:    
+WARNING: Value requested for CONFIG_AUDIT_GENERIC not in final .config
+Requested value: CONFIG_AUDIT_GENERIC=y
+Actual value:    
+WARNING: Value requested for CONFIG_AUDIT_COMPAT_GENERIC not in final .config
+Requested value: CONFIG_AUDIT_COMPAT_GENERIC=y
+Actual value:    
+WARNING: Value requested for CONFIG_LZO_COMPRESS not in final .config
+Requested value: CONFIG_LZO_COMPRESS=y
+Actual value:    
+WARNING: Value requested for CONFIG_TEXTSEARCH not in final .config
+Requested value: CONFIG_TEXTSEARCH=y
+Actual value:    
+WARNING: Value requested for CONFIG_TEXTSEARCH_KMP not in final .config
+Requested value: CONFIG_TEXTSEARCH_KMP=y
+Actual value:    
+WARNING: Value requested for CONFIG_TEXTSEARCH_BM not in final .config
+Requested value: CONFIG_TEXTSEARCH_BM=y
+Actual value:    
+WARNING: Value requested for CONFIG_TEXTSEARCH_FSM not in final .config
+Requested value: CONFIG_TEXTSEARCH_FSM=y
+Actual value:    
+WARNING: Value requested for CONFIG_INTERVAL_TREE not in final .config
+Requested value: CONFIG_INTERVAL_TREE=y
+Actual value:    
+WARNING: Value requested for CONFIG_UCS2_STRING not in final .config
+Requested value: CONFIG_UCS2_STRING=y
+Actual value:    
+WARNING: Value requested for CONFIG_STACKDEPOT not in final .config
+Requested value: CONFIG_STACKDEPOT=y
+Actual value:    
+WARNING: Value requested for CONFIG_STACKDEPOT_MAX_FRAMES not in final .config
+Requested value: CONFIG_STACKDEPOT_MAX_FRAMES=64
+Actual value:    
+WARNING: Value requested for CONFIG_DEBUG_INFO not in final .config
+Requested value: CONFIG_DEBUG_INFO=y
+Actual value:    
+WARNING: CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT differs:
+Requested value: CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y
+Actual value:    # CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT is not set
+WARNING: Value requested for CONFIG_DEBUG_INFO_COMPRESSED_NONE not in final .config
+Requested value: CONFIG_DEBUG_INFO_COMPRESSED_NONE=y
+Actual value:    
+WARNING: Value requested for CONFIG_HAVE_ARCH_KASAN_HW_TAGS not in final .config
+Requested value: CONFIG_HAVE_ARCH_KASAN_HW_TAGS=y
+Actual value:    
+WARNING: Value requested for CONFIG_SCHED_INFO not in final .config
+Requested value: CONFIG_SCHED_INFO=y
+Actual value:    
+WARNING: Value requested for CONFIG_TRACE_CLOCK not in final .config
+Requested value: CONFIG_TRACE_CLOCK=y
+Actual value:    
+WARNING: Value requested for CONFIG_CORESIGHT_LINKS_AND_SINKS not in final .config
+Requested value: CONFIG_CORESIGHT_LINKS_AND_SINKS=m
+Actual value:    
+WARNING: Value requested for CONFIG_CORESIGHT_LINK_AND_SINK_TMC not in final .config
+Requested value: CONFIG_CORESIGHT_LINK_AND_SINK_TMC=m
+Actual value:    
+WARNING: Value requested for CONFIG_CORESIGHT_CATU not in final .config
+Requested value: CONFIG_CORESIGHT_CATU=m
+Actual value:    
+WARNING: Value requested for CONFIG_CORESIGHT_SINK_TPIU not in final .config
+Requested value: CONFIG_CORESIGHT_SINK_TPIU=m
+Actual value:    
+WARNING: Value requested for CONFIG_CORESIGHT_SINK_ETBV10 not in final .config
+Requested value: CONFIG_CORESIGHT_SINK_ETBV10=m
+Actual value:    
+WARNING: Value requested for CONFIG_CORESIGHT_STM not in final .config
+Requested value: CONFIG_CORESIGHT_STM=m
+Actual value:    
+WARNING: Value requested for CONFIG_CORESIGHT_CPU_DEBUG not in final .config
+Requested value: CONFIG_CORESIGHT_CPU_DEBUG=m
+Actual value:    
+WARNING: Value requested for CONFIG_CORESIGHT_CTI not in final .config
+Requested value: CONFIG_CORESIGHT_CTI=m
+Actual value:    

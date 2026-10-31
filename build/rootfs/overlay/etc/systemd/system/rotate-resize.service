@@ -1,0 +1,14 @@
+[Unit]
+Description=Rotate OS: grow the root partition and filesystem to fill the SD card (once)
+DefaultDependencies=no
+After=systemd-remount-fs.service
+Before=rotate-firstboot.service local-fs.target
+ConditionPathExists=!/var/lib/rotate/resized
+
+[Service]
+Type=oneshot
+ExecStart=/usr/share/rotate/resize-root.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=local-fs.target

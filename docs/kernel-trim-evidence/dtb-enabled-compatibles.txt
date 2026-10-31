@@ -1,0 +1,167 @@
+# node | compatible | status  (from dtc -I dtb of ums512-rg-rotate.dtb @ fedeb60b6)
+smem@88000000 | "shared-dma-pool" | okay
+framebuffer-region@9e000000 | "framebuffer" | okay
+ramoops@fff80000 | "ramoops" | okay
+linux,cma | "shared-dma-pool" | okay
+cpu@0 | "arm,cortex-a55" | okay
+cpu@100 | "arm,cortex-a55" | okay
+cpu@200 | "arm,cortex-a55" | okay
+cpu@300 | "arm,cortex-a55" | okay
+cpu@400 | "arm,cortex-a55" | okay
+cpu@500 | "arm,cortex-a55" | okay
+cpu@600 | "arm,cortex-a75" | okay
+cpu@700 | "arm,cortex-a75" | okay
+cpu-pd | "arm,idle-state" | okay
+psci | "arm,psci-0.2" | okay
+timer | "arm,armv8-timer" | okay
+pmu-a55 | "arm,cortex-a55-pmu" | okay
+pmu-a75 | "arm,cortex-a75-pmu" | okay
+display-subsystem | "sprd,display-subsystem" | "okay"
+audcp-boot | "sprd,ums512-audcp-boot" | "okay"
+sprd-pcm-audio | "unisoc,sharkl5-pcm-platform", "unisoc,sharkl5pro-pcm-platform" | okay
+sprd-fe-dai | "unisoc,fe-dai" | okay
+sprd-routing-pcm | "unisoc,pcm-routing" | okay
+audio-sipc | "unisoc,audio_sipc" | okay
+audio-mem-mgr | "unisoc,audio-mem-sharkl5", "unisoc,audio-mem-sharkl5pro" | okay
+rpmsg@0 | "sprd,shub" | "disabled"
+pmsys@800000 | "sprd,ums512-pmsys" | okay
+interrupt-controller@12000000 | "arm,gic-v3" | okay
+clock-controller@0 | "sprd,ums512-apahb-gate" | okay
+syscon@20100000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+syscon@31050000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+nvmem-layout | "fixed-layout" | okay
+efuse@32240000 | "sprd,ums312-efuse" | okay
+syscon@322a0000 | "sprd,sharkl5pro-topdvfs-dev", "sprd,topdvfs-dev", "sprd,sharkl5pro-topdvfs", "sprd,ums512-glbregs", "syscon" | okay
+hardware-dvfs-platform | "sprd,hardware-cpufreq" | okay
+cpudvfs-dev@322a8000 | "sprd,sharkl5pro-cpudvfs" | "okay"
+syscon@32310000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+syscon@32320000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+syscon@32330000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+syscon@32340000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+syscon@32350000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+syscon@32360000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+clock-controller@0 | "sprd,ums512-g0-pll" | okay
+syscon@32390000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+clock-controller@0 | "sprd,ums512-g2-pll" | okay
+phy@100 | "sprd,ums512-hsphy" | "okay"
+syscon@323b0000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+clock-controller@0 | "sprd,ums512-g3-pll" | okay
+syscon@323c0000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+clock-controller@0 | "sprd,ums512-gc-pll" | okay
+syscon@323e0000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+syscon@323f0000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+clock-controller@0 | "sprd,ums512-aon-gate" | okay
+syscon@327d0000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+clock-controller@0 | "sprd,ums512-pmu-gate" | okay
+power-controller | "sprd,ums512-power-controller" | okay
+syscon@327e0000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+gpio@32000000 | "sprd,sharkl5pro-eic-debounce", "sprd,sc9860-eic-debounce" | okay
+gpio@32000080 | "sprd,sharkl5pro-eic-latch", "sprd,sc9860-eic-latch" | okay
+gpio@320000a0 | "sprd,sharkl5pro-eic-async", "sprd,sc9860-eic-async" | okay
+gpio@320000c0 | "sprd,sharkl5pro-eic-sync", "sprd,sc9860-eic-sync" | okay
+clock-controller@0 | "sprd,ums512-audcpapb-gate" | okay
+syscon@3350d000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+clock-controller@0 | "sprd,ums512-audcpahb-gate" | okay
+syscon@335e0000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+mailbox@320a0000 | "sprd,ums512-mailbox" | "okay"
+vbc@33480000 | "unisoc,sharkl5-vbc", "unisoc,sharkl5pro-vbc" | okay
+mcdt@33490000 | "unisoc,sharkl5-mcdt", "unisoc,sharkl5pro-mcdt" | okay
+dma-controller@33580000 | "sprd,sharkl5pro-dma", "sprd,sc9860-dma" | okay
+audio-codec@33750000 | "unisoc,audio-codec-dig-agcp" | okay
+agdsp-access | "unisoc,agdsp-access" | okay
+agcp | "simple-bus" | okay
+clock-controller@0 | "sprd,ums512-gpu-clk" | okay
+syscon@60100000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+syscon@60110000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+gpu@60000000 | "sprd,ums512-mali", "arm,mali-bifrost" | "okay"
+opp-table-gpu | "operating-points-v2" | okay
+clock-controller@0 | "sprd,ums512-mm-gate-clk" | okay
+syscon@62200000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+clock-controller@0 | "sprd,ums512-apapb-gate" | okay
+syscon@71000000 | "sprd,ums512-glbregs", "syscon", "simple-mfd" | okay
+clock-controller@20200000 | "sprd,ums512-ap-clk" | okay
+dma-controller@20000000 | "sprd,sharkl5pro-dma", "sprd,sc9860-dma" | "disabled"
+i2s@70c00000 | "unisoc,i2s" | "disabled"
+clock-controller@32080000 | "sprd,ums512-aonapb-clk" | okay
+clock-controller@62100000 | "sprd,ums512-mm-clk" | okay
+funnel@3c002000 | "arm,coresight-dynamic-funnel", "arm,primecell" | okay
+etb@3c003000 | "arm,coresight-tmc", "arm,primecell" | okay
+funnel@3e001000 | "arm,coresight-dynamic-funnel", "arm,primecell" | okay
+etf@3e002000 | "arm,coresight-tmc", "arm,primecell" | okay
+etf@3e003000 | "arm,coresight-tmc", "arm,primecell" | okay
+funnel@3e004000 | "arm,coresight-dynamic-funnel", "arm,primecell" | okay
+funnel@3e005000 | "arm,coresight-dynamic-funnel", "arm,primecell" | okay
+etm@3f040000 | "arm,coresight-etm4x", "arm,primecell" | okay
+etm@3f140000 | "arm,coresight-etm4x", "arm,primecell" | okay
+etm@3f240000 | "arm,coresight-etm4x", "arm,primecell" | okay
+etm@3f340000 | "arm,coresight-etm4x", "arm,primecell" | okay
+etm@3f440000 | "arm,coresight-etm4x", "arm,primecell" | okay
+etm@3f540000 | "arm,coresight-etm4x", "arm,primecell" | okay
+etm@3f640000 | "arm,coresight-etm4x", "arm,primecell" | okay
+etm@3f740000 | "arm,coresight-etm4x", "arm,primecell" | okay
+serial@0 | "sprd,ums512-uart", "sprd,sc9836-uart" | "disabled"
+serial@100000 | "sprd,ums512-uart", "sprd,sc9836-uart" | "disabled"
+i2c@300000 | "sprd,ums512-i2c", "sprd,sc9860-i2c" | "disabled"
+i2c@400000 | "sprd,ums512-i2c", "sprd,sc9860-i2c" | "disabled"
+audio-codec@58 | "anbernic,rgds-amp" | okay
+i2c@500000 | "sprd,ums512-i2c", "sprd,sc9860-i2c" | "okay"
+touchscreen@14 | "goodix,gt911" | okay
+i2c@600000 | "sprd,ums512-i2c", "sprd,sc9860-i2c" | "okay"
+charger@6a | "awinic,aw32257" | okay
+i2c@700000 | "sprd,ums512-i2c", "sprd,sc9860-i2c" | "okay"
+mmc@1100000 | "sprd,sdhci-r11" | "okay"
+mmc@1200000 | "sprd,sdhci-r11" | "okay"
+mmc@1400000 | "sprd,sdhci-r11" | "okay"
+apb@70000000 | "simple-bus" | okay
+watchdog@40 | "sprd,sc2730-wdt", "sprd,sc27xx-wdt" | okay
+led-controller@180 | "sprd,sc2730-bltc", "sprd,sc2731-bltc" | okay
+rtc@200 | "sprd,sc2730-rtc", "sprd,sc2731-rtc" | okay
+gpio@280 | "sprd,sc2730-eic", "sprd,sc2731-eic" | okay
+efuse@300 | "sprd,sc2730-efuse" | okay
+adc@504 | "sprd,sc2730-adc" | okay
+fuel-gauge@c00 | "sprd,sc2730-fgu" | "okay"
+connector | "usb-c-connector" | okay
+pd@e00 | "sprd,sc2730-pd" | "okay"
+audio-codec@1000 | "unisoc,sc2730-audio-codec", "sprd,sc2730-audio-codec" | "okay"
+vibrator@1b90 | "sprd,sc2730-vibrator" | okay
+pmic@0 | "sprd,sc2730" | okay
+spi@100000 | "sprd,ums512-adi" | okay
+hwspinlock@7f0000 | "sprd,hwspinlock-r3p0" | okay
+timer@50000 | "sprd,sharkl5pro-timer", "sprd,sc9860-timer" | okay
+timer@50020 | "sprd,sharkl5pro-suspend-timer", "sprd,sc9860-suspend-timer" | okay
+i2c@60000 | "sprd,sharkl5pro-hw-i2c" | "okay"
+gpio@70000 | "sprd,ums512-gpio", "sprd,sc9860-gpio" | okay
+pinctrl@450000 | "sprd,ums512-pinctrl" | okay
+pwm@260000 | "sprd,ums512-pwm" | "okay"
+thermal@200000 | "sprd,ums512-thermal" | okay
+thermal@210000 | "sprd,ums512-thermal" | okay
+thermal@220000 | "sprd,ums512-thermal" | okay
+watchdog@2f0000 | "sprd,ums512-wdt", "sprd,sp9860-wdt" | okay
+bus@32000000 | "simple-bus" | okay
+usb@5fff0000 | "sprd,ums512-musb", "sprd,musb" | "okay"
+dpu@20300000 | "sprd,ums512-dpu", "sprd,sharkl3-dpu" | "okay"
+iommu@20300800 | "sprd,ums512-iommu", "sprd,iommu-v1" | "okay"
+panel@0 | "rocknix,generic-dsi" | okay
+dsi@20400000 | "sprd,ums512-dsi-host", "sprd,ums9230-dsi-host" | "okay"
+mm | "simple-bus" | okay
+soc | "simple-bus" | okay
+clk-26m | "fixed-clock" | okay
+dphy-273m | "fixed-clock" | okay
+dphy-204m8 | "fixed-clock" | okay
+clk-32k | "fixed-clock" | okay
+clk-4m | "fixed-clock" | okay
+clk-100m | "fixed-clock" | okay
+sound@0 | "unisoc,vbc-v4-codec-sc2730" | "okay"
+sprd-pcm-iis | "unisoc,sharkl5-pcm-platform" | okay
+sound@1 | "unisoc,i2s-null-codec" | "disabled"
+backlight | "pwm-backlight" | okay
+regulator-lcd-avdd | "regulator-fixed" | okay
+regulator-lcd-avee | "regulator-fixed" | okay
+regulator-touch-vdd | "regulator-fixed" | okay
+gpio-keys-gamepad | "gpio-keys" | okay
+gpio-keys-system | "gpio-keys" | okay
+battery | "simple-battery" | okay
+wlan | "sprd,sc2355-sdio-wifi" | okay
+sprd-mtty | "sprd,mtty" | okay
+sprd-marlin3 | "unisoc,marlin3lite_sdio" | okay
+/ | "sprd,ums512-1h10", "sprd,ums512" | okay

@@ -1,0 +1,2 @@
+# Rotate OS. Root is mounted by the kernel from root=PARTUUID= (extlinux.conf).
+PARTLABEL=bootfs  /boot  vfat  defaults,noatime,umask=0077  0 2

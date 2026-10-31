@@ -1,0 +1,10 @@
+--- a/chipram/config.mk
++++ b/chipram/config.mk
+@@ -172,6 +172,7 @@
+ CFLAGS += $(call cc-option,-Wno-error=incompatible-pointer-types)
+ CFLAGS += $(call cc-option,-Wno-error=return-mismatch)
+ CFLAGS += $(call cc-option,-Wno-error=implicit-int)
++CFLAGS += -std=gnu11  # GCC>=15 defaults to C23 where bool is a keyword (sci_types.h typedef bool)
+ 
+ ifneq ($(AP_VERSION), )
+ CFLAGS += -DCONFIG_AP_VERSION='"$(AP_VERSION)"'

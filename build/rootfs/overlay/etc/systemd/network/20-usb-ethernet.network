@@ -1,0 +1,5 @@
+# Wired/USB ethernet (e.g. an OTG RTL8153 dongle) via networkd. Wi-Fi is left to iwd.
+[Match]
+Name=en* eth*
+[Network]
+DHCP=yes

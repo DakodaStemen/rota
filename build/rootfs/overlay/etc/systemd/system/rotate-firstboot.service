@@ -1,0 +1,15 @@
+# SPDX-License-Identifier: MIT
+# Adapted from thwonp/base618 scripts/base618-firstboot.service (MIT).
+[Unit]
+Description=Rotate OS first boot: take this unit's firmware off its own eMMC, then power off
+After=local-fs.target
+ConditionPathExists=!/boot/rotate-fw.done
+ConditionPathExists=!/boot/rotate-fw.failed
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh /usr/share/rotate/firstboot.sh
+StandardOutput=journal+console
+
+[Install]
+WantedBy=multi-user.target

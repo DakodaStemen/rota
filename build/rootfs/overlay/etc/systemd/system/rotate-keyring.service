@@ -1,0 +1,13 @@
+[Unit]
+Description=Rotate OS: initialise the pacman keyring (first boot)
+After=local-fs.target
+ConditionPathExists=!/etc/pacman.d/gnupg/trustdb.gpg
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/pacman-key --init
+ExecStart=/usr/bin/pacman-key --populate archlinux archlinuxarm
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

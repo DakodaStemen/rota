@@ -1,0 +1,9 @@
+Files derived from thwonp/base618 (MIT, https://github.com/thwonp/base618), copied verbatim at image build
+from upstream/base618 (commit a1a1801f7dafa649d6dddf6c307529d7ee57b93c):
+  scripts/extract-firmware.sh  -> /usr/share/rotate/extract-firmware.sh
+  scripts/make-initrd-fw.sh    -> /usr/share/rotate/make-initrd-fw.sh
+  (SPDX-License-Identifier: MIT in each file; full text: LICENSES/MIT.txt -> /usr/share/licenses/rotate/base618-MIT.txt)
+Adapted: /usr/share/rotate/firstboot.sh (from scripts/base618-firstboot.sh), rotate-firstboot.service
+(from scripts/base618-firstboot.service).
+No vendor firmware is shipped. agdsp.bin, pm_sys.bin and wcnmodem.bin are read from the unit's own eMMC
+(l_agdsp_*, pm_sys_*, wcnmodem_*) on first boot. pm_bootcode.bin is built from GPL U-Boot source (cp_boot.h).

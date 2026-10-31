@@ -1,0 +1,9 @@
+upstream/
+build/work/
+build/out/
+build/logs/
+qemu/artifacts/
+qemu/*.img
+qemu/*.qcow2
+*.img
+build/cache/
