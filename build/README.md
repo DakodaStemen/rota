@@ -34,13 +34,14 @@ Compilers go through ccache (symlink masquerade in `work/ccache-bin`, `CCACHE_DI
 
 | Stage | Result | Time | Artifact | Size | sha256 |
 |---|---|---|---|---|---|
-| spl | PASS (2nd try) | 16 s | `out/spl/spl_a_open.img` (DHTB OK, payload 54632 B) | 4,194,304 | `ca641d90…1fd1e8dd3` |
+| spl | PASS (repinned to thwonp `plorpos-cm4` e229396, 2026-10-31) | 17 s | `out/spl/spl_a_open.img` (DHTB OK, payload 54608 B; skips `cm4_sec()` via `CONFIG_SPL_CM4_NS_RESET`) | 4,194,304 | `183d7fdbf14ec478d32db7156ae9e8de1ff9b4a2a5af3e32c256b9a1f63a7b3e` (was `ca641d90…1fd1e8dd3` at crackerjacques 3c5f354) |
 | uboot | PASS (2nd try) | 11 s | `out/uboot/uboot_dhtb.img` (DHTB OK, payload 571,904 B < 1 MiB) | 572,416 | `df3b67d6ac0249eb3d78f9eefbb5fdcbb02c0ba74efed71c158c3c23a3cf6c89` |
 | kernel | PASS (trimmed, 2026-10-31 re-run) | 358 s build.sh / 5m58 wall (-j16, ccache cold for the new source path; was 541 s untrimmed) | `out/kernel/Image`, `ums512-rg-rotate.dtb`, modules (1.3 MB, 17 .ko), `config` | Image 20,170,760 (was 31,447,552) | Image `e6f6b693…026ee` |
 | rootfs | PASS (superseded by the Phase 6 row below) | 344 s | `out/rootfs/rootfs.tar.zst` (694 MiB unpacked, 148 packages) | 195,154,406 | `2db449d6…ee24aa` |
 | melonds | PASS (`-fprofile-generate`) | 1225 s wall = chroot creation + 125 s cmake configure (FetchContent clones) + 781 s compile/link at `-j16` under qemu-user | `out/melonds/melondsds_libretro.pgo.so` | 10,251,072 | `f9625592…2cf15` |
 | rootfs | PASS (Phase 6: RetroArch/cores/PortMaster) | 284 s (incl. pacman of 186 extra packages, qemu-user) | `out/rootfs/rootfs.tar.zst` (**1675 MiB unpacked, 334 packages**; was 694 MiB / 148) | 492,008,541 | `82fe7f66…d4441` |
-| image | PASS (Phase 6 rebuild) | 11 s | `out/image/rotate-os.img` (sparse 6 GiB, p3 5.7 GiB) | 6,442,450,944 | img `7abccb38e8ce79ee90c4e4b41b221b9c2c3a1c6777e4551ac580538afcd9e7bf` |
+| image | PASS (rebuilt 2026-10-31 with the plorpos-cm4 SPL, 11 s; `rotate-os.spl.img` = `183d7fdb…a7b3e`) | 11 s | `out/image/rotate-os.img` (sparse 6 GiB) | 6,442,450,944 | img `7b1fb1eb04a2bc0a2e2861706eb730c626a419c406b24bd4ae87c5d08555dc5b` |
+| image | PASS (Phase 6 rebuild, superseded) | 11 s | `out/image/rotate-os.img` (sparse 6 GiB, p3 5.7 GiB) | 6,442,450,944 | img `7abccb38e8ce79ee90c4e4b41b221b9c2c3a1c6777e4551ac580538afcd9e7bf` |
 | image | PASS (rebuilt after trim + watchdog) | 8 s (rootfs re-run 179 s for the overlay change) | `out/image/rotate-os.img` (sparse 6 GiB) + `rotate-os.spl.img` | 6,442,450,944 | img `d7684959afd86c3fcfb6c92987da55c06febf389bddbbe446c9f0cebbfd9ef22` |
 
 Full hashes: `out/*/SHA256SUMS`. Kernel release string: `7.2.9-sprd-ums512` (the build now uses a `git archive` work copy, so no `+` dirty marker; it was `…+` before).
@@ -53,6 +54,13 @@ Failures hit and fixed (logs of the failed runs were overwritten by the passing 
    Side effect checked: the Makefile's own `KCFLAGS += -DAVB_…` is under `CONFIG_VBOOT_V2`, which is not set in `ums512_rg_rotate_defconfig`, so nothing is lost.
    The kernel did not need this (Kbuild already passes `-std=gnu11`).
 3. **image** exit 1: my post-check used `test -e` on absolute enable-symlinks, which dangle from the host. Changed to `test -L`.
+
+### SPL recipe as built
+`thwonp/ums512_spl` branch `plorpos-cm4` @ `e22939608b6e` (fetched into `upstream/ums512_spl` as local branch `plorpos-cm4`) = crackerjacques `armbian` 3c5f354 plus one commit,
+e229396 "open: skip cm4_sec()": `#define CONFIG_SPL_CM4_NS_RESET` in `board/ums512_1h10.open.config` and `#ifndef` around `cm4_sec()` in
+`chipram/secure/trustzone/firewall_sharkl5pro.c` (2 files, +6 lines; nothing else). This leaves the CM4 reset bit non-secure writable so Linux's pmsys remoteproc
+can start the CM4 (deep sleep needs it). The GCC 15 `-std=gnu11` patch still applies unchanged. Layout check: SPL loads GPT partition `uboot` (max `CONFIG_UBOOT_MAX_SIZE` 0x100000)
+from the SD; image p1 is named `uboot`, 16 MiB, holds a DHTB with 571,904 B payload (read back at 1 MiB: check-dhtb OK). Not run on hardware.
 
 ### U-Boot recipe as built
 `crackerjacques/u-boot-ums512 @ d1f91089bcb2…` + the five Armbian patches (`patches/uboot/0001..0005`, from

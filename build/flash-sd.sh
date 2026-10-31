@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: MIT
 # flash-sd.sh — Safe microSD writer for Rotate OS
-# Verifies that target is a removable block device and matches microSD sizes (8 GiB .. 512 GiB).
+# Refuses non-removable devices and the disk holding /, checks microSD size, needs the device name typed to confirm. --dry-run writes nothing.
 
 set -euo pipefail
 
@@ -11,19 +11,34 @@ IMAGE_FILE="${REPO_ROOT}/build/out/image/rotate-os.img"
 CHECKSUM_FILE="${REPO_ROOT}/build/out/image/SHA256SUMS"
 
 usage() {
-    echo "Usage: $0 /dev/sdX (or /dev/mmcblkX)" >&2
-    echo "       $0 /dev/sdX [path-to-image.img]" >&2
-    exit 1
+    cat >&2 <<EOF
+Usage: $0 [--dry-run] [-h|--help] DEVICE [IMAGE]
+  DEVICE   whole removable disk, e.g. /dev/sdX (partitions are refused)
+  IMAGE    default: build/out/image/rotate-os.img
+  --dry-run  run every safety check, print what would be written, write nothing
+             (does not need root, does not ask for confirmation)
+Refuses: non-block devices, partitions, non-removable devices (removable != 1),
+any disk that holds / or another system mount or swap (also via LVM/crypt),
+sizes outside 7..550 GiB. Writing needs the device name typed back to confirm.
+Exit codes: 0 ok / dry-run passed; 1 refused or error; 2 usage.
+EOF
 }
 
-[[ $# -ge 1 ]] || usage
-TARGET="$1"
-if [[ $# -ge 2 ]]; then
-    IMAGE_FILE="$2"
-fi
+DRY_RUN=0
+ARGS=()
+for a in "$@"; do
+    case "$a" in
+        -h|--help) usage; exit 0 ;;
+        --dry-run) DRY_RUN=1 ;;
+        *) ARGS+=("$a") ;;
+    esac
+done
+[[ ${#ARGS[@]} -ge 1 && ${#ARGS[@]} -le 2 ]] || { usage; exit 2; }
+TARGET="${ARGS[0]}"
+[[ ${#ARGS[@]} -ge 2 ]] && IMAGE_FILE="${ARGS[1]}"
 
-# 1. Root check
-if [[ $EUID -ne 0 ]]; then
+# 1. Root check (writing only)
+if [[ $DRY_RUN -eq 0 && $EUID -ne 0 ]]; then
     echo "ERROR: This script must be run as root (sudo $0 $TARGET)" >&2
     exit 1
 fi
@@ -66,27 +81,23 @@ if [[ ! -d "$SYS_BLOCK" ]]; then
     exit 1
 fi
 
-# 4. Safety: Refuse non-removable devices (internal disks/NVMe)
+# 4. Safety: refuse non-removable devices (internal disks, NVMe, loop, built-in eMMC). No exceptions.
 REMOVABLE=$(cat "$SYS_BLOCK/removable" 2>/dev/null || echo "0")
 if [[ "$REMOVABLE" != "1" ]]; then
-    # For mmcblk devices, check if it's on an MMC/SD bus or removable card reader
-    if [[ "$DEV_NAME" =~ ^mmcblk[0-9]+$ ]]; then
-        # Check if type is SD
-        DEV_TYPE=$(cat "$SYS_BLOCK/device/type" 2>/dev/null || echo "")
-        if [[ "$DEV_TYPE" != "SD" ]]; then
-            echo "ERROR: Target '$TARGET' is not marked removable ($SYS_BLOCK/removable = $REMOVABLE). Refusing." >&2
-            exit 1
-        fi
-    else
-        echo "ERROR: Target '$TARGET' is not marked removable ($SYS_BLOCK/removable = $REMOVABLE). Refusing." >&2
+    echo "ERROR: Target '$TARGET' is not marked removable ($SYS_BLOCK/removable = $REMOVABLE). Refusing." >&2
+    exit 1
+fi
+
+# Safety: refuse the disk that holds / (directly or via LVM/crypt/partition) and any system mount or swap.
+ROOT_SRC=$(findmnt -n -o SOURCE / 2>/dev/null || true)
+if [[ -n "$ROOT_SRC" && -b "$ROOT_SRC" ]]; then
+    if lsblk -nsro NAME "$ROOT_SRC" 2>/dev/null | grep -qx "$DEV_NAME"; then
+        echo "FATAL: Target '$TARGET' holds the root filesystem ($ROOT_SRC). Refusing." >&2
         exit 1
     fi
 fi
-
-# Safety: Refuse root device or active swap
-MOUNTED_PARTS=$(lsblk -rn -o MOUNTPOINT "$TARGET" | grep -v '^$' || true)
-if echo "$MOUNTED_PARTS" | grep -E '^/(|boot|home|usr|var|etc)$' >/dev/null; then
-    echo "FATAL: Target '$TARGET' contains system mountpoints! Refusing." >&2
+if lsblk -nr -o MOUNTPOINTS "$TARGET" 2>/dev/null | tr ' ' '\n' | grep -E '^(/|/boot|/boot/efi|/home|/usr|/var|/etc|\[SWAP\])$' >/dev/null; then
+    echo "FATAL: Target '$TARGET' contains system mountpoints or swap! Refusing." >&2
     exit 1
 fi
 
@@ -113,14 +124,24 @@ echo "Removable:   $REMOVABLE"
 echo "Image:       $IMAGE_FILE"
 echo "==================================================="
 
+if [[ $DRY_RUN -eq 1 ]]; then
+    echo "DRY RUN: all checks passed; would write $IMAGE_FILE to $TARGET. Nothing written."
+    exit 0
+fi
+
+echo "This ERASES everything on $TARGET."
+read -r -p "Type the device name ($DEV_NAME) to confirm: " ANSWER
+if [[ "$ANSWER" != "$DEV_NAME" ]]; then
+    echo "ERROR: confirmation did not match '$DEV_NAME'. Aborting, nothing written." >&2
+    exit 1
+fi
+
 # Unmount all mounted partitions on target
-for part in $(lsblk -ln -o NAME "$TARGET" | tail -n +2); do
-    DEV_PART="/dev/$part"
-    if mountpoint -q "$(lsblk -no MOUNTPOINT "$DEV_PART" 2>/dev/null || true)"; then
-        echo "Unmounting $DEV_PART..."
-        umount "$DEV_PART"
-    fi
-done
+while read -r part mp; do
+    [[ -n "$mp" ]] || continue
+    echo "Unmounting /dev/$part..."
+    umount "/dev/$part"
+done < <(lsblk -nr -o NAME,MOUNTPOINT "$TARGET" | tail -n +2)
 
 # 7. Write image
 echo "Writing image to $TARGET..."
