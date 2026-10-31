@@ -7,10 +7,16 @@ setup_ccache
 SRC="$ROOT/upstream/linux-mainline-sprd"
 shopt -s nullglob
 FRAGS=("$B/kernel/rotate.config" "$B"/kernel/fragments.d/*.config)
-stage_begin kernel "$KERNEL_SHA $KERNEL_BASE_DEFCONFIG $(file_hash "${FRAGS[@]}" "$0")" "$OUT/kernel/Image" "$OUT/kernel/ums512-rg-rotate.dtb"
+PATCHES=("$B"/patches/kernel/*.patch)
+stage_begin kernel "$KERNEL_SHA $KERNEL_BASE_DEFCONFIG $(file_hash "${FRAGS[@]}" "${PATCHES[@]}" "$0")" "$OUT/kernel/Image" "$OUT/kernel/ums512-rg-rotate.dtb"
 [[ "$(git -C "$SRC" rev-parse HEAD)" == "$KERNEL_SHA" ]] || die "$SRC is not at pinned $KERNEL_SHA"
 [[ -z "$(git -C "$SRC" status --porcelain --untracked-files=no)" ]] || die "$SRC has tracked modifications"
-O="$WORK/kernel-build"; mkdir -p "$O" "$OUT/kernel"
+# Patched work copy: pristine export of the pinned SHA + patches/kernel/*.patch. upstream/ is never edited.
+SRC_UP="$SRC"; SRC="$WORK/kernel-src"
+rm -rf "$SRC"; mkdir -p "$SRC"
+git -C "$SRC_UP" archive "$KERNEL_SHA" | tar -x -C "$SRC"
+for p in "${PATCHES[@]}"; do say "patch $(basename "$p")"; patch -d "$SRC" -p1 --no-backup-if-mismatch < "$p"; done
+O="$WORK/kernel-build"; rm -rf "$O"; mkdir -p "$O" "$OUT/kernel"
 CC_="ccache ${CROSS}gcc"
 MK=(make -C "$SRC" O="$O" ARCH=arm64 CROSS_COMPILE="$CROSS" CC="$CC_" HOSTCC="ccache gcc" -j"$JOBS")
 "${MK[@]}" "$KERNEL_BASE_DEFCONFIG"

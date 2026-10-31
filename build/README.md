@@ -22,7 +22,7 @@ Exit codes: 0 ok; 2 unknown stage/usage; 3 missing host tool; otherwise the fail
 if the bare git cache `cache/u-boot-ums512.git` is missing.
 
 Layout: `pins.env` (all pinned SHAs and sizes), `stages/*.sh`, `lib/` (helpers, DHTB wrap/check),
-`patches/{spl,uboot}/`, `kernel/` (config fragments), `rootfs/` (overlay + chroot script), `out/<stage>/`
+`patches/{spl,uboot,kernel}/`, `kernel/` (config fragments), `rootfs/` (overlay + chroot script), `out/<stage>/`
 (artifacts + `SHA256SUMS`), `logs/<stage>.log` (last real build of that stage) and `logs/summary.log`
 (every invocation incl. failures), `work/` and `cache/` (scratch, ccache; safe to delete).
 Idempotence: each stage writes `out/.<stage>.stamp` = hash of pins + patches + fragments + script; a matching
@@ -36,12 +36,11 @@ Compilers go through ccache (symlink masquerade in `work/ccache-bin`, `CCACHE_DI
 |---|---|---|---|---|---|
 | spl | PASS (2nd try) | 16 s | `out/spl/spl_a_open.img` (DHTB OK, payload 54632 B) | 4,194,304 | `ca641d90…1fd1e8dd3` |
 | uboot | PASS (2nd try) | 11 s | `out/uboot/uboot_dhtb.img` (DHTB OK, payload 571,904 B < 1 MiB) | 572,416 | `df3b67d6ac0249eb3d78f9eefbb5fdcbb02c0ba74efed71c158c3c23a3cf6c89` |
-| kernel | PASS | 541 s (cold ccache) | `out/kernel/Image`, `ums512-rg-rotate.dtb`, modules (7.8 MB), `config` | Image 31,447,552 | Image `456c71f6…946ab` |
+| kernel | PASS (trimmed, 2026-10-31 re-run) | 358 s build.sh / 5m58 wall (-j16, ccache cold for the new source path; was 541 s untrimmed) | `out/kernel/Image`, `ums512-rg-rotate.dtb`, modules (1.3 MB, 17 .ko), `config` | Image 20,170,760 (was 31,447,552) | Image `e6f6b693…026ee` |
 | rootfs | PASS | 344 s | `out/rootfs/rootfs.tar.zst` (694 MiB unpacked, 148 packages) | 195,154,406 | `2db449d6…ee24aa` |
-| image | PASS (2nd try) | 8 s | `out/image/rotate-os.img` (sparse 6 GiB, 897 MiB used) + `rotate-os.spl.img` | 6,442,450,944 | img `e8663e77b068597d41bd443ba1dde5ea62a2558f00593275f3947a172e326570` |
+| image | PASS (rebuilt after trim + watchdog) | 8 s (rootfs re-run 179 s for the overlay change) | `out/image/rotate-os.img` (sparse 6 GiB) + `rotate-os.spl.img` | 6,442,450,944 | img `d7684959afd86c3fcfb6c92987da55c06febf389bddbbe446c9f0cebbfd9ef22` |
 
-Full hashes: `out/*/SHA256SUMS`. Kernel release string: `7.2.9-sprd-ums512+` (the `+` comes from kbuild's
-git-dirty detection on the shared checkout; contents are the pinned commit, tracked tree clean).
+Full hashes: `out/*/SHA256SUMS`. Kernel release string: `7.2.9-sprd-ums512` (the build now uses a `git archive` work copy, so no `+` dirty marker; it was `…+` before).
 
 Failures hit and fixed (logs of the failed runs were overwritten by the passing runs; the history is in `logs/summary.log`):
 1. **spl** exit 1: GCC 15 defaults to C23 where `bool` is a keyword (`chipram/include/sci_types.h:26 typedef bool`).
@@ -59,12 +58,34 @@ armbian/build `6085c92674bd`), `ARCH=arm` on the defconfig and the build pass, `
 `pm_bootcode.bin` (124 B, CM4 boot stub) is generated from the GPL `cp_boot.h` with base618's `build-pm-bootcode.sh`.
 
 ### Kernel recipe as built
-`upstream/linux-mainline-sprd` @ `fedeb60b65…` (checked, tracked tree clean), `O=work/kernel-build`,
-`ums512_defconfig` + `kernel/rotate.config` (`CONFIG_ANDROID_BINDERFS=y`) + `kernel/fragments.d/*.config`.
-The stage fails if any requested symbol does not land in the final `.config`; result in `out/kernel/binder.txt`:
-`CONFIG_ANDROID_BINDER_IPC=y`, `CONFIG_ANDROID_BINDERFS=y`.
-**Trim hook:** put the trim lane's fragment at `build/kernel/fragments.d/50-trim.config` (plain `CONFIG_X=…` lines);
-the directory is hashed into the stamp so the kernel rebuilds. Empty today, so the shipped kernel is untrimmed.
+`git archive` of `upstream/linux-mainline-sprd` @ `fedeb60b65…` into `work/kernel-src`, then `patches/kernel/*.patch` applied
+there (`upstream/` is never edited; the stage still checks it is at the pin and clean), `O=work/kernel-build`,
+`ums512_defconfig` + `kernel/rotate.config` + `kernel/fragments.d/*.config` (merge_config.sh). Patch files are part of the stamp hash.
+The stage fails if any requested symbol does not land in the final `.config`.
+- `patches/kernel/0001-drm-sprd-select-DRM_CLIENT_SELECTION.patch`: `select DRM_CLIENT_SELECTION` in `config DRM_SPRD`. With it the
+  `DRM_HDLCD=y` keep-alive was dropped (now `# CONFIG_DRM_HDLCD is not set`); `DRM_CLIENT_SELECTION`, `DRM_FBDEV_EMULATION`, `FRAMEBUFFER_CONSOLE` stay `=y`.
+- `kernel/fragments.d/20-trim.config` = `docs/kernel-trim.config` (copied; only change: HDLCD line). `CONFIG_DMABUF_HEAPS=y` (+SYSTEM, CMA) lives
+  in this fragment rather than in a defconfig patch. `kernel/rotate.config` (binderfs) is unchanged.
+
+#### Trim result (before = untrimmed build of 06:06, after = 06:18)
+| | before | after |
+|---|---|---|
+| `Image` | 31,447,552 B | 20,170,760 B (-35.9 %) |
+| modules (`.ko`) | 156 (7.8 MB) | 17 (1.3 MB) |
+| `=y` / `=m` in `.config` | 2035 / 155 | 1488 / 18 |
+| kernel stage time | 541 s | 358 s |
+| image sha256 | `e8663e77…2326570` | `d7684959afd86c3fcfb6c92987da55c06febf389bddbbe446c9f0cebbfd9ef22` |
+
+Key symbols (before -> after): `DRM_SPRD` y->y, `DRM_CLIENT_SELECTION` y->y, `DRM_FBDEV_EMULATION` y->y, `FRAMEBUFFER_CONSOLE` y->y,
+`DRM_HDLCD` y->n, `DMABUF_HEAPS` n->y (+`_SYSTEM`, `_CMA` now stick), `INPUT_UINPUT` n->y, `ANDROID_BINDERFS` y->y, `SPRD_WATCHDOG`/`SC27XX_WATCHDOG` y->y,
+`PREEMPT_LAZY`/`PREEMPT_DYNAMIC` n->y, `DRM_PANFROST` m->m, `SND_SOC_SPRD` y->y, `SND_SOC_UNISOC_VBC_V4_SC2730` y->y, `SND_SOC_AW87390` y->y,
+`SND_SOC_GENERIC_DMAENGINE_PCM` y->gone, `SND_SOC_UMS9230_DIGITAL` y->n.
+Audio check: all 22 `sound/soc/sprd/vendor/*.o` (incl. `vbc-dai`, `sprd-codec`, `sprd-dmaengine-pcm`, `vbc-rxpx-codec-sc27xx`) still compile and
+`snd-soc-unisoc-vbc-v4-sc2730` is in `modules.builtin`. The two dropped symbols were NOT restored: the DTS codec node uses
+`unisoc,audio-codec-dig-agcp` (vendor stack), `UMS9230_DIGITAL` only matches `sprd,ums9230-digital-codec`, and nothing under `sound/soc/sprd` references `snd_dmaengine_*`
+(the vendor `sprd-dmaengine-pcm.c` is self-contained; link succeeded). Not runtime-tested: audio needs the AGDSP firmware and hardware. If audio fails on device, first re-add
+`CONFIG_SND_SOC_GENERIC_DMAENGINE_PCM=y` and `CONFIG_SND_SOC_UMS9230_DIGITAL=y` to the fragment (cheap).
+`sound/soc/sprd` objects built; the kernel log has `-Wmissing-prototypes`/`const` warnings in `vendor/agdsp_access.c`, `audio_mem.c` (pre-existing vendor code).
 
 ### Rootfs recipe as built
 ALARM tarball (md5 checked against `pins.env`; GPG `.sig` NOT verified) → `bsdtar -xpf` as root → `systemd-nspawn`
@@ -97,5 +118,5 @@ byte: read back from the file at 1 MiB, `check-dhtb.py` passes. `fsck.vfat -n` a
 - `rotate-resize.service` (grows p3 to the card, keeps the PARTUUID) and `rotate-keyring.service`/`rotate-firstboot` logic were written but not executed (needs the device or a booted guest). `extract-firmware.sh` was not run (no eMMC images available).
 - Rootfs was not booted under qemu-system; only inspected (mounted read-only, file/symlink checks, fsck).
 - ALARM tarball GPG signature not verified (no key imported); md5 only. Package versions float with the mirror at build time, so the rootfs stage is not bit-reproducible (`packages.txt` records the result).
-- No hw-watchdog feeder service yet (research 02: userspace must feed `/dev/watchdog0/1`), no audio/UCM, no Mesa/RetroArch/frontend: later phases. logind lid handling is set to ignore.
-- Kernel is untrimmed (hook above). Windows/macOS hosts are not supported by these scripts.
+- Hardware watchdog: `rootfs/overlay/etc/systemd/system.conf.d/10-rotate-watchdog.conf` sets `RuntimeWatchdogSec=20s`, `RebootWatchdogSec=2min` (`SPRD_WATCHDOG=y`, DT `timeout-sec=30`, driver range 3-60 s; the SoC watchdog only counts once userspace opens it, so PID 1 arms it). File verified inside the built image; **not run on hardware**. There are two watchdog drivers (`sprd_wdt`, `sc27xx_wdt`); systemd opens `/dev/watchdog`, which is whichever registered as watchdog0 - check `cat /sys/class/watchdog/watchdog0/identity` on device and set `RuntimeWatchdogDevice=` if it is the PMIC one. No audio/UCM, no Mesa/RetroArch/frontend: later phases. logind lid handling is set to ignore.
+- Trimmed kernel only builds and links; it has never booted. Windows/macOS hosts are not supported by these scripts.

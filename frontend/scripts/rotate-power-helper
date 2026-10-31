@@ -1,0 +1,88 @@
+#!/bin/sh
+# rotate-power-helper: the only privileged piece of the power-profile feature.
+#   rotate-power-helper set save|balanced|max
+#   rotate-power-helper get
+# Writes cpufreq scaling_governor and scaling_max_freq for every cpu*/cpufreq under $ROTATE_SYSFS_ROOT
+# (default /sys). The T618 frequency may be fixed (research doc 02), so every write is best-effort:
+# a failed or pointless write is reported as "skip" and never fails the call. The chosen profile is
+# recorded in $ROTATE_STATE_DIR/power-profile (default /var/lib/rotate) for the frontend.
+#
+# Profile table:        governors tried in order     max-freq cap
+#   save                powersave                    50 % of cpuinfo_max_freq
+#   balanced            schedutil ondemand           85 %
+#   max                 performance                  100 %
+ROOT=${ROTATE_SYSFS_ROOT:-/sys}
+STATE=${ROTATE_STATE_DIR:-/var/lib/rotate}
+
+die() { echo "rotate-power-helper: $*" >&2; exit 2; }
+
+case "$1" in
+  get)
+    [ -r "$STATE/power-profile" ] && cat "$STATE/power-profile" || echo unknown
+    exit 0 ;;
+  set) ;;
+  *) die "usage: $0 set save|balanced|max | get" ;;
+esac
+
+case "$2" in
+  save)     GOVS="powersave";           PCT=50 ;;
+  balanced) GOVS="schedutil ondemand";  PCT=85 ;;
+  max)      GOVS="performance";         PCT=100 ;;
+  *) die "unknown profile '$2'" ;;
+esac
+
+# best-effort write: write_to FILE VALUE LABEL
+write_to() {
+  if [ -w "$1" ] && printf '%s\n' "$2" > "$1" 2>/dev/null; then
+    echo "ok   $3 = $2"
+  else
+    echo "skip $3 (cannot write $1)"
+  fi
+}
+
+found=0
+for pol in "$ROOT"/devices/system/cpu/cpu[0-9]*/cpufreq; do
+  [ -d "$pol" ] || continue
+  found=1
+  cpu=$(basename "$(dirname "$pol")")
+
+  # governor: first candidate the policy offers (or the first candidate blindly when the list is absent)
+  gov=""
+  if [ -r "$pol/scaling_available_governors" ]; then
+    avail=" $(cat "$pol/scaling_available_governors") "
+    for g in $GOVS; do
+      case "$avail" in *" $g "*) gov=$g; break ;; esac
+    done
+  else
+    gov=${GOVS%% *}
+  fi
+  if [ -n "$gov" ]; then write_to "$pol/scaling_governor" "$gov" "$cpu governor"
+  else echo "skip $cpu governor (none of: $GOVS available)"; fi
+
+  # max-freq cap
+  hw_max=$(cat "$pol/cpuinfo_max_freq" 2>/dev/null)
+  hw_min=$(cat "$pol/cpuinfo_min_freq" 2>/dev/null)
+  if [ -z "$hw_max" ]; then
+    echo "skip $cpu scaling_max_freq (cpuinfo_max_freq unreadable)"
+  elif [ -n "$hw_min" ] && [ "$hw_min" -ge "$hw_max" ]; then
+    echo "skip $cpu scaling_max_freq (fixed frequency $hw_max kHz)"
+  else
+    target=$((hw_max * PCT / 100))
+    pick=""
+    if [ -r "$pol/scaling_available_frequencies" ]; then
+      for f in $(cat "$pol/scaling_available_frequencies"); do
+        [ "$f" -le "$target" ] && { [ -z "$pick" ] || [ "$f" -gt "$pick" ]; } && pick=$f
+      done
+      [ -n "$pick" ] || pick=$hw_min
+    else
+      pick=$target
+    fi
+    write_to "$pol/scaling_max_freq" "$pick" "$cpu max_freq(kHz)"
+  fi
+done
+[ "$found" = 1 ] || echo "skip: no cpufreq policy under $ROOT/devices/system/cpu"
+
+mkdir -p "$STATE" 2>/dev/null
+if printf '%s\n' "$2" > "$STATE/power-profile" 2>/dev/null; then echo "ok   profile = $2"
+else echo "skip profile state (cannot write $STATE/power-profile)"; fi
+exit 0

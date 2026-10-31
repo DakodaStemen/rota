@@ -1,2 +1,3 @@
 images/
 artifacts/*.ppm
+*.qcow2

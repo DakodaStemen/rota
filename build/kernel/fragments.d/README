@@ -1,6 +1,6 @@
 Extra kernel config fragments, merged AFTER rotate.config in lexical order.
 Hook for the kernel-trim lane: drop docs/kernel-trim-proposal.md's resulting fragment here as
-e.g. 50-trim.config (plain `CONFIG_X=y` / `# CONFIG_X is not set` lines). The kernel stage hashes
+e.g. 20-trim.config (now present) (plain `CONFIG_X=y` / `# CONFIG_X is not set` lines). The kernel stage hashes
 this directory, so adding a file invalidates the cached kernel and triggers a rebuild.
 Fragments are merged with scripts/kconfig/merge_config.sh; the stage fails if a requested
 symbol does not end up in the final .config with the requested value (ANDROID_BINDERFS included).

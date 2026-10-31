@@ -7,3 +7,7 @@ qemu/*.img
 qemu/*.qcow2
 *.img
 build/cache/
+qemu/images/
+qemu/payload*
+frontend/build*/
+frontend/sysroot*/

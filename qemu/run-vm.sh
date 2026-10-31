@@ -7,7 +7,7 @@
 #   default (no -H): GTK/SDL window + serial on this terminal (stdio)
 set -euo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
-IMG=$HERE/images/alarm-rootfs.img; SSH_PORT=2222; MEM=4096
+IMG=$HERE/rotate-os-test.qcow2; PAYLOAD=$HERE/images/payload.tar; SSH_PORT=2222; MEM=4096
 SERIAL_SOCK=$HERE/images/serial.sock; QMP_SOCK=$HERE/images/qmp.sock
 HEADLESS=0; UEFI=0; FWONLY=0; SNAP=0
 while getopts Hi:p:s:q:m:euS o; do case $o in
@@ -25,12 +25,14 @@ if [ $UEFI = 1 ] || [ $FWONLY = 1 ]; then
   args+=(-drive if=pflash,format=raw,readonly=on,file=/usr/share/AAVMF/AAVMF_CODE.no-secboot.fd
          -drive if=pflash,format=raw,file="$VARS")
 fi
+SNAPOPT=""; [ $SNAP = 1 ] && SNAPOPT=,snapshot=on
 if [ $FWONLY = 0 ]; then
-  [ -f "$IMG" ] || { echo "no image $IMG; run build-vm-image.sh" >&2; exit 1; }
-  args+=(-drive if=none,id=d0,format=raw,file="$IMG"$([ $SNAP = 1 ] && echo ,snapshot=on) -device virtio-blk-pci,drive=d0)
+  [ -f "$IMG" ] || { echo "no image $IMG; run prepare-vm.sh" >&2; exit 1; }
+  args+=(-drive if=none,id=d0,format=qcow2,file="$IMG"${SNAPOPT} -device virtio-blk-pci,drive=d0)
+  if [ -f "$PAYLOAD" ]; then args+=(-drive if=none,id=d1,format=raw,readonly=on,file="$PAYLOAD" -device virtio-blk-pci,drive=d1); fi
   if [ $UEFI = 0 ]; then
     args+=(-kernel "$HERE/images/boot/Image" -initrd "$HERE/images/boot/initramfs-linux.img"
-           -append "root=/dev/vda rw rootwait console=ttyAMA0 loglevel=4")
+           -append "root=/dev/vda3 rw rootwait console=ttyAMA0 loglevel=4")
   fi
 fi
 if [ $HEADLESS = 1 ]; then

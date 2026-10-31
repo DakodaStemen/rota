@@ -1,0 +1,8 @@
+#!/bin/sh
+# Swivel-down hook (called by rotate-swiveld as `swivel-down down`): remember the profile, drop to save.
+STATE=${ROTATE_STATE_DIR:-/var/lib/rotate}
+HELPER=${ROTATE_POWER_HELPER:-/usr/lib/rotate/rotate-power-helper}
+mkdir -p "$STATE"
+# keep the first remembered profile if the hook runs twice
+[ -e "$STATE/power-profile.prev" ] || { cat "$STATE/power-profile" 2>/dev/null || echo balanced; } > "$STATE/power-profile.prev"
+exec "$HELPER" set save

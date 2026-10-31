@@ -1,0 +1,8 @@
+#!/bin/sh
+# Swivel-up hook: restore the profile remembered by swivel-down.
+STATE=${ROTATE_STATE_DIR:-/var/lib/rotate}
+HELPER=${ROTATE_POWER_HELPER:-/usr/lib/rotate/rotate-power-helper}
+prev=balanced
+[ -r "$STATE/power-profile.prev" ] && prev=$(cat "$STATE/power-profile.prev")
+rm -f "$STATE/power-profile.prev"
+exec "$HELPER" set "$prev"

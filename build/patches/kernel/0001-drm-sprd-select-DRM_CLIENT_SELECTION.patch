@@ -1,0 +1,15 @@
+drm/sprd: select DRM_CLIENT_SELECTION
+
+DRM_SPRD calls drm_client_setup() but only got DRM_CLIENT_SELECTION by
+accident via DRM_HDLCD/DRM_KOMEDA/DRM_MALI_DISPLAY. Select it directly.
+
+--- a/drivers/gpu/drm/sprd/Kconfig	2026-10-31 06:12:04.903869149 +0000
++++ b/drivers/gpu/drm/sprd/Kconfig	2026-10-31 06:12:04.904869159 +0000
+@@ -3,6 +3,7 @@
+ 	depends on ARCH_SPRD || COMPILE_TEST
+ 	depends on DRM && OF
+ 	select DRM_BRIDGE_CONNECTOR
++	select DRM_CLIENT_SELECTION
+ 	select DRM_DISPLAY_HELPER
+ 	select DRM_GEM_DMA_HELPER
+ 	select DRM_KMS_HELPER
