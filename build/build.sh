@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Rotate OS image build driver. See build/README.md.
-# usage: build.sh [-h] [stage...]    stages: spl uboot kernel melonds rootfs image (default: all, in order); melonds-pgo (explicit only)
+# usage: build.sh [-h] [stage...]    stages: spl uboot kernel melonds rootfs image (default: all, in order); melonds-pgo and kernel-virt (explicit only; kernel-virt = Rotate kernel for QEMU virt)
 # env: FORCE=1 rebuild even if stamp matches; JOBS=16
 # exit: 0 ok; 2 usage; 3 missing host tool; else the failing stage's exit status.
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ALL=(spl uboot kernel melonds rootfs image)
-OPTIONAL=(melonds-pgo)   # needs MELONDS_PROFILE=<dir|tgz> from the device; not in the default run
+OPTIONAL=(melonds-pgo kernel-virt)   # needs MELONDS_PROFILE=<dir|tgz> from the device; not in the default run
 usage() { sed -n '2,5p' "$0" | sed 's/^# \{0,1\}//'; }
 case "${1:-}" in -h|--help) usage; exit 0;; esac
 STAGES=("$@"); (( ${#STAGES[@]} )) || STAGES=("${ALL[@]}")
