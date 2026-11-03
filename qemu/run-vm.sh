@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 # Boot the Rotate OS userspace test VM (aarch64 virt, TCG, 720x720 virtio-gpu).
 # Usage: run-vm.sh [-k generic|rotate] [-E EMMC_RAW] [-L SERIAL_LOG] [-P PAYLOAD] [-H] [-i IMAGE] [-p SSH_PORT] [-s SERIAL_SOCK] [-q QMP_SOCK] [-m MEM_MB] [-e] [-u] [-S]
-#   -k rotate  (also masks iwd.service: the VM has no Wi-Fi, and iwd's restart loop can hold network.target, hence the login getty, for 10+ min)
-#              boot the REAL Rotate OS kernel built by `build.sh kernel-virt` (build/out/kernel-virt/Image): virtio/PCI/PL011
-#      built in, root=/dev/vda3, NO initramfs. Default `generic` = ALARM kernel + initramfs (smoke-test.sh).
+#   -k rotate  boot the REAL Rotate OS kernel built by `build.sh kernel-virt` (build/out/kernel-virt/Image): virtio/PCI/PL011
+#      built in, root=/dev/vda3, NO initramfs. Default `generic` = ALARM kernel + initramfs (smoke-test.sh);
+#      generic also sets systemd.service_watchdogs=0: QEMU virt suspends with s2idle and the guest monotonic clock keeps
+#      running, so journald/udevd's 3 min watchdogs fired after the self-test's 180 s rtcwake (a VM artefact; on the device
+#      rotate-selftest FAILs its suspend check if any watchdog fires).
+#      generic masks iwd.service: its AF_ALG crypto modules live only on the payload disk, so iwd cannot start there.
+#      -k rotate does NOT mask iwd: the real kernel must start it (kernel/fragments.d/30-iwd.config).
 #   -E FILE   attach FILE (raw, read-only) as an extra virtio-blk disk = fake eMMC for the first-boot firmware test
 #   -L FILE   also log the serial console to FILE (captures output before anyone connects to the socket)
 #   -P FILE   payload tar (2nd virtio disk) override
@@ -45,10 +49,10 @@ if [ $FWONLY = 0 ]; then
   if [ $UEFI = 0 ] && [ "$KMODE" = rotate ]; then
     KIMG=$HERE/../build/out/kernel-virt/Image
     [ -f "$KIMG" ] || { echo "no $KIMG; run build/build.sh kernel-virt" >&2; exit 1; }
-    args+=(-kernel "$KIMG" -append "root=/dev/vda3 rw rootwait console=ttyAMA0 loglevel=4 systemd.mask=iwd.service")
+    args+=(-kernel "$KIMG" -append "root=/dev/vda3 rw rootwait console=ttyAMA0 loglevel=4")
   elif [ $UEFI = 0 ]; then
     args+=(-kernel "$HERE/images/boot/Image" -initrd "$HERE/images/boot/initramfs-linux.img"
-           -append "root=/dev/vda3 rw rootwait console=ttyAMA0 loglevel=4")
+           -append "root=/dev/vda3 rw rootwait console=ttyAMA0 loglevel=4 systemd.mask=iwd.service systemd.service_watchdogs=0")
   fi
 fi
 if [ $HEADLESS = 1 ]; then

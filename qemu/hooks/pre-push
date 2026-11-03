@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# pre-push: run the full local CI (qemu/ci.sh). Pre-push, not pre-commit, because the gate takes >10 min (real-kernel QEMU
+# boots); blocking every commit would make people bypass hooks, while push is the rare "this leaves the machine" point.
+# Escape hatch: CI_SKIP=1 git push ... (logged). Summary: qemu/artifacts/ci-summary.txt
+ROOT=$(git rev-parse --show-toplevel)
+[ -n "${CI_SKIP:-}" ] && { echo "pre-push: CI_SKIP set, not running qemu/ci.sh"; exit 0; }
+exec "$ROOT/qemu/ci.sh"

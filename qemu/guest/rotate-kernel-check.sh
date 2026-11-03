@@ -37,6 +37,11 @@ sleep 2
 v=$(/usr/local/bin/rotate-swivel read 2>&1); echo "RV_INFO swivel_read=$v"
 chk "uinput_swivel_SW_LID_closed_reads_1" "test '$v' = 1"
 wait
+# --- iwd needs the kernel AF_ALG crypto API (kernel/fragments.d/30-iwd.config); a failed iwd loops and stalls boot
+chk "af_alg_hash_skcipher" "python3 -c 'import socket as s; a=s.socket(s.AF_ALG,s.SOCK_SEQPACKET); a.bind((\"hash\",\"hmac(sha256)\")); b=s.socket(s.AF_ALG,s.SOCK_SEQPACKET); b.bind((\"skcipher\",\"ecb(aes)\"))'"
+for i in $(seq 1 20); do systemctl is-active -q iwd && break; sleep 1; done
+chk "iwd_active" "systemctl is-active iwd"
+echo "RV_INFO iwd_status=$(systemctl status iwd --no-pager 2>&1 | grep -E 'Active:' | head -1)"
 # --- first-boot service FAILURE path (this VM has no eMMC): marker written, no poweroff, boot continues
 for i in $(seq 1 40); do [ -e /boot/rotate-fw.failed ] && break; sleep 1; done
 chk "firstboot_no_emmc_writes_failed_marker" "test -s /boot/rotate-fw.failed && ! test -e /boot/rotate-fw.done"
