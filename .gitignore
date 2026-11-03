@@ -11,3 +11,5 @@ qemu/images/
 qemu/payload*
 frontend/build*/
 frontend/sysroot*/
+__pycache__/
+*.pyc
