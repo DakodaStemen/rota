@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: MIT
+# Runs the hardware self-test ONCE, on the second boot: rotate-firstboot has finished (it writes /boot/rotate-fw.done, or
+# /boot/rotate-fw.failed on failure, then powers off), so the next boot runs this. The stamp /var/lib/rotate/selftest.done
+# keeps it from running again; delete the stamp to re-arm. It never blocks login: it is ordered after, not before, the getty.
+[Unit]
+Description=Rotate OS hardware self-test (once, on the second boot)
+After=rotate-firstboot.service rotate-resize.service rotate-keyring.service local-fs.target iwd.service systemd-udev-settle.service
+# the second boot = firstboot has left its marker (either one)
+ConditionPathExists=|/boot/rotate-fw.done
+ConditionPathExists=|/boot/rotate-fw.failed
+ConditionPathExists=!/var/lib/rotate/selftest.done
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/rotate/rotate-selftest --auto
+StandardOutput=journal+console
+StandardError=journal+console
+TimeoutStartSec=1500
+SuccessExitStatus=1
+Nice=5
+
+[Install]
+WantedBy=multi-user.target

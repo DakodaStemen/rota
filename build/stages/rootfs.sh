@@ -5,7 +5,7 @@
 . "$(dirname "$0")/../lib/common.sh"
 TB="$ROOT/$ALARM_TARBALL"
 RD="$B/rootfs"
-stage_begin rootfs "$ALARM_MD5 $(find "$RD" -type f | sort | xargs cat | sha256sum) $(file_hash "$0") $(cat "$OUT/uboot/pm_bootcode.bin" 2>/dev/null | sha256sum) $PORTMASTER_SHA256 $(cat "$OUT/.melonds.stamp" 2>/dev/null) $(cat "$OUT/.melonds-pgo.stamp" 2>/dev/null)" "$OUT/rootfs/rootfs.tar.zst"
+stage_begin rootfs "$ALARM_MD5 $(find "$RD" -type f | sort | xargs cat | sha256sum) $(file_hash "$0") $(cat "$OUT/uboot/pm_bootcode.bin" 2>/dev/null | sha256sum) $PORTMASTER_SHA256 $(cat "$OUT/.melonds.stamp" 2>/dev/null) $(cat "$OUT/.melonds-pgo.stamp" 2>/dev/null) $(cat "$OUT"/rotate-gles-test/rotate-gles-test "$OUT"/rotate-gles-test/rotate-spin 2>/dev/null | sha256sum)" "$OUT/rootfs/rootfs.tar.zst"
 [[ -f "$OUT/uboot/pm_bootcode.bin" ]] || die "run the uboot stage first (pm_bootcode.bin)"
 [[ -f /proc/sys/fs/binfmt_misc/qemu-aarch64 ]] || die "qemu-aarch64 binfmt not registered"
 got="$(md5sum "$TB" | cut -d' ' -f1)"; [[ "$got" == "$ALARM_MD5" ]] || die "tarball md5 $got != pinned $ALARM_MD5"
@@ -24,6 +24,10 @@ sudo install -m644 "$BS/LICENSES/MIT.txt" "$R/usr/share/licenses/rotate/base618-
 sudo install -m644 "$RD/NOTICE-base618.txt" "$R/usr/share/licenses/rotate/NOTICE-base618.txt"
 sudo install -m644 "$OUT/uboot/pm_bootcode.bin" "$R/usr/lib/firmware/sprd/pm_bootcode.bin"   # GPL-source-built stub, not a vendor blob
 sudo install -m755 "$RD/chroot-setup.sh" "$R/root/chroot-setup.sh"
+# self-test helpers (built by tools/build-gles-test.sh: GLES2/KMS test in the ALARM chroot; rotate-spin with the cross gcc)
+for t in rotate-gles-test rotate-spin; do
+  [[ -f "$OUT/rotate-gles-test/$t" ]] && sudo install -D -m755 "$OUT/rotate-gles-test/$t" "$R/usr/lib/rotate/$t" || say "WARNING: $OUT/rotate-gles-test/$t missing; the self-test will SKIP that part"
+done
 sudo install -m644 "$RD/packages.list" "$R/root/packages.list"
 # PortMaster: pinned release zip (sha256 in pins.env), unpacked as root into /opt/rotate/portmaster/PortMaster
 PMZ="$CACHE/PortMaster-$PORTMASTER_VERSION.zip"

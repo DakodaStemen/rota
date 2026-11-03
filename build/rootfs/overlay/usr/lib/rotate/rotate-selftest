@@ -1,0 +1,345 @@
+#!/bin/bash
+# SPDX-License-Identifier: MIT
+# rotate-selftest - first-boot hardware self-test for the Anbernic RG Rotate (Unisoc T618 / ums512).
+#
+# Collects everything worth knowing from a first boot in ONE run into /var/log/rotate-selftest/<date>.tar.gz and
+# prints a PASS/FAIL/SKIP line per check plus a summary on the console. Every check runs in its own process under
+# `timeout`, so a hung or crashed check is reported (FAIL: timeout) and never blocks the others.
+#
+# Usage: rotate-selftest [options]
+#   --auto             second-boot mode (used by rotate-selftest-auto.service): on completion writes the stamp
+#                      /var/lib/rotate/selftest.done so the auto unit does not run again
+#   --no-suspend       skip the 180 s rtcwake suspend      --suspend-secs N   suspend length (default 180)
+#   --no-prompt        no interactive prompt ('swivel now'); the swivel capture check is SKIPped
+#   --only a,b,c       run only these checks               --skip a,b         skip these checks
+#   --out DIR          output root (default /var/log/rotate-selftest)
+#   --list             print the check names and their timeouts, then exit
+#   -h, --help         this text
+# Checks (in order): sys dmesg firmware drm gpu gles input_caps touch input_swivel audio wifi bt power
+#                    cpufreq cpuidle watchdog thermal suspend dmesg_post
+# Result per check: PASS | FAIL | SKIP.  SKIP = the hardware is absent and this is not an RG Rotate (VM, other board).
+#                   On an RG Rotate the same absence is a FAIL.
+# Exit codes: 0 no FAIL (PASS/SKIP only) | 1 at least one FAIL | 2 usage | 3 not root
+#
+# Safety: read-only apart from /var/log/rotate-selftest, the stamp, a debugfs mount, and the cpufreq min/max/governor
+# pins of the timing check (originals are restored on every exit path). It never opens /dev/mem, /dev/sd*, /dev/mmcblk*,
+# or /dev/watchdog*, never reads DPU or GPU-clock registers (no debugfs/dri, no devfreq cur_freq), never unbinds
+# or reloads sprd-marlin3, never SIPCALLs, and writes no filesystem or partition (base618 AGENTS.md "Never" list).
+# The one register read is the PMU sleep counters via regmap debugfs, exactly as AGENTS.md "Measure, don't assume" says.
+
+SELF=$(readlink -f "$0"); LIBDIR=$(dirname "$SELF")
+OUTROOT=/var/log/rotate-selftest
+STAMP=/var/lib/rotate/selftest.done
+SUSPEND_SECS=180
+CHECKS="sys:15 dmesg:20 firmware:25 drm:25 gpu:20 gles:45 input_caps:20 touch:20 input_swivel:30 audio:50 wifi:60 bt:20 power:20 cpufreq:240 cpuidle:15 watchdog:15 thermal:20 suspend:300 dmesg_post:20"
+
+# ---------------------------------------------------------------- helpers shared by the checks
+is_rotate() { grep -qs -i -E 'rg-?rotate|ums512|sharkl5pro' /proc/device-tree/compatible /proc/device-tree/model; }
+reason() { echo "REASON: $*"; }
+# missing "what": hardware absent -> FAIL on a Rotate, SKIP anywhere else
+missing() { if is_rotate; then reason "$1 (expected on an RG Rotate)"; return 1; else reason "$1 (not an RG Rotate)"; return 77; fi; }
+rd() { timeout 3 cat "$1" 2>/dev/null; }                         # bounded sysfs read
+dump_dir() { local f; for f in "$1"/*; do [ -f "$f" ] && [ -r "$f" ] && printf '%s=%s\n' "$(basename "$f")" "$(rd "$f" | tr '\n' ' ')"; done; }
+prompt() {                                                      # to the real consoles, not into the check log
+  local m="$*" t
+  for t in /dev/console /dev/tty1; do [ -w "$t" ] && printf '\r\n%s\r\n' "$m" > "$t" 2>/dev/null; done; true
+}
+battery_dir() { local d; for d in /sys/class/power_supply/*; do [ "$(rd "$d/type")" = Battery ] && { echo "$d"; return 0; }; done; return 1; }
+pmu_dir() { ls -d /sys/kernel/debug/regmap/*327e0000* 2>/dev/null | head -1; }
+pmu_reg() {   # pmu_reg OFFSET_HEX -> decimal value or empty. Dumps the PMU syscon regmap (debugfs), as AGENTS.md describes.
+  local d v; d=$(pmu_dir); [ -n "$d" ] || return 1
+  v=$(timeout 10 grep -m1 -E "^0*$1: " "$d/registers" 2>/dev/null | sed 's/^[^:]*: *//') || return 1
+  [ -n "$v" ] && echo $((16#$v))
+}
+
+# ---------------------------------------------------------------- the checks (each returns 0 PASS, 77 SKIP, else FAIL)
+chk_sys() {
+  uname -a; cat /proc/version; echo "cmdline: $(cat /proc/cmdline)"
+  echo "dt_model: $(tr -d '\0' < /proc/device-tree/model 2>/dev/null)"; echo "dt_compatible: $(tr '\0' ' ' < /proc/device-tree/compatible 2>/dev/null)"
+  grep -E '^(PRETTY_NAME|VERSION)' /etc/os-release 2>/dev/null; uptime; date -u; echo "rotate_hw=$(is_rotate && echo 1 || echo 0)"
+  { lsmod; echo ---; cat /proc/interrupts; echo ---; cat /proc/iomem; } > "$D/proc-extra.txt" 2>&1
+  { systemctl --failed --no-pager; echo ---; ip -br addr; echo ---; lsblk -o NAME,SIZE,TYPE,MOUNTPOINTS; echo ---; df -h; echo ---; mount; } > "$D/system-extra.txt" 2>&1
+  timeout 10 journalctl -b --no-pager -n 4000 > "$D/journal-boot.txt" 2>&1
+  [ -r /proc/device-tree/model ] || { reason "kernel $(uname -r), no device tree$(is_rotate || echo ' (NOT an RG Rotate)')"; is_rotate && return 1; return 0; }
+  reason "kernel $(uname -r), DT model \"$(tr -d '\0' < /proc/device-tree/model)\"$(is_rotate || echo ', NOT an RG Rotate DT')"
+}
+chk_dmesg() {
+  dmesg --color=never > "$D/dmesg.txt" 2>&1 || { reason "dmesg not readable"; return 77; }
+  local e w; e=$(dmesg --color=never -l emerg,alert,crit,err | wc -l); w=$(dmesg --color=never -l warn | wc -l)
+  dmesg --color=never -l emerg,alert,crit,err | tee "$D/dmesg-errors.txt" | head -60
+  echo "---- warnings: $w (first 30)"; dmesg --color=never -l warn | head -30
+  [ "$e" -eq 0 ] && { reason "0 error-level kernel messages ($w warnings)"; return 0; }
+  reason "$e error-level kernel messages ($w warnings); first: $(head -1 "$D/dmesg-errors.txt" | cut -c1-110)"; return 1
+}
+chk_firmware() {
+  local f bad=0 n=0
+  for f in /lib/firmware/updates/agdsp.bin /lib/firmware/sprd/pm_sys.bin /lib/firmware/updates/wcnmodem.bin /lib/firmware/sprd/pm_bootcode.bin; do
+    if [ -f "$f" ]; then echo "present $(stat -c '%s bytes' "$f") $(sha256sum "$f" | cut -c1-16) $f"; n=$((n+1)); else echo "MISSING $f"; [ "$f" = /lib/firmware/sprd/pm_bootcode.bin ] || bad=$((bad+1)); fi
+  done
+  ls -l /boot/rotate-fw.* /boot/initrd-fw.cpio.gz 2>&1
+  for f in /boot/rotate-fw.done /boot/rotate-fw.failed; do [ -f "$f" ] && { echo "== $f"; cat "$f"; }; done
+  [ -f /boot/initrd-fw.cpio.gz ] && { echo "== initrd-fw.cpio.gz contents"; zcat /boot/initrd-fw.cpio.gz | cpio -t 2>&1; }
+  echo "== dmesg firmware lines"; dmesg --color=never | grep -i -E 'firmware|request_firmware|direct firmware' | tail -30
+  [ "$bad" -eq 0 ] && { reason "agdsp.bin, pm_sys.bin, wcnmodem.bin all present"; return 0; }
+  missing "$bad of 3 firmware files missing (firstboot: $(ls /boot/rotate-fw.* 2>/dev/null | tr '\n' ' '))"
+}
+chk_drm() {
+  local c n=0 conn=0 modes=0 m has720=0
+  ls -l /dev/dri/ 2>&1; for c in /sys/class/graphics/fb*; do [ -d "$c" ] && echo "$(basename "$c"): name=$(rd "$c/name") size=$(rd "$c/virtual_size")"; done
+  for c in /sys/class/drm/card*-*; do
+    [ -d "$c" ] || continue; n=$((n+1)); local st; st=$(rd "$c/status")
+    echo "== $(basename "$c") status=$st enabled=$(rd "$c/enabled") dpms=$(rd "$c/dpms")"
+    m=$(rd "$c/modes"); echo "$m" | sed 's/^/   mode /'
+    [ "$st" = connected ] && { conn=$((conn+1)); modes=$((modes+$(echo "$m" | grep -c .))); echo "$m" | grep -qx 720x720 && has720=1; }
+  done
+  [ "$n" -gt 0 ] || { missing "no /sys/class/drm connectors"; return; }
+  [ "$conn" -gt 0 ] && [ "$modes" -gt 0 ] && { reason "$n connectors, $conn connected, $modes modes, 720x720 listed=$has720"; return 0; }
+  reason "$n connectors but none connected with modes"; return 1
+}
+chk_gpu() {
+  ls -l /dev/dri/renderD* 2>&1; echo "== panfrost bound devices"; ls -l /sys/bus/platform/drivers/panfrost/ 2>&1 | grep -v -E '^total|bind|uevent'
+  echo "== lsmod"; lsmod | grep -i -E 'panfrost|gpu_sched|drm_shmem' ; echo "== dmesg"; dmesg --color=never | grep -i -E 'panfrost|mali|gpu' | head -30
+  for d in /sys/class/devfreq/*; do [ -d "$d" ] || continue; echo "== devfreq $(basename "$d") (cur_freq deliberately not read)"; for a in name governor available_frequencies available_governors; do echo "$a=$(rd "$d/$a")"; done; done
+  local bound; bound=$(ls /sys/bus/platform/drivers/panfrost/ 2>/dev/null | grep -c -E '^[0-9a-f]+\.')
+  if [ "$bound" -gt 0 ]; then reason "panfrost bound to $bound device(s); $(dmesg --color=never | grep -i -m1 -E 'panfrost.*(mali|gpu)' | cut -c1-90)"; return 0; fi
+  missing "panfrost not bound to any device"
+}
+chk_gles() {
+  [ -x "$LIBDIR/rotate-gles-test" ] || { reason "rotate-gles-test not installed"; return 77; }
+  ls /dev/dri/card* >/dev/null 2>&1 || { missing "no /dev/dri/card*"; return; }
+  local out rc r mode fps
+  out=$(timeout 30 "$LIBDIR/rotate-gles-test" -t 5 2>&1); rc=$?; echo "$out"
+  r=$(echo "$out" | grep '^RESULT' | tail -1); mode=$(echo "$r" | sed -n 's/.*mode=\([a-z]*\).*/\1/p'); fps=$(echo "$r" | sed -n 's/.*fps=\([0-9.]*\).*/\1/p')
+  [ $rc -eq 0 ] || { reason "rotate-gles-test exit $rc (2 no card, 3 EGL/GLES setup, 4 no frame); $(echo "$out" | grep -E 'failed|unavailable' | head -1 | cut -c1-80)"; return 1; }
+  if [ "$mode" = offscreen ] && is_rotate; then reason "KMS path failed, only offscreen GLES worked: ${fps} fps; $(echo "$out" | grep '^GL_RENDERER')"; return 1; fi
+  reason "GLES2 ${mode}: ${fps} fps for 5 s; $(echo "$out" | grep '^GL_RENDERER' | sed 's/GL_RENDERER=//')"
+}
+chk_input_caps() {
+  ls /dev/input/event* >/dev/null 2>&1 || { missing "no /dev/input/event*"; return; }
+  echo "== /proc/bus/input/devices"; cat /proc/bus/input/devices
+  echo "== evdev capabilities"; local o rc; o=$(timeout 15 "$LIBDIR/rotate-evdump.py" caps 2>&1); rc=$?; echo "$o"
+  [ $rc -eq 0 ] || { reason "rotate-evdump caps exit $rc"; return 1; }
+  local s; s=$(echo "$o" | grep '^SUMMARY'); echo "$s" | grep -q 'gamepad=none' && { missing "no gamepad-capable evdev device ($s)"; return; }
+  echo "$s" | grep -q 'switch=none' && { missing "no SW_LID/SW_TABLET_MODE switch device ($s)"; return; }
+  reason "${s#SUMMARY }"
+}
+chk_touch() {
+  ls /dev/input/event* >/dev/null 2>&1 || { missing "no /dev/input/event*"; return; }
+  local o; o=$(timeout 15 "$LIBDIR/rotate-evdump.py" touch 2>&1); echo "$o"
+  echo "$o" | grep -q '^/dev/input' || { missing "no touchscreen device"; return; }
+  local ax; ax=$(echo "$o" | grep -E 'ABS_(MT_POSITION_[XY]|X|Y) ' | sed 's/value=[-0-9]* //;s/fuzz.*//' | tr -s ' ' | tr '\n' ';')
+  reason "$(echo "$o" | grep -m1 '^/dev/input' | sed 's/ phys.*//') axes: $ax"
+}
+chk_input_swivel() {
+  [ -n "${NOPROMPT:-}" ] && { reason "--no-prompt: nobody to swivel"; return 77; }
+  ls /dev/input/event* >/dev/null 2>&1 || { missing "no /dev/input/event*"; return; }
+  timeout 10 "$LIBDIR/rotate-evdump.py" caps 2>&1 | grep -E '^\s+switch ' | sed 's/^/initial state: /'
+  prompt "======== SELF-TEST: SWIVEL NOW (and tap the screen / press buttons) - capturing events for 10 s ========"
+  timeout 20 "$LIBDIR/rotate-evdump.py" capture 10; local rc=$?
+  prompt "======== capture finished ========"
+  [ $rc -eq 0 ] || { reason "capture exit $rc"; return 1; }
+  local n; n=$(grep -c -E ' SW SW_[A-Za-z_0-9]+ value=' "$D/input_swivel.log" 2>/dev/null)
+  if [ "${n:-0}" -gt 0 ]; then reason "$n switch event(s): $(grep -o -E 'SW SW_[A-Za-z_0-9]+ value=[0-9]+' "$D/input_swivel.log" | sed 's/^SW //' | tr '\n' ' ')"; return 0; fi
+  reason "no EV_SW event in 10 s (nobody swivelled, or the switch is dead); $(grep SUMMARY "$D/input_swivel.log" | tail -1)"; return 77
+}
+chk_audio() {
+  [ -r /proc/asound/cards ] || { missing "no /proc/asound/cards"; return; }
+  command -v amixer >/dev/null || { reason "alsa-utils (amixer/aplay) not installed; cards: $(grep -c '^ *[0-9]' /proc/asound/cards)"; return 1; }
+  cat /proc/asound/cards; echo "== aplay -l"; timeout 8 aplay -l 2>&1; echo "== arecord -l"; timeout 8 arecord -l 2>&1
+  local c nc=0 nctl=0
+  for c in $(sed -n 's/^ *\([0-9]\+\) \[.*/\1/p' /proc/asound/cards); do
+    nc=$((nc+1)); echo "== card $c controls"; local o; o=$(timeout 10 amixer -c "$c" controls 2>&1); echo "$o"; nctl=$((nctl+$(echo "$o" | grep -c '^numid')))
+    echo "== card $c scontrols"; timeout 10 amixer -c "$c" scontrols 2>&1
+  done
+  for f in /proc/asound/card*/pcm*/info; do [ -f "$f" ] && { echo "== $f"; rd "$f"; }; done
+  echo "== dmesg"; dmesg --color=never | grep -i -E 'asoc|snd|alsa|vbc|agdsp|codec|sc27|aw87' | tail -25
+  [ "$nc" -gt 0 ] && [ "$nctl" -gt 0 ] && { reason "$nc ALSA card(s), $nctl mixer controls"; return 0; }
+  [ "$nc" -gt 0 ] && { reason "$nc ALSA card(s) but no mixer controls"; return 1; }
+  missing "no ALSA cards (AGDSP firmware missing?)"
+}
+chk_wifi() {
+  local i w=""; for i in /sys/class/net/*; do [ -d "$i/wireless" ] || [ -d "$i/phy80211" ] && w="$w $(basename "$i")"; done
+  ip -br link; echo "== rfkill"; timeout 5 rfkill list 2>&1; echo "== iwd: $(systemctl is-active iwd 2>&1)"
+  [ -n "$w" ] || { echo "== dmesg"; dmesg --color=never | grep -i -E 'wcn|marlin|sc23|uwe|wlan|sdio' | tail -20; missing "no wireless interface"; return; }
+  w=${w# }; local if1=${w%% *}
+  timeout 10 iwctl device list 2>&1
+  timeout 10 iwctl station "$if1" scan 2>&1; sleep 6
+  local o; o=$(timeout 15 iwctl station "$if1" get-networks 2>&1); echo "$o"
+  local n; n=$(echo "$o" | sed 's/\x1b\[[0-9;]*m//g' | grep -c -E '\s(psk|open|8021x|sae)\s')
+  [ -n "$o" ] || { reason "iwctl scan on $if1 returned nothing"; return 1; }
+  reason "interface $if1, scan ok, $n network(s) seen"
+}
+chk_bt() {
+  ls -l /sys/class/bluetooth/ 2>&1; timeout 5 rfkill list bluetooth 2>&1; echo "== dmesg"; dmesg --color=never | grep -i -E 'bluetooth|hci|btsprd|marlin' | tail -20
+  [ -d /sys/class/bluetooth/hci0 ] && { reason "hci0 present"; return 0; }
+  missing "no hci0"
+}
+chk_power() {
+  local d b="" ch="" any=0
+  for d in /sys/class/power_supply/*; do [ -d "$d" ] || continue; any=1; echo "== $(basename "$d") type=$(rd "$d/type")"; dump_dir "$d" | grep -v '^uevent='; done
+  [ $any = 1 ] || { missing "no power_supply devices"; return; }
+  b=$(battery_dir) || { missing "no Battery power_supply (fuel gauge sc27xx-fgu not bound?)"; return; }
+  for d in /sys/class/power_supply/*; do [ "$(rd "$d/type")" != Battery ] && ch="$ch $(basename "$d")=$(rd "$d/online")"; done
+  reason "battery $(basename "$b") capacity=$(rd "$b/capacity")% charge_now=$(rd "$b/charge_now") status=$(rd "$b/status"); supplies online:${ch:- none}"
+}
+cpu_files() { dump_dir "$1" | grep -v -E '^(stats|uevent)='; }
+chk_cpufreq() {
+  ls -d /sys/devices/system/cpu/cpufreq/policy* >/dev/null 2>&1 || { missing "no cpufreq policies"; return; }
+  local p; for p in /sys/devices/system/cpu/cpufreq/policy*; do echo "== $(basename "$p")"; cpu_files "$p"; done
+  echo "== cpuinfo_cur_freq (driver .get readback; may be absent)"; for p in 0 6; do echo "cpu$p: $(rd /sys/devices/system/cpu/cpu$p/cpufreq/cpuinfo_cur_freq)"; done
+  echo "== dmesg"; dmesg --color=never | grep -i -E 'dvfs|cpufreq|hw-i2c' | tail -15
+  [ -x "$LIBDIR/rotate-spin" ] || { reason "rotate-spin not installed; listed frequencies only"; return 77; }
+  local rc=0 summary="" pol cpu ps
+  for pair in "0 2" "6 6"; do
+    set -- $pair; pol=$1; cpu=$2; ps=/sys/devices/system/cpu/cpufreq/policy$pol
+    [ -d "$ps" ] || { echo "no policy$pol"; continue; }
+    local freqs; freqs=$(rd "$ps/scaling_available_frequencies"); [ -n "$freqs" ] || freqs=$(rd "$ps/cpuinfo_min_freq")" "$(rd "$ps/cpuinfo_max_freq")
+    local o_gov o_min o_max; o_gov=$(rd "$ps/scaling_governor"); o_min=$(rd "$ps/scaling_min_freq"); o_max=$(rd "$ps/scaling_max_freq")
+    echo "$o_gov $o_min $o_max" > "$D/cpufreq-policy$pol.orig"
+    restore() { echo "$o_max" > "$ps/scaling_max_freq" 2>/dev/null; echo "$o_min" > "$ps/scaling_min_freq" 2>/dev/null; echo "$o_gov" > "$ps/scaling_governor" 2>/dev/null; }
+    trap 'restore; exit 143' TERM INT
+    echo "== policy$pol timing on cpu$cpu: governor performance, each OPP pinned, rotate-spin x3, median (spin: 4e8 dependent adds)"
+    echo "performance" > "$ps/scaling_governor" 2>/dev/null
+    local cur_max=$o_max rows="" f t k
+    for f in $(echo "$freqs" | tr ' ' '\n' | sort -n | uniq); do
+      if [ "$f" -ge "$cur_max" ]; then echo "$f" > "$ps/scaling_max_freq" 2>/dev/null; echo "$f" > "$ps/scaling_min_freq" 2>/dev/null
+      else echo "$f" > "$ps/scaling_min_freq" 2>/dev/null; echo "$f" > "$ps/scaling_max_freq" 2>/dev/null; fi
+      cur_max=$f; sleep 1
+      local before after secs=""; before=$(rd "$ps/scaling_cur_freq")
+      for _ in 1 2 3; do t=$(taskset -c "$cpu" "$LIBDIR/rotate-spin" 2>&1 | sed -n 's/^secs=\([0-9.]*\).*/\1/p'); secs="$secs $t"; done
+      after=$(rd "$ps/scaling_cur_freq")
+      local med; med=$(echo "$secs" | tr ' ' '\n' | grep . | sort -n | sed -n 2p)
+      echo "OPP $f kHz: cur_before=$before cur_after=$after secs=$secs median=$med"; rows="$rows $f:$med"
+    done
+    restore; trap - TERM INT
+    echo "restored: governor=$(rd "$ps/scaling_governor") min=$(rd "$ps/scaling_min_freq") max=$(rd "$ps/scaling_max_freq") (was $o_gov $o_min $o_max)"
+    # verdict: eff = 1/(secs*f) must be constant across OPPs (+-5 % of the median); a flat time = pinned clock
+    local v; v=$(echo "$rows" | tr ' ' '\n' | grep : | awk -F: '{ if ($2>0) { k=1/($2*$1); n++; kk[n]=k; ff[n]=$1; tt[n]=$2 } }
+      END { if (n<2) { print "UNKNOWN too few points"; exit }
+            for (i=1;i<=n;i++) s[i]=kk[i]; for (i=1;i<=n;i++) for (j=i+1;j<=n;j++) if (s[j]<s[i]) { x=s[i]; s[i]=s[j]; s[j]=x }
+            m=s[int((n+1)/2)]; bad=0; for (i=1;i<=n;i++) { d=(kk[i]-m)/m; if (d<0) d=-d; if (d>0.05) bad++ }
+            r=(tt[1]/tt[n])/(ff[n]/ff[1]);
+            printf "%s points=%d off_by_more_than_5pct=%d time_ratio_vs_ideal=%.2f (1.00 = clock tracks the OPP; ~%.2f = pinned)", (bad==0?"TRACKS":"FAIL"), n, bad, r, (ff[1]/ff[n]) }')
+    echo "VERDICT policy$pol: $v"; summary="$summary p$pol:${v%% *}"
+    case $v in TRACKS*) ;; *) rc=1;; esac
+  done
+  reason "per-OPP busy-loop timing:${summary}"; return $rc
+}
+chk_cpuidle() {
+  local c any=0 n; echo "driver=$(rd /sys/devices/system/cpu/cpuidle/current_driver) governor=$(rd /sys/devices/system/cpu/cpuidle/current_governor)"
+  for c in 0 6; do
+    for s in /sys/devices/system/cpu/cpu$c/cpuidle/state*; do [ -d "$s" ] || continue; any=$((any+1))
+      echo "cpu$c $(basename "$s"): name=$(rd "$s/name") desc=$(rd "$s/desc") latency_us=$(rd "$s/latency") residency_us=$(rd "$s/residency") disabled=$(rd "$s/disable") usage=$(rd "$s/usage") time_us=$(rd "$s/time")"
+    done
+  done
+  [ $any -gt 0 ] && { reason "$any cpuidle state entries on cpu0+cpu6 (driver $(rd /sys/devices/system/cpu/cpuidle/current_driver))"; return 0; }
+  missing "no cpuidle states"
+}
+chk_watchdog() {
+  ls -l /dev/watchdog* 2>&1; local w n=0 id=""
+  for w in /sys/class/watchdog/*; do [ -d "$w" ] || continue; n=$((n+1)); echo "== $(basename "$w")"; for a in identity timeout min_timeout max_timeout state status bootstatus nowayout fw_version; do echo "$a=$(rd "$w/$a")"; done
+    id="$id $(basename "$w")=\"$(rd "$w/identity")\""; done
+  echo "== systemd"; systemctl show -p RuntimeWatchdogUSec -p RebootWatchdogUSec -p WatchdogDevice 2>&1
+  [ $n -gt 0 ] && { reason "watchdog:$id"; return 0; }
+  missing "no /sys/class/watchdog entries"
+}
+chk_thermal() {
+  local z n=0 t
+  for z in /sys/class/thermal/thermal_zone*; do [ -d "$z" ] || continue; t=$(rd "$z/temp"); echo "$(basename "$z") type=$(rd "$z/type") temp=$t policy=$(rd "$z/policy") mode=$(rd "$z/mode")"; [ -n "$t" ] && n=$((n+1)); done
+  for z in /sys/class/thermal/cooling_device*; do [ -d "$z" ] && echo "$(basename "$z") type=$(rd "$z/type") cur=$(rd "$z/cur_state") max=$(rd "$z/max_state")"; done
+  [ $n -gt 0 ] && { reason "$n thermal zone(s) readable"; return 0; }
+  missing "no readable thermal zones"
+}
+pmu_snapshot() { local r; for r in 784 788 770 758; do printf 'pmu_0x%s=%s ' "$r" "$(pmu_reg $r)"; done; echo; }
+chk_suspend() {
+  [ -n "${NOSUSPEND:-}" ] && { reason "--no-suspend"; return 77; }
+  grep -qw mem /sys/power/state 2>/dev/null || { missing "/sys/power/state has no 'mem' ($(rd /sys/power/state))"; return; }
+  [ -e /sys/class/rtc/rtc0/wakealarm ] || { missing "no rtc0 wakealarm"; return; }
+  command -v rtcwake >/dev/null || { reason "rtcwake not installed"; return 77; }
+  mountpoint -q /sys/kernel/debug || mount -t debugfs none /sys/kernel/debug 2>&1
+  local b c0 c1 t0 t1 s0 s1 p0 p1 rc ch=""
+  b=$(battery_dir); c0=$(rd "$b/charge_now" 2>/dev/null); for d in /sys/class/power_supply/*; do [ "$(rd "$d/type")" != Battery ] && ch="$ch $(basename "$d")=$(rd "$d/online")"; done
+  s0=$(rd /sys/power/suspend_stats/success); p0=$(pmu_reg 784); echo "before: charge_now=$c0 supplies:${ch:- none} suspend_stats.success=$s0 PUB_SYS_DEEP(0x784)=${p0:-unreadable} pmu_dir=$(pmu_dir)"; echo "before: $(pmu_snapshot)"
+  sync; t0=$(date +%s)
+  prompt "======== SELF-TEST: suspending for ${SUSPEND_SECS} s (rtcwake -m mem). Screen goes dark; it wakes by itself. Unplug the charger for a valid current figure. ========"
+  timeout -k 5 $((SUSPEND_SECS+90)) rtcwake -m mem -s "$SUSPEND_SECS"; rc=$?
+  t1=$(date +%s); sleep 3
+  c1=$(rd "$b/charge_now" 2>/dev/null); s1=$(rd /sys/power/suspend_stats/success); p1=$(pmu_reg 784)
+  echo "after: rtcwake rc=$rc wall_elapsed=$((t1-t0)) s charge_now=$c1 suspend_stats.success=$s1 PUB_SYS_DEEP(0x784)=${p1:-unreadable}"; echo "after: $(pmu_snapshot)"
+  echo "== suspend_stats"; dump_dir /sys/power/suspend_stats; echo "== dmesg tail"; dmesg --color=never | tail -40
+  local dq="n/a" ma="n/a"
+  if [ -n "$c0" ] && [ -n "$c1" ]; then dq=$((c0-c1)); ma=$(awk -v d="$dq" -v s=$((t1-t0)) 'BEGIN{ printf "%.1f", (d/1000)/(s/3600) }'); fi
+  echo "charge_now delta=${dq} uAh over $((t1-t0)) s => ~${ma} mA average (includes ~30 uAh tail per wake, so short runs are noisy; invalid while a charger is online)"
+  local dp="n/a"; [ -n "$p0" ] && [ -n "$p1" ] && dp=$((p1-p0))
+  [ "$rc" -eq 0 ] || { reason "rtcwake exit $rc after $((t1-t0)) s (suspend did not complete)"; return 1; }
+  [ "$s1" != "$s0" ] || { reason "rtcwake returned 0 but suspend_stats.success did not change ($s0)"; return 1; }
+  [ "$((t1-t0))" -ge $((SUSPEND_SECS-10)) ] || { reason "woke after only $((t1-t0)) s"; return 1; }
+  # CLOCK_MONOTONIC must stop while suspended. If it ran on (s2idle that never froze timekeeping, as in QEMU virt),
+  # every systemd service watchdog (journald/udevd: 3 min) fires on resume and those services get SIGABRT.
+  echo "mem_sleep: $(rd /sys/power/mem_sleep)"
+  local wd; wd=$(journalctl -q --no-pager --since "@$t0" 2>/dev/null | grep -c 'Watchdog timeout')
+  [ "${wd:-0}" -eq 0 ] || { reason "$wd systemd service watchdog timeout(s) on resume: the monotonic clock ran during suspend (mem_sleep=$(rd /sys/power/mem_sleep))"; return 1; }
+  local msg="slept $((t1-t0)) s; charge delta ${dq} uAh (~${ma} mA); PUB_SYS_DEEP delta ${dp}"
+  if [ "$dp" = n/a ]; then reason "$msg (counter unreadable: no regmap debugfs for 327e0000 - deep sleep NOT proven)"; return 0; fi
+  [ "$dp" -gt 0 ] && { reason "$msg"; return 0; }
+  reason "$msg - PUB_SYS_DEEP did not count: the SoC never reached DDR deep sleep"; return 1
+}
+chk_dmesg_post() {
+  dmesg --color=never > "$D/dmesg-final.txt" 2>&1 || { reason "dmesg not readable"; return 77; }
+  diff "$D/dmesg.txt" "$D/dmesg-final.txt" | grep '^>' | sed 's/^> //' > "$D/dmesg-new.txt"
+  local e; e=$(dmesg --color=never -l emerg,alert,crit,err | wc -l)
+  echo "new lines since the first dmesg capture: $(wc -l < "$D/dmesg-new.txt")"; dmesg --color=never -l emerg,alert,crit,err | tail -20
+  local before; before=$(wc -l < "$D/dmesg-errors.txt" 2>/dev/null); before=${before:-0}
+  [ "$e" -le "$before" ] && { reason "no new error-level kernel messages since the first capture ($e total)"; return 0; }
+  reason "$((e-before)) new error-level kernel message(s) during the self-test (suspend/GLES/CPU pinning?)"; return 1
+}
+
+# ---------------------------------------------------------------- dispatcher / runner
+usage() { sed -n '3,/^SELF=/p' "$SELF" | sed '$d' | sed 's/^# \{0,1\}//'; }
+if [ "${1:-}" = --run-check ]; then       # internal: run one check in this process; stdout/stderr go to its log
+  D=$3; NOPROMPT=${NOPROMPT:-}; "chk_$2"; exit $?
+fi
+
+AUTO=0; ONLY=""; SKIPS=""; NOSUSPEND=""; NOPROMPT=""
+while [ $# -gt 0 ]; do case $1 in
+  --auto) AUTO=1;; --no-suspend) NOSUSPEND=1;; --no-prompt) NOPROMPT=1;; --suspend-secs) SUSPEND_SECS=${2:?};  shift;;
+  --only) ONLY=${2:?}; shift;; --skip) SKIPS=${2:?}; shift;; --out) OUTROOT=${2:?}; shift;;
+  --list) for c in $CHECKS; do echo "${c%%:*} (timeout ${c##*:} s)"; done; exit 0;;
+  -h|--help) usage; exit 0;; *) echo "rotate-selftest: unknown option $1" >&2; usage >&2; exit 2;; esac; shift; done
+[ "$(id -u)" -eq 0 ] || { echo "rotate-selftest: must run as root" >&2; exit 3; }
+case $SUSPEND_SECS in ''|*[!0-9]*) echo "rotate-selftest: --suspend-secs needs a number" >&2; exit 2;; esac
+export NOPROMPT NOSUSPEND SUSPEND_SECS
+# re-exec'd checks need the functions: they are in this file, so `--run-check` re-sources it by running it again.
+STAMPNAME=$(date +%Y%m%d-%H%M%S); D=$OUTROOT/$STAMPNAME
+mkdir -p "$D" || { echo "rotate-selftest: cannot create $D" >&2; exit 3; }
+SUMMARY=$D/summary.txt; : > "$SUMMARY"
+T_START=$(date +%s)
+echo "rotate-selftest: $(date -u +%FT%TZ) kernel $(uname -r), output $D"
+want() { local c=$1; [ -n "$ONLY" ] && case ",$ONLY," in *",$c,"*) ;; *) return 1;; esac; case ",$SKIPS," in *",$c,"*) return 1;; esac; return 0; }
+pack() { ( cd "$OUTROOT" && tar czf "$STAMPNAME.tar.gz.tmp" "$STAMPNAME" 2>/dev/null && mv -f "$STAMPNAME.tar.gz.tmp" "$STAMPNAME.tar.gz" ); sync; }
+# the suspend check re-packs first: if the resume hangs the data so far is already on disk
+npass=0; nfail=0; nskip=0
+for c in $CHECKS; do
+  n=${c%%:*}; t=${c##*:}; want "$n" || continue
+  [ "$n" = suspend ] && pack
+  [ "$n" = suspend ] && t=$((t - 180 + SUSPEND_SECS + 30))
+  s0=$(date +%s)
+  timeout -k 5 "$t" "$SELF" --run-check "$n" "$D" > "$D/$n.log" 2>&1; rc=$?
+  el=$(( $(date +%s) - s0 ))
+  r=$(grep '^REASON: ' "$D/$n.log" | tail -1 | cut -c9-)
+  if [ $rc -eq 124 ] || [ $rc -eq 137 ] || [ $rc -eq 143 ]; then st=FAIL; r="timeout after ${t} s (check killed; the others continued)"
+  elif [ $rc -eq 0 ]; then st=PASS; elif [ $rc -eq 77 ]; then st=SKIP; else st=FAIL; [ -n "$r" ] || r="exit $rc (see $n.log)"; fi
+  [ -n "$r" ] || r="(no detail)"
+  case $st in PASS) npass=$((npass+1));; FAIL) nfail=$((nfail+1));; SKIP) nskip=$((nskip+1));; esac
+  line=$(printf '[%-4s] %-12s %4ds  %s' "$st" "$n" "$el" "$r")
+  echo "$line"; echo "$line" >> "$SUMMARY"
+done
+overall=PASS; [ $nfail -gt 0 ] && overall=FAIL
+{ echo "-----"; echo "OVERALL: $overall ($npass pass, $nfail fail, $nskip skip) in $(( $(date +%s) - T_START )) s; rotate_hw=$(is_rotate && echo yes || echo no)"; } | tee -a "$SUMMARY"
+# restore check: cpufreq pins must be back to the saved values
+for f in "$D"/cpufreq-policy*.orig; do [ -f "$f" ] || continue; p=${f##*policy}; p=${p%.orig}; read -r g mn mx < "$f"
+  [ "$(rd /sys/devices/system/cpu/cpufreq/policy$p/scaling_max_freq)" = "$mx" ] || { echo "cpufreq policy$p max not restored: fixing"; echo "$mx" > /sys/devices/system/cpu/cpufreq/policy$p/scaling_max_freq; echo "$mn" > /sys/devices/system/cpu/cpufreq/policy$p/scaling_min_freq; echo "$g" > /sys/devices/system/cpu/cpufreq/policy$p/scaling_governor; }; done
+pack
+echo "rotate-selftest: archive $OUTROOT/$STAMPNAME.tar.gz ($(stat -c %s "$OUTROOT/$STAMPNAME.tar.gz" 2>/dev/null) bytes)"
+if [ $AUTO = 1 ]; then mkdir -p "$(dirname "$STAMP")" && date -u +%FT%TZ > "$STAMP"; fi
+[ $nfail -eq 0 ]

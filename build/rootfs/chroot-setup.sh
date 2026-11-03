@@ -28,11 +28,11 @@ for p in linux-aarch64 linux-firmware linux-firmware-whence; do pacman -Qq "$p" 
 # RetroArch must have KMS + EGL + network commands; the swivel pause (UDP 55355) and no-compositor path depend on it
 FEAT="$(retroarch --features 2>&1 || true)"; echo "$FEAT" | grep -E -i 'kms|egl|network|alsa|udev|opengl|threads' || true
 echo "$FEAT" > /root/retroarch-features.txt
-chmod 755 /usr/lib/rotate/rotate-pm-run 2>/dev/null || true
+chmod 755 /usr/lib/rotate/rotate-pm-run /usr/lib/rotate/rotate-selftest /usr/lib/rotate/rotate-evdump.py 2>/dev/null || true
 rm -rf /var/cache/pacman/pkg/* /var/lib/pacman/sync/*
 # services
 systemctl enable sshd.service iwd.service systemd-networkd.service systemd-resolved.service systemd-timesyncd.service \
-  rotate-firstboot.service rotate-resize.service rotate-keyring.service "serial-getty@ttyGS0.service"
+  rotate-firstboot.service rotate-resize.service rotate-keyring.service rotate-selftest-auto.service "serial-getty@ttyGS0.service"
 # private keyring generated at build must not ship: rotate-keyring.service recreates it on the device
 rm -rf /etc/pacman.d/gnupg
 # no machine identity baked in

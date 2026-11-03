@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: MIT
+# On-demand first-boot hardware self-test:  systemctl start rotate-selftest   (or run /usr/lib/rotate/rotate-selftest)
+# Output: /var/log/rotate-selftest/<date>.tar.gz and a PASS/FAIL/SKIP summary on the console. Not enabled at boot.
+[Unit]
+Description=Rotate OS hardware self-test (on demand)
+After=local-fs.target iwd.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/rotate/rotate-selftest
+StandardOutput=journal+console
+StandardError=journal+console
+TimeoutStartSec=1500
+SuccessExitStatus=1
