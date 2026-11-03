@@ -85,7 +85,7 @@ else
   if [[ -d "$PROFILE" ]]; then sudo rsync -a "$PROFILE"/ "$CH"/ --include='*/' --include='*.gcda' --exclude='*'
   else sudo tar -xf "$PROFILE" -C "$CH"; fi
   n=$(sudo find "$CH/build/out" -name '*.gcda' | wc -l); say "profile: $n .gcda files"; (( n > 0 )) || die "no .gcda files landed under /build/out (expected build/out/build/... inside the profile)"
-  FLAGS="$FLAGS -fprofile-use -fprofile-partial-training -fprofile-correction -Wno-missing-profile"
+  FLAGS="$FLAGS -fprofile-use -fprofile-partial-training -fprofile-correction $([[ -n ${MELONDS_SHOW_MISSING_PROFILE:-} ]] && echo -Wmissing-profile || echo -Wno-missing-profile)"
 fi
 
 # ---- 4. configure + build (native, qemu-user) ----
